@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-family: "MuseoModerno", cursive;
+}
+
+.shadow {
+  box-shadow: 0 20px 27px 0px #0000000d !important;
+}
+
+.shadow-lg {
+  box-shadow: 3px -2px 20px 0px #0000000c, 0px 4px 20px 0px #0000000c !important;
+}
+
+.primary_text_gradient {
+  background: #e85717;
+  background: linear-gradient(to right, #e85717, #f88b1e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.primary_bg_gradient {
+  background-image: linear-gradient(to right, #e85717, #f88b1e);
+  color: #fff;
+}
+
+.container {
+  max-width: 90% !important;
+  margin: auto;
+}
+
+@media only screen and (min-width: 1250px) {
+  .container {
+    max-width: 1180px !important;
+  }
+}
+
+/* Hero */
+.search_btn {
+  border-radius: 0px 4px 4px 0px;
+  padding: 8px 16px;
+  color: #fff;
+  transition: all 0.3 ease;
+  height: auto;
+}
+
+.search_input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px 0px 0px 4px;
+  padding: 8px 12px;
+  outline: none;
+  background: transparent;
+  font-weight: 500;
+}
+
+.search_input::placeholder {
+  color: #7c7c7c;
+}
