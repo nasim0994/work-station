@@ -6,7 +6,7 @@ import { Pagination } from "swiper/modules";
 
 export default function Testimonial() {
   return (
-    <div className="py-10">
+    <div className="py-16">
       <div className="container">
         <Swiper
           slidesPerView={1}
@@ -42,7 +42,7 @@ export default function Testimonial() {
                 <img
                   src="https://i.ibb.co/FJyMmR7/asusceo.jpg"
                   alt=""
-                  className="w-16 h-16 rounded-full"
+                  className="w-12 h-12 rounded-full"
                 />
                 <div>
                   <h6 className="text-neutral font-semibold">Ana Rodriguez</h6>
@@ -66,7 +66,7 @@ export default function Testimonial() {
                 <img
                   src="https://i.ibb.co/FJyMmR7/asusceo.jpg"
                   alt=""
-                  className="w-16 h-16 rounded-full"
+                  className="w-12 h-12 rounded-full"
                 />
                 <div>
                   <h6 className="text-neutral font-semibold">Ana Rodriguez</h6>
@@ -90,7 +90,7 @@ export default function Testimonial() {
                 <img
                   src="https://i.ibb.co/FJyMmR7/asusceo.jpg"
                   alt=""
-                  className="w-16 h-16 rounded-full"
+                  className="w-12 h-12 rounded-full"
                 />
                 <div>
                   <h6 className="text-neutral font-semibold">Ana Rodriguez</h6>
