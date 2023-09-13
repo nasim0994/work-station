@@ -9,7 +9,7 @@ export default function Categories() {
           Browse Jobs by category
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+        <div className="grid grid-cols-1 min-[460px]:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6 mt-6">
           <Link
             href=""
             className="bg-gray-50 hover:bg-gray-100 duration-300 p-4 rounded-md"

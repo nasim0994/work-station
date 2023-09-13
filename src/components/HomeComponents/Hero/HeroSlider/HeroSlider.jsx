@@ -10,7 +10,7 @@ import { AiFillStar } from "react-icons/ai";
 
 import SearchBox from "../../SearchBox/SearchBox";
 
-const Banner = () => {
+export default function HeroSlider() {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -34,7 +34,7 @@ const Banner = () => {
   }, [updateIndex]);
 
   return (
-    <div className="container h-[90vh] flex justify-center">
+    <div className="py-10 lg:py-0 container min-h-[90vh] flex justify-center">
       <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center">
         {/* Left */}
         <div>
@@ -47,7 +47,7 @@ const Banner = () => {
             >
               How work <br /> should work
             </h1>
-            <p className="my-4 lg:my-5 text-neutral">
+            <p className="my-4 lg:my-5 text-neutral text-sm sm:text-base">
               Access global talent on the freelancer website trusted by over 1
               million businesses worldwide.
             </p>
@@ -191,6 +191,4 @@ const Banner = () => {
       </div>
     </div>
   );
-};
-
-export default Banner;
+}

@@ -7,20 +7,18 @@ export default function Footer() {
     <div className="bg-[#18202B]">
       <div className="container">
         {/* Main Footer */}
-        <footer className="grid grid-cols-4 py-10  text-base-100">
-          <div>
-            <div className="w-60">
-              <Link to="/" className="flex gap-2 items-center">
-                <img src="/images/logo/logo.png" alt="" className="w-9" />
-                <h1 className="primary_text_gradient text-3xl font-semibold">
-                  WorkStation
-                </h1>
-              </Link>
-              <p className="text-gray-400 text-[15px] mt-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-                maiores.
-              </p>
-            </div>
+        <footer className="grid sm:grid-cols-2 md:grid-cols-4 py-10 gap-10 text-base-100">
+          <div className="md:col-span-2 lg:col-span-1">
+            <Link to="/" className="flex gap-2 items-center">
+              <img src="/images/logo/logo.png" alt="" className="w-9" />
+              <h1 className="primary_text_gradient text-3xl font-semibold">
+                WorkStation
+              </h1>
+            </Link>
+            <p className="text-gray-400 text-[15px] mt-2">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
+              maiores.
+            </p>
           </div>
 
           <div className="text-sm">
@@ -91,11 +89,13 @@ export default function Footer() {
 
         {/* Bottom Footer */}
         <div className="flex justify-around items-center py-4 border-t border-accent/50">
-          <p className="text-gray-400 text-[15px]">© WorkStation 2023</p>
+          <p className="text-gray-400 text-sm sm:text-[15px]">
+            © WorkStation 2023
+          </p>
 
           {/* Social Link */}
           <div className="text-gray-300">
-            <div className="flex gap-2">
+            <div className="flex sm:gap-2">
               <Link
                 href=""
                 target="_blank"
@@ -103,6 +103,7 @@ export default function Footer() {
               >
                 <FaFacebookF className="text-lg" />
               </Link>
+
               <Link
                 href=""
                 target="_blank"
@@ -110,6 +111,7 @@ export default function Footer() {
               >
                 <AiOutlineTwitter className="text-xl" />
               </Link>
+
               <Link
                 href=""
                 target="_blank"
@@ -117,6 +119,7 @@ export default function Footer() {
               >
                 <AiFillInstagram className="text-xl" />
               </Link>
+
               <Link
                 href=""
                 target="_blank"

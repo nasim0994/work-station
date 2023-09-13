@@ -20,7 +20,7 @@ export default function ForClient() {
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-2 xl:gap-8 mt-10 font-medium">
           <Link
             href=""
-            className="p-4 rounded-md bg-primary hover:bg-base-100 duration-500 hover:text-primary"
+            className="p-4 rounded-md bg-primary/60 hover:bg-base-100 duration-500 hover:text-primary"
           >
             <div className="flex justify-between lg:flex-col">
               <h6 className="text-lg lg:text-2xl">
@@ -35,7 +35,7 @@ export default function ForClient() {
 
           <Link
             href=""
-            className="p-4 rounded-md bg-primary hover:bg-base-100 duration-500 hover:text-primary"
+            className="p-4 rounded-md bg-primary/60 hover:bg-base-100 duration-500 hover:text-primary"
           >
             <div className="flex justify-between lg:flex-col">
               <h6 className="text-lg lg:text-2xl">
@@ -50,7 +50,7 @@ export default function ForClient() {
 
           <Link
             href=""
-            className="p-4 rounded-md bg-primary hover:bg-base-100 duration-500 hover:text-primary"
+            className="p-4 rounded-md bg-primary/60 hover:bg-base-100 duration-500 hover:text-primary"
           >
             <div className="flex justify-between lg:flex-col">
               <h6 className="text-lg lg:text-2xl">

@@ -1,6 +1,6 @@
 export default function SearchBox({ activeIndex }) {
   return (
-    <div className="flex text-[15px]">
+    <div className="flex text-sm sm:text-[15px]">
       <input
         type="search"
         className="search_input"

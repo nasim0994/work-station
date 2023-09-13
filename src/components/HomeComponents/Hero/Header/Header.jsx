@@ -22,14 +22,14 @@ export default function Header() {
     <header className="border-b py-1">
       <div className="container">
         <div className="flex justify-between items-center">
-          <div className="flex gap-1 items-center">
+          <div className="flex gap-2 items-center">
             {/* Mobile Sidebar */}
             <div className="md:hidden">
               <button
                 className="mobileMenuBtn"
                 onClick={() => setMobileMenu(!mobileMenu)}
               >
-                <AiOutlineMenu className="text-2xl text-neutral mt-3" />
+                <AiOutlineMenu className="text-[22px] text-neutral mt-1" />
               </button>
 
               {/* -----MobileMenu Drawer---- */}
@@ -40,8 +40,8 @@ export default function Header() {
             </div>
 
             <Link to="/" className="flex gap-2 items-center">
-              <img src="/images/logo/logo.png" alt="" className="w-9" />
-              <h1 className="primary_text_gradient text-3xl font-semibold">
+              <img src="/images/logo/logo.png" alt="" className="w-6 sm:w-9" />
+              <h1 className="primary_text_gradient text-2xl sm:text-3xl font-semibold">
                 WorkStation
               </h1>
             </Link>
