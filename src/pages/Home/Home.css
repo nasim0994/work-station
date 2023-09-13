@@ -19,3 +19,11 @@
   display: block;
   padding: 5px 0px;
 }
+
+/* ----------------why choose------------------- */
+.why_choose {
+  background-image: url(/images/why_choose/why_choose.jpg);
+  background-position: top;
+  background-size: contain;
+  padding: 50px 0px;
+}

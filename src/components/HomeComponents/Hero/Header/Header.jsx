@@ -40,7 +40,7 @@ export default function Header() {
             </div>
 
             <Link to="/" className="flex gap-2 items-center">
-              <img src="/images/logo.png" alt="" className="w-9" />
+              <img src="/images/logo/logo.png" alt="" className="w-9" />
               <h1 className="primary_text_gradient text-3xl font-semibold">
                 WorkStation
               </h1>
