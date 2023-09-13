@@ -1,22 +1,24 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import { EffectFade, Autoplay } from "swiper";
-import banner1 from "../../Images/banner/hero-instance-1--desktop.png";
-import banner2 from "../../Images/banner/hero-instance-2--desktop.png";
-import banner3 from "../../Images/banner/hero-instance-4--desktop.png";
+import { EffectFade, Autoplay } from "swiper/modules";
+
 import { AiFillStar } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import SearchBox from "../SearchBox/SearchBox";
+
+import SearchBox from "../../SearchBox/SearchBox";
 
 const Banner = () => {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
   const updateIndex = useCallback(
     () => setActiveIndex(swiperRef.current.swiper.realIndex),
     []
   );
+
   useEffect(() => {
     const swiperInstance = swiperRef.current.swiper;
 
@@ -32,40 +34,40 @@ const Banner = () => {
   }, [updateIndex]);
 
   return (
-    <div className="bg-accent pt-10">
-      <div className="w-[90%] 2xl:w-[1400px] mx-auto pb-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center">
+    <div>
+      <div className="container pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center h-[88vh]">
           {/* Left */}
           <div>
             <div className="lg:w-2/3">
               <h1
-                className={`text-4xl lg:text-6xl font-bold ${
+                className={`text-3xl lg:text-6xl font-bold ${
                   activeIndex === 0 && "text-primary"
                 } ${activeIndex === 1 && "text-[#B92528]"}
                 ${activeIndex === 2 && "text-[#1B1233]"}`}
               >
                 How work <br /> should work
               </h1>
-              <h6 className="my-4 lg:my-5 text-lg">
+              <p className="my-4 lg:my-5 text-neutral text-[15px]">
                 Access global talent on the freelancer website trusted by over 1
                 million businesses worldwide.
-              </h6>
+              </p>
             </div>
 
             <div>
               {/* Search */}
               <div className="sm:w-4/5">
-                <SearchBox />
+                <SearchBox activeIndex={activeIndex} />
               </div>
 
               {/* Popular search */}
               <div className="hidden sm:flex items-center gap-3 mt-6">
-                <h6>Popular:</h6>
-                <ul className="flex items-center gap-3 text-sm text-neutral">
+                <h6 className="text-sm font-medium">Popular:</h6>
+                <ul className="flex items-center gap-3 text-[13px] text-neutral">
                   <li>
                     <Link
                       to=""
-                      className="border rounded-full px-3 py-1 border-neutral/40 hover:bg-primary hover:text-base-100  hover:border-primary duration-200"
+                      className="border rounded-full px-3 py-1 border-neutral/40 hover:bg-primary hover:text-base-100  hover:border-primary duration-300"
                     >
                       Website Design
                     </Link>
@@ -73,15 +75,7 @@ const Banner = () => {
                   <li>
                     <Link
                       to=""
-                      className="border rounded-full px-3 py-1 border-neutral/40 hover:bg-primary hover:text-base-100  hover:border-primary duration-200"
-                    >
-                      Logo Design
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to=""
-                      className="border rounded-full px-3 py-1 border-neutral/40 hover:bg-primary hover:text-base-100  hover:border-primary duration-200"
+                      className="border rounded-full px-3 py-1 border-neutral/40 hover:bg-primary hover:text-base-100  hover:border-primary duration-300"
                     >
                       WordPress
                     </Link>
@@ -89,7 +83,7 @@ const Banner = () => {
                   <li>
                     <Link
                       to=""
-                      className="border rounded-full px-3 py-1 border-neutral/40 hover:bg-primary hover:text-base-100  hover:border-primary duration-200"
+                      className="border rounded-full px-3 py-1 border-neutral/40 hover:bg-primary hover:text-base-100  hover:border-primary duration-300"
                     >
                       UI/UX Design
                     </Link>
@@ -106,19 +100,22 @@ const Banner = () => {
               effect={"fade"}
               loop={true}
               autoplay={{
-                delay: 5000,
+                delay: 10000,
                 disableOnInteraction: false,
               }}
               modules={[EffectFade, Autoplay]}
-              className="w-full"
+              className="w-full h-full"
               ref={swiperRef}
             >
               <SwiperSlide>
-                <div className="bg-accent">
-                  <img src={banner3} alt="" />
+                <div className="bg-base-100">
+                  <img
+                    src="/images/banner/hero-instance-4--desktop.png"
+                    alt=""
+                  />
 
                   {/* Freelancer  card*/}
-                  <div className="absolute right-0 sm:right-10 bottom-0 bg-accent/95 shadow-lg rounded-lg sm:p-4 p-2">
+                  <div className="absolute right-0 sm:right-10 bottom-0 bg-base-100/95 shadow-lg rounded-lg sm:p-4 p-2">
                     <img
                       src="https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-4/profile-pic/profile-pic.webp"
                       alt=""
@@ -142,11 +139,14 @@ const Banner = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="bg-accent">
-                  <img src={banner2} alt="" />
+                <div className="bg-base-100">
+                  <img
+                    src="/images/banner/hero-instance-2--desktop.png"
+                    alt=""
+                  />
 
                   {/* Freelancer  card*/}
-                  <div className="absolute right-0 sm:right-10 bottom-0 bg-accent/95 shadow-lg rounded-lg sm:p-4 p-2">
+                  <div className="absolute right-0 sm:right-10 bottom-0 bg-base-100/95 shadow-lg rounded-lg sm:p-4 p-2">
                     <img
                       src="https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-1/profile-pic/profile-pic.webp"
                       alt=""
@@ -170,11 +170,14 @@ const Banner = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div className="bg-accent">
-                  <img src={banner1} alt="" />
+                <div className="bg-base-100">
+                  <img
+                    src="/images/banner/hero-instance-1--desktop.png"
+                    alt=""
+                  />
 
                   {/* Freelancer  card*/}
-                  <div className="absolute right-0 sm:right-10 bottom-0 bg-accent/95 shadow-lg rounded-lg sm:p-4 p-2">
+                  <div className="absolute right-0 sm:right-10 bottom-0 bg-base-100/95 shadow-lg rounded-lg sm:p-4 p-2">
                     <img
                       src="https://dw3i9sxi97owk.cloudfront.net/homepageRevampA3/HeroImage/instance-3/profile-pic/profile-pic.webp"
                       alt=""

@@ -1,5 +1,5 @@
-import Header from "../Header/Header";
-import HeroSlider from "../HeroSlider/HeroSlider";
+import Header from "./Header/Header";
+import HeroSlider from "./HeroSlider/HeroSlider";
 
 export default function Hero() {
   return (
