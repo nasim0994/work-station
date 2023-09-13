@@ -19,7 +19,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header>
+    <header className="border-b py-1">
       <div className="container">
         <div className="flex justify-between items-center">
           <div className="flex gap-1 items-center">

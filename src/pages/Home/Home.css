@@ -22,8 +22,19 @@
 
 /* ----------------why choose------------------- */
 .why_choose {
-  background-image: url(/images/why_choose/why_choose.jpg);
+  background-image: linear-gradient(0deg, #222222a0, #00000076),
+    url(/images/why_choose/why_choose.jpg);
   background-position: top;
   background-size: contain;
-  padding: 50px 0px;
+  padding-top: 50px;
+  padding-bottom: 120px;
+}
+/* -------------------------- */
+.forClient {
+  background-image: linear-gradient(0deg, #222222e9, #000000aa),
+    url("/images/for_client/forClient.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 500px;
 }

@@ -3,7 +3,7 @@ import HeroSlider from "./HeroSlider/HeroSlider";
 
 export default function Hero() {
   return (
-    <section>
+    <section className="bg-gray-50">
       <Header />
       <HeroSlider />
     </section>
