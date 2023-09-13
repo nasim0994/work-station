@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 import MoreDropdown from "./MenuDropdown/MoreDropdown";
-import SearchBox from "../../../SearchBox/SearchBox";
+import SearchBox from "./../../HomeComponents/SearchBox/SearchBox";
 
 const MobileMenu = ({ mobileMenu, setMobileMenu }) => {
   const [moreDropdown, setMoreDropdown] = useState(false);
