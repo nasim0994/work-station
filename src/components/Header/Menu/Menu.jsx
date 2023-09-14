@@ -2,13 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { HiOutlineMail } from "react-icons/hi";
-import { FiBell } from "react-icons/fi";
 import MoreDropdown from "./MenuDropdown/MoreDropdown";
-import NotificationDropdown from "./MenuDropdown/NotificationDropdown";
 import AccountDropdown from "./MenuDropdown/AccountDropdown";
 
 const Menu = () => {
-  const [notificationDropdown, setNotificationDropdown] = useState(false);
   const [accountDropdown, setAccountDropdown] = useState(false);
   const [moreDropdown, setMoreDropdown] = useState(false);
   const [user, setUser] = useState(true);
@@ -59,24 +56,6 @@ const Menu = () => {
               >
                 <HiOutlineMail className="text-[25px]" />
               </Link>
-            </li>
-
-            {/* Notification */}
-            <li className="relative">
-              <div className="mt-2.5">
-                <button
-                  onClick={() => setNotificationDropdown(!notificationDropdown)}
-                  className="notificationDropdownBtn text-neutral/90 hover:text-primary duration-300"
-                >
-                  <FiBell className="text-2xl" />
-                </button>
-              </div>
-
-              {notificationDropdown && (
-                <NotificationDropdown
-                  setNotificationDropdown={setNotificationDropdown}
-                />
-              )}
             </li>
 
             {/* Account */}
