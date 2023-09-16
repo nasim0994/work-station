@@ -1,12 +1,7 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-
-import MoreDropdown from "./MenuDropdown/MoreDropdown";
 import SearchBox from "./../../HomeComponents/SearchBox/SearchBox";
 
 const MobileMenu = ({ mobileMenu, setMobileMenu }) => {
-  const [moreDropdown, setMoreDropdown] = useState(false);
   return (
     <div
       id="mobileMenu"
@@ -30,18 +25,6 @@ const MobileMenu = ({ mobileMenu, setMobileMenu }) => {
 
           <li onClick={() => setMobileMenu(false)}>
             <Link to="/blog">Blog</Link>
-          </li>
-
-          <li>
-            <button
-              onClick={() => setMoreDropdown(!moreDropdown)}
-              className="py-1 moreDropdownBtn flex justify-between items-center w-full"
-            >
-              More
-              <MdOutlineKeyboardArrowDown className="text-lg" />
-            </button>
-
-            {moreDropdown && <MoreDropdown setMoreDropdown={setMoreDropdown} />}
           </li>
         </ul>
       </div>

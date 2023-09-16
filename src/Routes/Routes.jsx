@@ -1,14 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home";
-import HomeLayout from "./../Layout/HomeLayout/HomeLayout";
 import Freelancers from "../pages/Freelancers/Freelancers";
 import Jobs from "../pages/Jobs/Jobs";
 import Blogs from "../pages/Blogs/Blogs";
+import Dashboard from "../pages/dashboard/Dashboard/Dashboard";
+import MainLayout from "../Layout/MainLayout/MainLayout";
+import DashboardLayout from "../Layout/DashboardLayout/DashboardLayout";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
-    element: <HomeLayout />,
+    element: <MainLayout />,
     children: [
       {
         path: "/",
@@ -25,6 +27,16 @@ export const routes = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
     ],
   },

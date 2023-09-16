@@ -1,0 +1,49 @@
+.dashboardSidebar {
+  width: 300px;
+  background: #fff;
+  box-shadow: 3px -2px 20px 0px #0000000c, 0px 4px 20px 0px #0000000c;
+
+  position: fixed;
+  height: 100vh;
+
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.dashboardSidebar ::-webkit-scrollbar {
+  width: 2px;
+}
+.dashboardSidebar ::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+@media only screen and (max-width: 1023px) {
+  .dashboardContent {
+    width: 90%;
+    margin: auto;
+    position: relative;
+    height: 100%;
+    left: 0px;
+
+    padding: 0px 10px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .dashboardSidebar {
+    transform: translateX(0%) !important;
+  }
+
+  .dashboardContent {
+    width: calc(100% - 320px) !important;
+    position: relative;
+    height: 100%;
+    left: 320px;
+    padding-right: 20px;
+  }
+}
+
+table th,
+td {
+  background: transparent !important;
+}

@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { HiOutlineMail } from "react-icons/hi";
-import MoreDropdown from "./MenuDropdown/MoreDropdown";
 import AccountDropdown from "./MenuDropdown/AccountDropdown";
 
 const Menu = () => {
   const [accountDropdown, setAccountDropdown] = useState(false);
-  const [moreDropdown, setMoreDropdown] = useState(false);
-  const [user, setUser] = useState(false);
+  const user = true;
 
   return (
     <nav className="text-neutral flex gap-6 items-center">
@@ -30,21 +27,6 @@ const Menu = () => {
           <NavLink to="/blogs" className="hover:text-primary duration-300">
             Blog
           </NavLink>
-        </li>
-        <li className="relative">
-          <button
-            onClick={() => setMoreDropdown(!moreDropdown)}
-            className="moreDropdownBtn hover:text-primary duration-300 flex gap-2 items-center"
-          >
-            More
-            <MdOutlineKeyboardArrowDown className="text-lg" />
-          </button>
-
-          {moreDropdown && (
-            <nav className="moreDropdown z-40 absolute top-10 right-0 bg-base-100 rounded-md shadow-lg w-52">
-              <MoreDropdown setMoreDropdown={setMoreDropdown} />
-            </nav>
-          )}
         </li>
       </ul>
 
@@ -70,7 +52,7 @@ const Menu = () => {
                 <img
                   src="https://cdn3.f-cdn.com/ppic/213571528/logo/40081811/jdnht/CROPPED_profile_logo_QRRJV_11b07c74774dd59bfb02a3815ff6204e.png?image-optimizer=force&format=webply&width=336"
                   alt=""
-                  className="w-10 h-10 rounded-full"
+                  className="w-9 h-9 rounded-full"
                 />
               </button>
 
