@@ -7,6 +7,9 @@ import Dashboard from "../pages/dashboard/Dashboard/Dashboard";
 import MainLayout from "../Layout/MainLayout/MainLayout";
 import DashboardLayout from "../Layout/DashboardLayout/DashboardLayout";
 import Profile from "../pages/dashboard/Profile/Profile";
+import Support from "../pages/dashboard/Support/Support";
+import Disputes from "../pages/dashboard/Disputes/Disputes";
+import SaveItems from "../pages/dashboard/SaveItems/SaveItems";
 
 export const routes = createBrowserRouter([
   {
@@ -42,6 +45,18 @@ export const routes = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "support",
+        element: <Support />,
+      },
+      {
+        path: "disputes",
+        element: <Disputes />,
+      },
+      {
+        path: "save-items",
+        element: <SaveItems />,
       },
     ],
   },

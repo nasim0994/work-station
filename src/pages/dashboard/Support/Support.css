@@ -1,0 +1,10 @@
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+
+  transition: all 0.5s;
+}
+
+.activeFAQ {
+  max-height: 500px;
+}

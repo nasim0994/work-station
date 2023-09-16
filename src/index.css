@@ -165,3 +165,8 @@ h2 {
 .blog-card:hover .blog-img img {
   opacity: 0.6;
 }
+
+/* React best tab custom style */
+.rb-tabs .rb-tabs-header .rb-tabs-active-item {
+  background-color: #e85717 !important;
+}

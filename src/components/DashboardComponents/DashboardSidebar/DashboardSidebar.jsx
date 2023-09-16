@@ -332,7 +332,7 @@ export default function DashboardSidebar() {
             </li>
             <li onClick={() => setDashboardSidebar(false)}>
               <NavLink
-                to="saveJobs"
+                to="save-items"
                 className="flex items-center gap-2 p-1.5 hover:text-primary duration-300"
               >
                 <AiOutlineHeart />
