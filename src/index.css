@@ -50,7 +50,11 @@ h2 {
   }
 }
 
-/* Hero */
+.active {
+  color: #e85717;
+}
+
+/*---------------- Hero ----------------------*/
 .search_btn {
   border-radius: 0px 4px 4px 0px;
   padding: 8px 16px;
@@ -140,4 +144,24 @@ h2 {
 .css-wmy1p7-ReactDropdownSelect:hover,
 .css-wmy1p7-ReactDropdownSelect:focus-within {
   border-color: #e856173f !important ;
+}
+
+/* -----------Blogs page style----------------- */
+.blog-card:hover {
+  box-shadow: 3px -2px 20px 0px #0000000c, 0px 4px 20px 0px #0000000c;
+
+  transition: all 0.3s;
+}
+
+.blog-card .blog-img {
+  background: #000;
+  display: block;
+}
+.blog-card .blog-img img {
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.blog-card:hover .blog-img img {
+  opacity: 0.6;
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { HiOutlineMail } from "react-icons/hi";
 import MoreDropdown from "./MenuDropdown/MoreDropdown";
@@ -8,25 +8,28 @@ import AccountDropdown from "./MenuDropdown/AccountDropdown";
 const Menu = () => {
   const [accountDropdown, setAccountDropdown] = useState(false);
   const [moreDropdown, setMoreDropdown] = useState(false);
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
 
   return (
     <nav className="text-neutral flex gap-6 items-center">
       <ul className="hidden md:flex gap-6 items-center font-medium ">
         <li>
-          <Link to="/freelancers" className="hover:text-primary duration-300">
+          <NavLink
+            to="/freelancers"
+            className="hover:text-primary duration-300"
+          >
             Find Freelancer
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/jobs" className="hover:text-primary duration-300">
+          <NavLink to="/jobs" className="hover:text-primary duration-300">
             Find Work
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/blog" className="hover:text-primary duration-300">
+          <NavLink to="/blogs" className="hover:text-primary duration-300">
             Blog
-          </Link>
+          </NavLink>
         </li>
         <li className="relative">
           <button
