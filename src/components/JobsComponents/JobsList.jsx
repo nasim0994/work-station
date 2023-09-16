@@ -3,7 +3,7 @@ import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { Link } from "react-router-dom";
 
-export default function FreelancerList() {
+export default function JobsList() {
   return (
     <div className="lists">
       <div className="border rounded-md py-4 px-6 mb-6 bg-base-100">

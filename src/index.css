@@ -72,3 +72,72 @@ h2 {
 .search_input::placeholder {
   color: #7c7c7c;
 }
+
+/*--------------- Jobs and freelancer--------------------- */
+@media only screen and (max-width: 1024px) {
+  .filter {
+    position: fixed;
+    height: 100vh;
+    left: -100%;
+    top: 64px;
+    background: #fff;
+    padding: 20px;
+    width: 350px;
+    overflow-y: auto;
+    box-shadow: 3px -2px 20px 0px #0000000c, 0px 4px 20px 0px #0000000c;
+    transition: all 0.5s ease;
+  }
+
+  .filter_show {
+    left: 0;
+  }
+
+  .lists {
+    width: 100%;
+  }
+}
+
+/*-------------- Desktop screen -----------------*/
+@media only screen and (min-width: 1024px) {
+  .filter {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    position: sticky;
+    top: 70px;
+    width: 330px;
+  }
+
+  .lists {
+    width: calc(100% - 330px);
+  }
+}
+
+/* ------React dropdown select custom style---- */
+.css-9ma7ck-OptionComponent {
+  background: #e85717 !important;
+}
+
+.css-wmy1p7-ReactDropdownSelect:focus,
+.css-wmy1p7-ReactDropdownSelect:focus-within {
+  outline: 0;
+  box-shadow: 0 0 0 1px #e856173f !important;
+}
+
+.css-wmy1p7-ReactDropdownSelect:hover {
+  border: 1px solid #e856173f !important;
+}
+
+.css-z2hyoe-ItemComponent:hover,
+.css-z2hyoe-ItemComponent:focus {
+  background: #e856173f !important;
+}
+
+.css-z2hyoe-ItemComponent.react-dropdown-select-item-selected {
+  background: #e85717 !important;
+}
+
+.css-wmy1p7-ReactDropdownSelect:hover,
+.css-wmy1p7-ReactDropdownSelect:focus-within {
+  border-color: #e856173f !important ;
+}

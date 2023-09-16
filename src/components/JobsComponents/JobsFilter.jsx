@@ -21,7 +21,7 @@ const locations = [
   { name: "Mymensingh ", id: 8 },
 ];
 
-export default function FreelancerFilter() {
+export default function JobsFilter() {
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState([]);
   const [filterToggle, setFilterToggle] = useState(false);

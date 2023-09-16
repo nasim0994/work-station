@@ -1,4 +1,3 @@
-import "./Freelancers.css";
 import FreelancerFilter from "../../components/FreelancersComponents/FreelancerFilter";
 import FreelancerList from "../../components/FreelancersComponents/FreelancerList";
 
