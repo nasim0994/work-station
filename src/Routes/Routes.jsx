@@ -16,6 +16,13 @@ import Proposals from "../pages/dashboard/ManageProjects/Proposals";
 import OngoingProjects from "../pages/dashboard/ManageProjects/OngoingProjects";
 import CompletedProjects from "../pages/dashboard/ManageProjects/CompletedProjects";
 import CancelledProjects from "../pages/dashboard/ManageProjects/CancelledProjects";
+import SettingLayout from "./../Layout/SettingLayout/SettingLayout";
+import EditProfile from "./../pages/dashboard/Setting/EditProfile";
+import BillingAddress from "../pages/dashboard/Setting/BillingAddress";
+import EmailNotification from "./../pages/dashboard/Setting/EmailNotification";
+import ResetPassword from "../pages/dashboard/Setting/ResetPassword";
+import PayoutSetting from "./../pages/dashboard/Setting/PayoutSetting";
+import ManageAccount from "./../pages/dashboard/Setting/ManageAccount";
 
 export const routes = createBrowserRouter([
   {
@@ -87,6 +94,36 @@ export const routes = createBrowserRouter([
       {
         path: "save-items",
         element: <SaveItems />,
+      },
+      {
+        path: "/dashboard/setting",
+        element: <SettingLayout />,
+        children: [
+          {
+            path: "edit-profile",
+            element: <EditProfile />,
+          },
+          {
+            path: "billing-address",
+            element: <BillingAddress />,
+          },
+          {
+            path: "email-notification",
+            element: <EmailNotification />,
+          },
+          {
+            path: "reset-password",
+            element: <ResetPassword />,
+          },
+          {
+            path: "payout",
+            element: <PayoutSetting />,
+          },
+          {
+            path: "manage-account",
+            element: <ManageAccount />,
+          },
+        ],
       },
     ],
   },

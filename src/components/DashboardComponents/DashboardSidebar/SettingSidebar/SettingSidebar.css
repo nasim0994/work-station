@@ -1,0 +1,20 @@
+.SettingSidebar .active {
+  background: #fff;
+  color: #e85717;
+  border-left: 2px solid #e85717;
+  border-bottom: 1px solid #ddd;
+}
+
+.SettingSidebar li a {
+  display: block;
+  padding: 15px 24px;
+  border-left: 2px solid transparent;
+  border-bottom: 1px solid transparent;
+  margin-bottom: 2px;
+  color: #7e7e7e;
+  transition: all 0.3s;
+}
+.SettingSidebar li a:hover {
+  background: #fff;
+  border-left: 2px solid #e85717;
+}
