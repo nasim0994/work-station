@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import SettingSidebar from "./../../components/DashboardComponents/DashboardSidebar/SettingSidebar/SettingSidebar";
+import SettingSidebar from "../../components/DashboardComponents/SettingSidebar/SettingSidebar";
 
 export default function SettingLayout() {
   return (

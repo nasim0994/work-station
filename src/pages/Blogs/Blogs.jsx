@@ -118,7 +118,7 @@ export default function Blogs() {
             <div className="blog-card border mb-8 rounded">
               <Link to="/blog/1" className="blog-img">
                 <img
-                  src="https://instantkaj.com/wp-content/uploads/2021/09/feature-bangladesh-2nd-online-labor-730x240.jpg"
+                  src="https://WorkStation.com/wp-content/uploads/2021/09/feature-bangladesh-2nd-online-labor-730x240.jpg"
                   alt=""
                   className="w-full h-72"
                 />
@@ -140,7 +140,7 @@ export default function Blogs() {
                   <div className="flex items-center gap-2">
                     <BsPerson />
                     <Link to="/" className="text-primary">
-                      instantkaj
+                      WorkStation
                     </Link>
                   </div>
                 </div>
@@ -161,7 +161,7 @@ export default function Blogs() {
             <div className="blog-card border mb-8 rounded">
               <Link to="" className="blog-img">
                 <img
-                  src="https://instantkaj.com/wp-content/uploads/2021/09/Feature-Freelancing-is-easy.jpg"
+                  src="https://WorkStation.com/wp-content/uploads/2021/09/Feature-Freelancing-is-easy.jpg"
                   alt=""
                   className="w-full h-72"
                 />
@@ -182,7 +182,7 @@ export default function Blogs() {
                   <div className="flex items-center gap-2">
                     <BsPerson />
                     <Link to="/" className="text-primary">
-                      instantkaj
+                      WorkStation
                     </Link>
                   </div>
                 </div>

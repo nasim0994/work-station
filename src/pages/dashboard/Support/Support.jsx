@@ -5,11 +5,11 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 const faqs = [
   {
     question: "Ways to work online and earn money?",
-    ans: `By signing up in Instantkaj.com, you can easily search for jobs in search job and earn by working from home.`,
+    ans: `By signing up in WorkStation.com, you can easily search for jobs in search job and earn by working from home.`,
   },
   {
-    question: "Why InstantKaj.com?",
-    ans: `InstantKaj.com is the Best Freelancing platform in Bangladesh which acts like a bridge between freelancer and employee. Here Freelancers of Bangladesh can easily get their payouts through mobile banking. Employers can also make it Instantly! This is really efficient.`,
+    question: "Why WorkStation.com?",
+    ans: `WorkStation.com is the Best Freelancing platform in Bangladesh which acts like a bridge between freelancer and employee. Here Freelancers of Bangladesh can easily get their payouts through mobile banking. Employers can also make it Instantly! This is really efficient.`,
   },
 ];
 

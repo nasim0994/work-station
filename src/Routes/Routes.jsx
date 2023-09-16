@@ -23,6 +23,7 @@ import EmailNotification from "./../pages/dashboard/Setting/EmailNotification";
 import ResetPassword from "../pages/dashboard/Setting/ResetPassword";
 import PayoutSetting from "./../pages/dashboard/Setting/PayoutSetting";
 import ManageAccount from "./../pages/dashboard/Setting/ManageAccount";
+import Message from "../pages/dashboard/Message/Message";
 
 export const routes = createBrowserRouter([
   {
@@ -94,6 +95,10 @@ export const routes = createBrowserRouter([
       {
         path: "save-items",
         element: <SaveItems />,
+      },
+      {
+        path: "message",
+        element: <Message />,
       },
       {
         path: "/dashboard/setting",

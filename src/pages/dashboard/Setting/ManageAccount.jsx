@@ -14,7 +14,7 @@ export default function ManageAccount() {
           </p>
 
           <div className="py-4">
-            <label className="relative inline-flex items-center cursor-pointer">
+            <label className="relative inline-flex items-start cursor-pointer">
               <input type="checkbox" value="" className="sr-only peer" />
               <div className="w-[35px] h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
               <span className="ml-3 text-sm font-medium text-neutral/90">

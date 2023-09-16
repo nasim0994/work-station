@@ -49,7 +49,7 @@ export default function SaveItems() {
                         </div>
                         <div>
                           <img
-                            src="https://instantkaj.com/wp-content/uploads/2021/06/khelbei-150x150.png"
+                            src="https://WorkStation.com/wp-content/uploads/2021/06/khelbei-150x150.png"
                             alt=""
                             className="w-12 rounded-full"
                           />
@@ -115,7 +115,7 @@ export default function SaveItems() {
                         </div>
                         <div>
                           <img
-                            src="https://instantkaj.com/wp-content/uploads/2021/06/khelbei-150x150.png"
+                            src="https://WorkStation.com/wp-content/uploads/2021/06/khelbei-150x150.png"
                             alt=""
                             className="w-12 rounded-full"
                           />
@@ -200,7 +200,7 @@ export default function SaveItems() {
                           <div className="w-20 sm:w-24">
                             <Link to="freelancerDetails">
                               <img
-                                src="https://instantkaj.com/wp-content/uploads/2021/06/bandarban-100x100.jpg"
+                                src="https://WorkStation.com/wp-content/uploads/2021/06/bandarban-100x100.jpg"
                                 alt=""
                                 className="w-full rounded hover:shadow-lg"
                               />
@@ -257,7 +257,7 @@ export default function SaveItems() {
                           <div className="w-20 sm:w-24">
                             <Link to="freelancerDetails">
                               <img
-                                src="https://instantkaj.com/wp-content/uploads/2021/06/bandarban-100x100.jpg"
+                                src="https://WorkStation.com/wp-content/uploads/2021/06/bandarban-100x100.jpg"
                                 alt=""
                                 className="w-full rounded hover:shadow-lg"
                               />
@@ -314,7 +314,7 @@ export default function SaveItems() {
                           <div className="w-20 sm:w-24">
                             <Link to="freelancerDetails">
                               <img
-                                src="https://instantkaj.com/wp-content/uploads/2021/06/bandarban-100x100.jpg"
+                                src="https://WorkStation.com/wp-content/uploads/2021/06/bandarban-100x100.jpg"
                                 alt=""
                                 className="w-full rounded hover:shadow-lg"
                               />

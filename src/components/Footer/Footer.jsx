@@ -67,10 +67,10 @@ export default function Footer() {
                 Setting
               </Link>
               <Link href="" className="hover:text-primary duration-300">
-                Selling on InstantKaj
+                Selling on WorkStation
               </Link>
               <Link href="" className="hover:text-primary duration-300">
-                Buying on InstantKaj
+                Buying on WorkStation
               </Link>
             </nav>
           </div>

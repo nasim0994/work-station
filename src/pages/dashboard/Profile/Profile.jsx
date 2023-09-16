@@ -160,7 +160,7 @@ export default function Profile() {
                         alt=""
                         className="w-full h-40 border rounded"
                       />
-                      <h6 className="font-medium">InstantKaj</h6>
+                      <h6 className="font-medium">WorkStation</h6>
                     </Link>
                   </div>
                   <div>
@@ -170,7 +170,7 @@ export default function Profile() {
                         alt=""
                         className="w-full h-40 border rounded"
                       />
-                      <h6 className="font-medium">InstantKaj</h6>
+                      <h6 className="font-medium">WorkStation</h6>
                     </Link>
                   </div>
                   <div>
@@ -180,7 +180,7 @@ export default function Profile() {
                         alt=""
                         className="w-full h-40 border rounded"
                       />
-                      <h6 className="font-medium">InstantKaj</h6>
+                      <h6 className="font-medium">WorkStation</h6>
                     </Link>
                   </div>
                 </div>
@@ -312,7 +312,7 @@ export default function Profile() {
                 {/* 1 */}
                 <div className="flex gap-4 border-b py-4">
                   <img
-                    src="https://instantkaj.com/wp-content/uploads/2021/02/Raiyan-100x100.jpeg"
+                    src="https://WorkStation.com/wp-content/uploads/2021/02/Raiyan-100x100.jpeg"
                     alt=""
                     className="w-12 h-12 rounded-full"
                   />
