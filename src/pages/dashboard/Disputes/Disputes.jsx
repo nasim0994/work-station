@@ -1,8 +1,10 @@
 import { MdOutlineReportProblem } from "react-icons/md";
 
 export default function Disputes() {
+  window.scroll(0, 0);
+
   return (
-    <div className="bg-base-100 rounded-md shadow-lg">
+    <div className="my-2 bg-base-100 rounded-md shadow-lg">
       <div className="border-b mb-4 p-5 text-lg">
         <div className="flex justify-between items-center">
           <h6>Dispute</h6>

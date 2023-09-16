@@ -23,7 +23,7 @@ export default function DashboardSidebar() {
   const [projectsToggle, setProjectsToggle] = useState(false);
   const [jobsToggle, setJobsToggle] = useState(false);
 
-  const user = "client";
+  const user = "freelancer";
 
   useEffect(() => {
     if (
@@ -350,7 +350,7 @@ export default function DashboardSidebar() {
             </li>
             <li onClick={() => setDashboardSidebar(false)}>
               <NavLink
-                to="/dashboard/setting/edit-profile"
+                to="/dashboard/setting"
                 className="flex items-center gap-2 p-1.5 hover:text-primary duration-300"
               >
                 <AiOutlineSetting />

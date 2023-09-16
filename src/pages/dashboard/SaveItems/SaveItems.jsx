@@ -9,8 +9,9 @@ import "react-best-tabs/dist/index.css";
 import { GoLocation } from "react-icons/go";
 
 export default function SaveItems() {
+  window.scroll(0, 0);
   return (
-    <div className="py-5">
+    <div className="py-2">
       <div className="md:flex gap-10 min-h-[80vh]">
         <div className="md:w-3/4 ">
           <div className="bg-base-100 shadow-lg p-4 rounded-md h-full">

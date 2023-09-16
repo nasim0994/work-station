@@ -6,6 +6,7 @@ import { FaBusinessTime } from "react-icons/fa";
 import { MdOutlinePersonSearch } from "react-icons/md";
 
 export default function Profile() {
+  window.scroll(0, 0);
   const user = "freelancer";
 
   return (

@@ -11,6 +11,7 @@ import { MdOutlineRunningWithErrors } from "react-icons/md";
 import { TfiBag } from "react-icons/tfi";
 
 export default function Dashboard() {
+  window.scroll(0, 0);
   const user = "freelancer";
 
   return (

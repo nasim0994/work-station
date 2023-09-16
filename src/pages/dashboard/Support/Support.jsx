@@ -14,6 +14,7 @@ const faqs = [
 ];
 
 export default function Support() {
+  window.scroll(0, 0);
   const [toggleFAQ, setToggleFAQ] = useState(null);
   const handelToggleFAQ = (i) => {
     if (toggleFAQ === i) {

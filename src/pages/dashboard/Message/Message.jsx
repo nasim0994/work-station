@@ -5,6 +5,7 @@ import FullMessageBox from "../../../components/DashboardComponents/MessageCompo
 import MessageLists from "../../../components/DashboardComponents/MessageComponents/MessageLists";
 
 export default function Message() {
+  window.scroll(0, 0);
   const [messageBoxClose, setMessageBoxClose] = useState(false);
 
   return (

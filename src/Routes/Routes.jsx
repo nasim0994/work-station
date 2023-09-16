@@ -29,6 +29,10 @@ import PostedJobs from "../pages/dashboard/ManageJobs/PostedJobs";
 import OngoingJobs from "../pages/dashboard/ManageJobs/OngoingJobs";
 import CompletedJobs from "../pages/dashboard/ManageJobs/CompletedJobs";
 import CancelledJobs from "../pages/dashboard/ManageJobs/CancelledJobs";
+import AboutUs from "./../pages/AboutUs/AboutUs";
+import Career from "../pages/Career/Career";
+import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
+import TermsConditions from "../pages/TermsConditions/TermsConditions";
 
 export const routes = createBrowserRouter([
   {
@@ -51,6 +55,22 @@ export const routes = createBrowserRouter([
         path: "/blogs",
         element: <Blogs />,
       },
+      {
+        path: "/about",
+        element: <AboutUs />,
+      },
+      {
+        path: "/Career",
+        element: <Career />,
+      },
+      {
+        path: "/terms-conditions",
+        element: <TermsConditions />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
+      },
     ],
   },
   {
@@ -65,7 +85,7 @@ export const routes = createBrowserRouter([
         path: "profile",
         element: <Profile />,
       },
-      // For freelancer
+      //-------- For freelancer
       {
         path: "add-portfolio",
         element: <AddPortfolio />,
@@ -90,7 +110,7 @@ export const routes = createBrowserRouter([
         path: "cancelled-projects",
         element: <CancelledProjects />,
       },
-      // For client
+      //-------- For client
       {
         path: "post-job",
         element: <PostAJob />,
@@ -133,6 +153,9 @@ export const routes = createBrowserRouter([
         path: "/dashboard/setting",
         element: <SettingLayout />,
         children: [
+          {
+            path: "/dashboard/setting",
+          },
           {
             path: "edit-profile",
             element: <EditProfile />,

@@ -2,6 +2,8 @@ import FreelancerFilter from "../../components/FreelancersComponents/FreelancerF
 import FreelancerList from "../../components/FreelancersComponents/FreelancerList";
 
 export default function Freelancers() {
+  window.scroll(0, 0);
+
   return (
     <div className="py-5 min-h-[85vh] bg-gray-50/50">
       <div className="container">

@@ -169,12 +169,12 @@ h2 {
   font-size: 16px !important;
 }
 
-/* React best tab custom style */
+/*------------ React best tab custom style------------ */
 .rb-tabs .rb-tabs-header .rb-tabs-active-item {
   background-color: #e85717 !important;
 }
 
-/* jodit React text editor custom style */
+/* ---------jodit React text editor custom style------------ */
 .jodit-status-bar {
   display: none !important;
 }

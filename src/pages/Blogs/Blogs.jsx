@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { BiSearchAlt2 } from "react-icons/bi";
 
 export default function Blogs() {
+  window.scroll(0, 0);
+
   return (
     <div className="py-10">
       <div className="container">

@@ -16,34 +16,27 @@ export default function Footer() {
               </h1>
             </Link>
             <p className="text-gray-400 text-[15px] mt-2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-              maiores.
+              Best Job Platform in Bangladesh
             </p>
           </div>
 
           <div className="text-sm">
             <h6 className="text-neutral-content font-bold">ABOUT</h6>
             <nav className="flex flex-col gap-1.5 mt-4">
-              <Link href="/about" className="hover:text-primary duration-300">
+              <Link to="/about" className="hover:text-primary duration-300">
                 About us
               </Link>
-              <Link
-                href="/howItWork"
-                className="hover:text-primary duration-300"
-              >
-                How it works
-              </Link>
-              <Link href="/career" className="hover:text-primary duration-300">
+              <Link to="/career" className="hover:text-primary duration-300">
                 Career
               </Link>
               <Link
-                href="/terms-conditions"
+                to="/terms-conditions"
                 className="hover:text-primary duration-300"
               >
                 Terms & Conditions
               </Link>
               <Link
-                href="/privacy-policy"
+                to="/privacy-policy"
                 className="hover:text-primary duration-300"
               >
                 Privacy Policy
@@ -55,35 +48,36 @@ export default function Footer() {
             <h6 className="text-neutral-content font-bold">Support</h6>
             <nav className="flex flex-col gap-1.5 mt-4">
               <Link
-                href="/dashboard/support"
+                to="/dashboard/support"
                 className="hover:text-primary duration-300"
               >
                 Help & Support
               </Link>
               <Link
-                href="/dashboard/account/editProfile"
+                to="/dashboard/setting"
                 className="hover:text-primary duration-300"
               >
                 Setting
               </Link>
-              <Link href="" className="hover:text-primary duration-300">
+              <Link to="" className="hover:text-primary duration-300">
                 Selling on WorkStation
               </Link>
-              <Link href="" className="hover:text-primary duration-300">
+              <Link to="" className="hover:text-primary duration-300">
                 Buying on WorkStation
               </Link>
             </nav>
           </div>
 
           <div className="text-sm">
-            <h6 className="text-neutral-content font-bold">Contact Us</h6>
-            <div className="mt-4">
-              <h6>Phone Number: 01706260994</h6>
-              <h6 className="mt-2">
-                Address: 9th Floor Grameen Telecom Bhaban, <br /> Zoo Road,
-                Dhaka 1216 Dhaka, <br /> Dhaka Division, Bangladesh
-              </h6>
-            </div>
+            <h6 className="text-neutral-content font-bold">Community</h6>
+            <nav className="flex flex-col gap-1.5 mt-4">
+              <Link to="/blogs" className="hover:text-primary duration-300">
+                Blogs
+              </Link>
+              <Link to="/" className="hover:text-primary duration-300">
+                Events
+              </Link>
+            </nav>
           </div>
         </footer>
 
@@ -97,7 +91,7 @@ export default function Footer() {
           <div className="text-gray-300">
             <div className="flex sm:gap-2">
               <Link
-                href=""
+                to=""
                 target="_blank"
                 className="hover:bg-gray-700 p-2 rounded-full duration-200"
               >
@@ -105,7 +99,7 @@ export default function Footer() {
               </Link>
 
               <Link
-                href=""
+                to=""
                 target="_blank"
                 className="hover:bg-gray-700 p-2 rounded-full duration-200"
               >
@@ -113,7 +107,7 @@ export default function Footer() {
               </Link>
 
               <Link
-                href=""
+                to=""
                 target="_blank"
                 className="hover:bg-gray-700 p-2 rounded-full duration-200"
               >
@@ -121,7 +115,7 @@ export default function Footer() {
               </Link>
 
               <Link
-                href=""
+                to=""
                 target="_blank"
                 className="hover:bg-gray-700 p-2 rounded-full duration-200"
               >

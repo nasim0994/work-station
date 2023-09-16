@@ -8,6 +8,8 @@ import ExpertFreelancers from "../../components/HomeComponents/ExpertFreelancers
 import Testimonial from "../../components/HomeComponents/Testimonial/Testimonial";
 
 export default function Home() {
+  window.scroll(0, 0);
+
   return (
     <>
       <Hero />

@@ -11,8 +11,8 @@
   margin-bottom: 10px;
   font-weight: 400;
   padding: calc(2 * var(--r) / 3);
-  -webkit-mask: radial-gradient(var(--t) at var(--_d) 0, #0000 98%, #000 102%)
-      var(--_d) 100% / calc(100% - var(--r)) var(--t) no-repeat,
+  mask: radial-gradient(var(--t) at var(--_d) 0, #0000 98%, #000 102%) var(--_d)
+      100% / calc(100% - var(--r)) var(--t) no-repeat,
     conic-gradient(at var(--r) var(--r), #000 75%, #0000 0) calc(var(--r) / -2)
       calc(var(--r) / -2) padding-box,
     radial-gradient(50% 50%, #000 98%, #0000 101%) 0 0 / var(--r) var(--r) space
@@ -40,7 +40,7 @@
 }
 
 .bubble_right .bubble {
-  background: #21af79;
+  background: #e85717;
   color: #fff;
 }
 
