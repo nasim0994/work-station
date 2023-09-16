@@ -24,6 +24,11 @@ import ResetPassword from "../pages/dashboard/Setting/ResetPassword";
 import PayoutSetting from "./../pages/dashboard/Setting/PayoutSetting";
 import ManageAccount from "./../pages/dashboard/Setting/ManageAccount";
 import Message from "../pages/dashboard/Message/Message";
+import PostAJob from "../pages/dashboard/ManageJobs/PostAJob";
+import PostedJobs from "../pages/dashboard/ManageJobs/PostedJobs";
+import OngoingJobs from "../pages/dashboard/ManageJobs/OngoingJobs";
+import CompletedJobs from "../pages/dashboard/ManageJobs/CompletedJobs";
+import CancelledJobs from "../pages/dashboard/ManageJobs/CancelledJobs";
 
 export const routes = createBrowserRouter([
   {
@@ -60,6 +65,7 @@ export const routes = createBrowserRouter([
         path: "profile",
         element: <Profile />,
       },
+      // For freelancer
       {
         path: "add-portfolio",
         element: <AddPortfolio />,
@@ -84,6 +90,28 @@ export const routes = createBrowserRouter([
         path: "cancelled-projects",
         element: <CancelledProjects />,
       },
+      // For client
+      {
+        path: "post-job",
+        element: <PostAJob />,
+      },
+      {
+        path: "posted-jobs",
+        element: <PostedJobs />,
+      },
+      {
+        path: "ongoing-jobs",
+        element: <OngoingJobs />,
+      },
+      {
+        path: "completed-jobs",
+        element: <CompletedJobs />,
+      },
+      {
+        path: "cancelled-jobs",
+        element: <CancelledJobs />,
+      },
+
       {
         path: "support",
         element: <Support />,
@@ -100,6 +128,7 @@ export const routes = createBrowserRouter([
         path: "message",
         element: <Message />,
       },
+
       {
         path: "/dashboard/setting",
         element: <SettingLayout />,

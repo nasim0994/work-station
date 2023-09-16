@@ -23,7 +23,7 @@ export default function DashboardSidebar() {
   const [projectsToggle, setProjectsToggle] = useState(false);
   const [jobsToggle, setJobsToggle] = useState(false);
 
-  const user = "freelancer";
+  const user = "client";
 
   useEffect(() => {
     if (
@@ -51,7 +51,7 @@ export default function DashboardSidebar() {
 
   useEffect(() => {
     if (
-      location.pathname === "/dashboard/postJob" ||
+      location.pathname === "/dashboard/post-job" ||
       location.pathname === "/dashboard/posted-jobs" ||
       location.pathname === "/dashboard/ongoing-jobs" ||
       location.pathname === "/dashboard/completed-jobs" ||
