@@ -6,6 +6,7 @@ import Blogs from "../pages/Blogs/Blogs";
 import Dashboard from "../pages/dashboard/Dashboard/Dashboard";
 import MainLayout from "../Layout/MainLayout/MainLayout";
 import DashboardLayout from "../Layout/DashboardLayout/DashboardLayout";
+import Profile from "../pages/dashboard/Profile/Profile";
 
 export const routes = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const routes = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
     ],
   },

@@ -1,3 +1,4 @@
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   AiOutlineHeart,
@@ -9,19 +10,20 @@ import { BsPersonWorkspace } from "react-icons/bs";
 import {
   MdKeyboardArrowDown,
   MdOutlineKeyboardArrowRight,
-  MdOutlineVerifiedUser,
 } from "react-icons/md";
 import { GoCommentDiscussion } from "react-icons/go";
 import { RxDashboard } from "react-icons/rx";
-import { Link, NavLink, useLocation } from "react-router-dom";
 import { HiOutlineMail } from "react-icons/hi";
+import { SlArrowRight, SlArrowLeft } from "react-icons/sl";
 
-export default function DashboardSidebar({ setDashboardSidebar }) {
+export default function DashboardSidebar() {
   const location = useLocation();
+  const [dashboardSidebar, setDashboardSidebar] = useState(false);
   const [portfolioToggle, setPortfolioToggle] = useState(false);
   const [projectsToggle, setProjectsToggle] = useState(false);
   const [jobsToggle, setJobsToggle] = useState(false);
-  const user = "client";
+
+  const user = "freelancer";
 
   useEffect(() => {
     if (
@@ -63,30 +65,36 @@ export default function DashboardSidebar({ setDashboardSidebar }) {
 
   return (
     <div className="relative">
-      <div>
-        <div className="relative ">
-          <div className="absolute bg-slate-500 w-full left-0 top-0 h-full bg-opacity-50"></div>
-          <img
-            src="https://instantkaj.com/wp-content/uploads/2020/07/freelancer-352x200.png"
-            alt=""
-            className="h-32 w-full"
-          />
-
-          <div className="absolute top-1/2 left-20 z-50">
+      <div
+        className={`dashboardSidebar z-50 lg:z-0 ${
+          dashboardSidebar ? "translate-x-0" : "hide"
+        } `}
+      >
+        <div className="relative">
+          <div className="relative ">
+            <div className="absolute bg-slate-500 w-full left-0 top-0 h-full bg-opacity-50"></div>
             <img
-              src="https://cdn3.f-cdn.com/ppic/213571528/logo/40081811/jdnht/CROPPED_profile_logo_QRRJV_11b07c74774dd59bfb02a3815ff6204e.png?image-optimizer=force&format=webply&width=336"
+              src="https://image.shutterstock.com/image-photo/banner-coffee-laptop-office-supplies-260nw-1901776522.jpg"
               alt=""
-              className="w-32 h-32 rounded-full mx-auto shadow-lg"
+              className="h-32 w-full"
             />
 
-            <h6 className="text-xl font-medium mt-2 text-neutral">
-              Md Nasim Uddin
-            </h6>
-            <h6>Front-End Developer</h6>
+            <div className="absolute top-1/2 left-20 z-50">
+              <img
+                src="https://i.ibb.co/znwrX5c/na.jpg"
+                alt=""
+                className="w-32 h-32 rounded-full mx-auto shadow-lg"
+              />
+
+              <h6 className="text-xl font-medium mt-2 text-neutral">
+                Md Nasim Uddin
+              </h6>
+              <h6>Front-End Developer</h6>
+            </div>
           </div>
         </div>
 
-        <nav className="p-5 mt-32 text-neutral/90 text-[15px] overflow-y-auto h-[600px]">
+        <nav className="p-5 mt-32 text-neutral/90 text-[15px]">
           <ul>
             <li onClick={() => setDashboardSidebar(false)}>
               <Link
@@ -108,15 +116,7 @@ export default function DashboardSidebar({ setDashboardSidebar }) {
                 <h6 className="mt-1">View profile</h6>
               </NavLink>
             </li>
-            <li onClick={() => setDashboardSidebar(false)}>
-              <NavLink
-                to="verification"
-                className="flex items-center gap-2 p-1.5 hover:text-primary duration-300"
-              >
-                <MdOutlineVerifiedUser />
-                <h6 className="mt-1">Identity Verification</h6>
-              </NavLink>
-            </li>
+
             {/* Freelancer Option */}
             {user === "freelancer" && (
               <>
@@ -368,6 +368,19 @@ export default function DashboardSidebar({ setDashboardSidebar }) {
             </li>
           </ul>
         </nav>
+      </div>
+
+      <div
+        className={`lg:hidden absolute top-0 z-40 ${
+          dashboardSidebar ? "left-[299px]" : "left-0"
+        } duration-200`}
+      >
+        <button
+          onClick={() => setDashboardSidebar(!dashboardSidebar)}
+          className="p-2 text-xl bg-primary text-base-100 rounded-full shadow-lg"
+        >
+          {dashboardSidebar ? <SlArrowLeft /> : <SlArrowRight />}
+        </button>
       </div>
     </div>
   );

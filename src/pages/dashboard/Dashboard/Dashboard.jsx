@@ -11,7 +11,7 @@ import { MdOutlineRunningWithErrors } from "react-icons/md";
 import { TfiBag } from "react-icons/tfi";
 
 export default function Dashboard() {
-  const user = "client";
+  const user = "freelancer";
 
   return (
     <div className="py-5">
