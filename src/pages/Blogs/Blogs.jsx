@@ -1,3 +1,4 @@
+import "./Blogs.css";
 import { TbClockEdit } from "react-icons/tb";
 import { BsPerson } from "react-icons/bs";
 import { Link } from "react-router-dom";

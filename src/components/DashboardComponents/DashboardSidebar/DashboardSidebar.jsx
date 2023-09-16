@@ -27,8 +27,8 @@ export default function DashboardSidebar() {
 
   useEffect(() => {
     if (
-      location.pathname === "/dashboard/addPortfolio" ||
-      location.pathname === "/dashboard/portfolioList"
+      location.pathname === "/dashboard/add-portfolio" ||
+      location.pathname === "/dashboard/portfolio-list"
     ) {
       setPortfolioToggle(true);
     } else {
@@ -39,9 +39,9 @@ export default function DashboardSidebar() {
   useEffect(() => {
     if (
       location.pathname === "/dashboard/proposals" ||
-      location.pathname === "/dashboard/ongoingProjects" ||
-      location.pathname === "/dashboard/completedProjects" ||
-      location.pathname === "/dashboard/cancelledProjects"
+      location.pathname === "/dashboard/ongoing-projects" ||
+      location.pathname === "/dashboard/completed-projects" ||
+      location.pathname === "/dashboard/cancelled-projects"
     ) {
       setProjectsToggle(true);
     } else {
@@ -52,10 +52,10 @@ export default function DashboardSidebar() {
   useEffect(() => {
     if (
       location.pathname === "/dashboard/postJob" ||
-      location.pathname === "/dashboard/postedJobs" ||
-      location.pathname === "/dashboard/ongoingJobs" ||
-      location.pathname === "/dashboard/completedJobs" ||
-      location.pathname === "/dashboard/cancelledJobs"
+      location.pathname === "/dashboard/posted-jobs" ||
+      location.pathname === "/dashboard/ongoing-jobs" ||
+      location.pathname === "/dashboard/completed-jobs" ||
+      location.pathname === "/dashboard/cancelled-jobs"
     ) {
       setJobsToggle(true);
     } else {
@@ -147,7 +147,7 @@ export default function DashboardSidebar() {
                       <ul className="border-l border-dashed border-neutral/60 ml-7">
                         <li onClick={() => setDashboardSidebar(false)}>
                           <NavLink
-                            to="addPortfolio"
+                            to="add-portfolio"
                             className="py-1.5 hover:text-primary duration-300 flex items-center gap-2"
                           >
                             <p className="border-b border-dashed border-neutral/60 w-5"></p>
@@ -157,7 +157,7 @@ export default function DashboardSidebar() {
 
                         <li onClick={() => setDashboardSidebar(false)}>
                           <NavLink
-                            to="portfolioList"
+                            to="portfolio-list"
                             className="py-1.5 hover:text-primary duration-300 flex items-center gap-2"
                           >
                             <p className="border-b border-dashed border-neutral/60 w-5"></p>
@@ -205,7 +205,7 @@ export default function DashboardSidebar() {
 
                         <li onClick={() => setDashboardSidebar(false)}>
                           <NavLink
-                            to="ongoingProjects"
+                            to="ongoing-projects"
                             className="py-1.5 hover:text-primary duration-300 flex items-center gap-2"
                           >
                             <p className="border-b border-dashed border-neutral/60 w-5"></p>
@@ -215,7 +215,7 @@ export default function DashboardSidebar() {
 
                         <li onClick={() => setDashboardSidebar(false)}>
                           <NavLink
-                            to="completedProjects"
+                            to="completed-projects"
                             className="py-1.5 hover:text-primary duration-300 flex items-center gap-2"
                           >
                             <p className="border-b border-dashed border-neutral/60 w-5"></p>
@@ -225,7 +225,7 @@ export default function DashboardSidebar() {
 
                         <li onClick={() => setDashboardSidebar(false)}>
                           <NavLink
-                            to="cancelledProjects"
+                            to="cancelled-projects"
                             className="py-1.5 hover:text-primary duration-300 flex items-center gap-2"
                           >
                             <p className="border-b border-dashed border-neutral/60 w-5"></p>
@@ -268,7 +268,7 @@ export default function DashboardSidebar() {
                     <ul className="border-l border-dashed border-neutral/60 ml-7">
                       <li onClick={() => setDashboardSidebar(false)}>
                         <NavLink
-                          to="postJob"
+                          to="post-job"
                           className="py-1.5 hover:text-primary duration-300 flex items-center gap-2"
                         >
                           <p className="border-b border-dashed border-neutral/60 w-5"></p>
@@ -278,7 +278,7 @@ export default function DashboardSidebar() {
 
                       <li onClick={() => setDashboardSidebar(false)}>
                         <NavLink
-                          to="postedJobs"
+                          to="posted-jobs"
                           className="py-1.5 hover:text-primary duration-300 flex items-center gap-2"
                         >
                           <p className="border-b border-dashed border-neutral/60 w-5"></p>
@@ -288,7 +288,7 @@ export default function DashboardSidebar() {
 
                       <li onClick={() => setDashboardSidebar(false)}>
                         <NavLink
-                          to="ongoingJobs"
+                          to="ongoing-jobs"
                           className="py-1.5 hover:text-primary duration-300 flex items-center gap-2"
                         >
                           <p className="border-b border-dashed border-neutral/60 w-5"></p>
@@ -298,7 +298,7 @@ export default function DashboardSidebar() {
 
                       <li onClick={() => setDashboardSidebar(false)}>
                         <NavLink
-                          to="completedJobs"
+                          to="completed-jobs"
                           className="py-1.5 hover:text-primary duration-300 flex items-center gap-2"
                         >
                           <p className="border-b border-dashed border-neutral/60 w-5"></p>
@@ -308,7 +308,7 @@ export default function DashboardSidebar() {
 
                       <li onClick={() => setDashboardSidebar(false)}>
                         <NavLink
-                          to="cancelledJobs"
+                          to="cancelled-jobs"
                           className="py-1.5 hover:text-primary duration-300 flex items-center gap-2"
                         >
                           <p className="border-b border-dashed border-neutral/60 w-5"></p>

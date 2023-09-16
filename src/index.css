@@ -137,36 +137,39 @@ h2 {
   background: #e856173f !important;
 }
 
-.css-z2hyoe-ItemComponent.react-dropdown-select-item-selected {
-  background: #e85717 !important;
-}
-
 .css-wmy1p7-ReactDropdownSelect:hover,
 .css-wmy1p7-ReactDropdownSelect:focus-within {
   border-color: #e856173f !important ;
 }
 
-/* -----------Blogs page style----------------- */
-.blog-card:hover {
-  box-shadow: 3px -2px 20px 0px #0000000c, 0px 4px 20px 0px #0000000c;
-
-  transition: all 0.3s;
+.css-1tspqtw-InputComponent {
+  font-size: 16px !important;
 }
 
-.blog-card .blog-img {
-  background: #000;
-  display: block;
-}
-.blog-card .blog-img img {
-  opacity: 0.8;
-  transition: all 0.3s ease;
+.css-wmy1p7-ReactDropdownSelect:focus,
+.css-wmy1p7-ReactDropdownSelect:focus-within {
+  box-shadow: 0 0 2px 0px #e856173f !important;
 }
 
-.blog-card:hover .blog-img img {
-  opacity: 0.6;
+.css-9ma7ck-OptionComponent {
+  background: #e85717 !important;
+}
+
+.css-z2hyoe-ItemComponent.react-dropdown-select-item-selected {
+  background: transparent !important;
+  color: #e85717 !important;
+}
+
+.css-1c8t16q-InputComponent {
+  font-size: 16px !important;
 }
 
 /* React best tab custom style */
 .rb-tabs .rb-tabs-header .rb-tabs-active-item {
   background-color: #e85717 !important;
+}
+
+/* jodit React text editor custom style */
+.jodit-status-bar {
+  display: none !important;
 }
