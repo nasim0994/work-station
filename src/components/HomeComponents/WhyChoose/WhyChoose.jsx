@@ -14,11 +14,11 @@ export default function WhyChoose() {
               <div className="flex flex-row-reverse md:flex-row md:items-center gap-4">
                 <div>
                   <h6 className="text-lg font-medium mb-1">
-                    Money back guarantee and anti-fraud protection
+                    Post a Job for Free
                   </h6>
                   <p className="text-sm opacity-90">
-                    Always know what you&aposll pay upfront. Your payment
-                    isn&apost released until you approve the work.
+                    Boost your reach and hire top talent with Featured jobs on
+                    WorkStation.
                   </p>
                 </div>
                 <p className="text-2xl text-primary">
@@ -29,11 +29,11 @@ export default function WhyChoose() {
               <div className="flex flex-row-reverse md:flex-row md:items-center gap-4">
                 <div>
                   <h6 className="text-lg font-medium mb-1">
-                    Money back guarantee and anti-fraud protection
+                    Work in a Flexible Environment
                   </h6>
                   <p className="text-sm opacity-90">
-                    Always know what you&aposll pay upfront. Your payment
-                    isn&apost released until you approve the work.
+                    Use WorkRooms to manage multiple Freelancers working on the
+                    same job.
                   </p>
                 </div>
                 <p className="text-2xl text-primary">
@@ -44,11 +44,23 @@ export default function WhyChoose() {
               <div className="flex flex-row-reverse md:flex-row md:items-center gap-4">
                 <div>
                   <h6 className="text-lg font-medium mb-1">
-                    Money back guarantee and anti-fraud protection
+                    Protect Payments with SafePay
                   </h6>
                   <p className="text-sm opacity-90">
-                    Always know what you&aposll pay upfront. Your payment
-                    isn&apost released until you approve the work.
+                    Release payment for an invoice only after reviewing work.
+                  </p>
+                </div>
+                <p className="text-2xl text-primary">
+                  <BsCheckCircle />
+                </p>
+              </div>
+
+              <div className="flex flex-row-reverse md:flex-row md:items-center gap-4">
+                <div>
+                  <h6 className="text-lg font-medium mb-1">Pay Lowest Fee</h6>
+                  <p className="text-sm opacity-90">
+                    Pay an invoice using eCheck or wire transfer and receive
+                    100% cashback on the 2.9% handling fee.
                   </p>
                 </div>
                 <p className="text-2xl text-primary">
@@ -59,11 +71,10 @@ export default function WhyChoose() {
               <div className="flex flex-row-reverse md:flex-row md:items-center gap-4">
                 <div>
                   <h6 className="text-lg font-medium mb-1">
-                    Money back guarantee and anti-fraud protection
+                    Browse 2 Million Experts
                   </h6>
                   <p className="text-sm opacity-90">
-                    Always know what you&aposll pay upfront. Your payment
-                    isn&apost released until you approve the work.
+                    Identify credible Freelancers with All-Time Transaction Data
                   </p>
                 </div>
                 <p className="text-2xl text-primary">
@@ -73,6 +84,50 @@ export default function WhyChoose() {
             </div>
 
             <div className="flex flex-col gap-6">
+              <div className="flex items-center gap-4">
+                <p className="text-2xl text-primary">
+                  <BsCheckCircle />
+                </p>
+                <div>
+                  <h6 className="text-lg font-medium mb-1">
+                    Find and apply for jobs
+                  </h6>
+                  <p className="text-sm opacity-90">
+                    Search for jobs that match the skills and services in your
+                    profile. Bid using Premium Quotes to stand out.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <p className="text-2xl text-primary">
+                  <BsCheckCircle />
+                </p>
+                <div>
+                  <h6 className="text-lg font-medium mb-1">
+                    Manage multiple jobs
+                  </h6>
+                  <p className="text-sm opacity-90">
+                    Use WorkRooms to collaborate and add team members to your
+                    job.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <p className="text-2xl text-primary">
+                  <BsCheckCircle />
+                </p>
+                <div>
+                  <h6 className="text-lg font-medium mb-1">
+                    Protect Payments with SafePay
+                  </h6>
+                  <p className="text-sm opacity-90">
+                    Ask your Employer to fund SafePay before you begin work.
+                  </p>
+                </div>
+              </div>
+
               <div className="flex items-center gap-4">
                 <p className="text-2xl text-primary">
                   <BsCheckCircle />
@@ -92,39 +147,11 @@ export default function WhyChoose() {
                 </p>
                 <div>
                   <h6 className="text-lg font-medium mb-1">
-                    Work in a Flexible Environment
+                    Work the way you want
                   </h6>
                   <p className="text-sm opacity-90">
-                    Use WorkRooms to manage multiple Freelancers working on the
-                    same job.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <p className="text-2xl text-primary">
-                  <BsCheckCircle />
-                </p>
-                <div>
-                  <h6 className="text-lg font-medium mb-1">Pay Lowest Fee</h6>
-                  <p className="text-sm opacity-90">
-                    Pay an invoice using eCheck or wire transfer and receive
-                    100% cashback on the 2.9% handling fee.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <p className="text-2xl text-primary">
-                  <BsCheckCircle />
-                </p>
-                <div>
-                  <h6 className="text-lg font-medium mb-1">
-                    Find and apply for jobs
-                  </h6>
-                  <p className="text-sm opacity-90">
-                    Search for jobs that match the skills and services in your
-                    profile. Bid using Premium Quotes to stand out.
+                    Choose from four Payment terms and create an Agreement that
+                    works for you.
                   </p>
                 </div>
               </div>
