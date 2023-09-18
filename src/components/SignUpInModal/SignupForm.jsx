@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { BiLeftArrowAlt } from "react-icons/bi";
 import { HiUser } from "react-icons/hi";
 import { MdEmail, MdKeyboardArrowDown } from "react-icons/md";
-import { AiFillUnlock, AiTwotonePhone } from "react-icons/ai";
+import {
+  AiFillEye,
+  AiFillEyeInvisible,
+  AiFillUnlock,
+  AiTwotonePhone,
+} from "react-icons/ai";
 import { HiFlag } from "react-icons/hi";
 import { BsFillClipboardDataFill } from "react-icons/bs";
 import { BsFillCheckCircleFill } from "react-icons/bs";
@@ -19,13 +24,23 @@ const countriesData = [
   "Brazil",
 ];
 
-const SignupForm = () => {
-  const [signupPage, setSignupPage] = useState(1);
+export default function SignUpForm() {
+  const [signUpPage, setSignUpPage] = useState(1);
   const [accountType, setAccountType] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [privacyToggle, setPrivacyToggle] = useState(false);
 
   const [countries, setCountries] = useState(countriesData);
   const [countryToggle, setCountryToggle] = useState(false);
-  const [selectCounty, setSelectCountry] = useState("");
+
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+  const [country, setCountry] = useState("");
 
   const handelSearch = (e) => {
     const searchText = e.target.value.toLowerCase();
@@ -36,29 +51,60 @@ const SignupForm = () => {
   };
 
   const handelOutputCountry = (e) => {
-    setSelectCountry(e.target.innerText);
+    setCountry(e.target.innerText);
     setCountryToggle(false);
   };
 
-  const handelNextPage = () => {
-    if (accountType === null) {
-      alert("select Account Type");
+  const handelSecondPage = () => {
+    if (accountType !== null) {
+      setSignUpPage(2);
     } else {
-      setSignupPage(2);
+      alert("select Account Type");
+    }
+  };
+
+  const handelThirdPage = () => {
+    if (userName === "") {
+      alert("user name is required");
+    } else if (password === "") {
+      alert("password is required");
+    } else if (password.length < 8) {
+      alert("password must be at least 8 characters");
+    } else if (rePassword === "") {
+      alert("rePassword is required");
+    } else if (password !== rePassword) {
+      alert("password not match");
+    } else {
+      setSignUpPage(3);
+      setShowPassword(false);
+    }
+  };
+
+  const handelCreateAccount = () => {
+    if (name === "") {
+      alert("Name is required");
+    } else if (email === "") {
+      alert("Email is required");
+    } else if (number === "") {
+      alert("Number is required");
+    } else if (country === "") {
+      alert("Country is required");
+    } else {
+      alert("ok");
     }
   };
 
   return (
     <div>
       {/* Form 1 */}
-      <div className={`${signupPage !== 1 && "hidden"}`}>
-        <img src="/images/logo.png" alt="" className="w-48 mx-auto" />
+      <div className={`${signUpPage !== 1 && "hidden"}`}>
+        <img src="/images/logo/logo.png" alt="" className="w-14 mx-auto" />
 
         <h6 className="text-xl font-medium text-center mt-3">
           Join as a client or freelancer
         </h6>
 
-        <form className="mt-10">
+        <div className="mt-10">
           <div className="grid grid-cols-2 justify-center gap-5">
             <label
               className="cursor-pointer"
@@ -68,8 +114,8 @@ const SignupForm = () => {
               <div
                 className={`${
                   accountType === "client" &&
-                  "bg-secondary text-primary ring-primary ring-offset-2 ring-2"
-                } rounded-md py-4 text-neutral/80 ring-1 transition-all hover:shadow-lg  ring-neutral/70`}
+                  "bg-primary text-base-100 ring-primary ring-offset-2 ring-2"
+                } rounded-md py-4 ring-1 transition-all hover:shadow-lg  ring-neutral/70`}
               >
                 <div className="flex justify-between px-4">
                   <BsFillClipboardDataFill className="text-xl" />
@@ -93,8 +139,8 @@ const SignupForm = () => {
               <div
                 className={`${
                   accountType === "freelancer" &&
-                  "bg-secondary text-primary ring-primary ring-offset-2 ring-2"
-                } rounded-md py-4 text-neutral/80 ring-1 transition-all hover:shadow-lg ring-neutral/70 `}
+                  "bg-primary text-base-100 ring-primary ring-offset-2 ring-2"
+                } rounded-md py-4  ring-1 transition-all hover:shadow-lg ring-neutral/70 `}
               >
                 <div className="flex justify-between px-4">
                   <GiLaptop className="text-xl" />
@@ -110,13 +156,13 @@ const SignupForm = () => {
               </div>
             </label>
           </div>
-        </form>
+        </div>
 
         <div className="mt-10 flex justify-center">
           <button
             type="submit"
-            className="bg-primary text-base-100 py-2 px-10 font-medium rounded-md hover:bg-opacity-80 duration-300"
-            onClick={handelNextPage}
+            className="py-2 px-10 font-medium primary_bg_gradient"
+            onClick={handelSecondPage}
           >
             Next
           </button>
@@ -124,14 +170,14 @@ const SignupForm = () => {
       </div>
 
       {/* Form 2 */}
-      <div className={`${signupPage !== 2 && "hidden"}`}>
-        <button onClick={() => setSignupPage(1)}>
+      <div className={`${signUpPage !== 2 && "hidden"}`}>
+        <button onClick={() => setSignUpPage(1)}>
           <BiLeftArrowAlt className="text-2xl opacity-80" />
         </button>
-        <img src="/images/logo.png" alt="" className="w-48 mx-auto mb-2" />
+        <img src="/images/logo/logo.png" alt="" className="w-14 mx-auto mb-2" />
         <h6 className="font-medium text-center">UserName & Password</h6>
 
-        <form action="" className="mt-10 text-neutral">
+        <div className="mt-10 text-neutral">
           {/* input */}
           <div>
             {/* User name */}
@@ -142,6 +188,7 @@ const SignupForm = () => {
               <input
                 type="text"
                 placeholder="User name"
+                onChange={(e) => setUserName(e.target.value)}
                 className="w-full border-b focus:border-b-primary outline-none pl-8 pb-1 placeholder:font-light"
                 required
               />
@@ -153,11 +200,24 @@ const SignupForm = () => {
                 <AiFillUnlock className="text-lg" />
               </span>
               <input
-                type="password"
+                type={`${showPassword ? "text" : "password"}`}
                 placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full border-b focus:border-b-primary outline-none pl-8 pb-1 placeholder:font-light"
                 required
               />
+
+              <div
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-2 bottom-2 cursor-pointer"
+              >
+                <span className={`${showPassword ? "block" : "hidden"}`}>
+                  <AiFillEye />
+                </span>
+                <span className={`${showPassword ? "hidden" : "block"}`}>
+                  <AiFillEyeInvisible />
+                </span>
+              </div>
             </div>
 
             {/*Re Password */}
@@ -168,6 +228,7 @@ const SignupForm = () => {
               <input
                 type="password"
                 placeholder="Re Password"
+                onChange={(e) => setRePassword(e.target.value)}
                 className="w-full border-b focus:border-b-primary outline-none pl-8 pb-1 placeholder:font-light"
                 required
               />
@@ -179,51 +240,39 @@ const SignupForm = () => {
             <div className="flex flex-col w-full border-opacity-50">
               <button
                 type="submit"
-                onClick={() => setSignupPage(3)}
-                className="w-full py-2 font-semibold text-base-100 bg-primary rounded hover:bg-opacity-90 duration-300 "
+                onClick={handelThirdPage}
+                className="w-full py-2 font-semibold text-base-100 primary_bg_gradient"
               >
                 Next
               </button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
 
       {/* Form 3 */}
-      <div className={`${signupPage !== 3 && "hidden"}`}>
-        <button onClick={() => setSignupPage(2)}>
+      <div className={`${signUpPage !== 3 && "hidden"}`}>
+        <button onClick={() => setSignUpPage(2)}>
           <BiLeftArrowAlt className="text-2xl opacity-80" />
         </button>
-        <img src="/images/logo.png" alt="" className="w-48 mx-auto mb-2" />
-        <h6 className="font-medium text-center">Personal info</h6>
+        <img src="/images/logo/logo.png" alt="" className="w-14 mx-auto mb-2" />
+        <h6 className="font-medium text-center">Personal Info</h6>
 
-        <form action="" className="mt-10 text-neutral">
+        <div className="mt-10 text-neutral">
           {/* input */}
           <div>
             {/* name */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="mb-6 relative">
-                <span className="absolute bottom-2 text-neutral/80">
-                  <HiUser />
-                </span>
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  className="w-full border-b focus:border-b-primary outline-none pl-8 pb-1 placeholder:font-light"
-                  required
-                />
-              </div>
-              <div className="mb-6 relative">
-                <span className="absolute bottom-2 text-neutral/80">
-                  <HiUser />
-                </span>
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  className="w-full border-b focus:border-b-primary outline-none pl-8 pb-1 placeholder:font-light"
-                  required
-                />
-              </div>
+            <div className="mb-6 relative">
+              <span className="absolute bottom-2 text-neutral/80">
+                <HiUser />
+              </span>
+              <input
+                type="text"
+                placeholder="Full Name"
+                onChange={(e) => setName(e.target.value)}
+                className="w-full border-b focus:border-b-primary outline-none pl-8 pb-1 placeholder:font-light"
+                required
+              />
             </div>
 
             {/* Email */}
@@ -234,6 +283,7 @@ const SignupForm = () => {
               <input
                 type="email"
                 placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full border-b focus:border-b-primary outline-none pl-8 pb-1 placeholder:font-light"
                 required
               />
@@ -247,6 +297,7 @@ const SignupForm = () => {
               <input
                 type="text"
                 placeholder="Number"
+                onChange={(e) => setNumber(e.target.value)}
                 className="w-full border-b focus:border-b-primary outline-none pl-8 pb-1 placeholder:font-light"
                 required
               />
@@ -264,7 +315,8 @@ const SignupForm = () => {
                   className="w-full border-b focus:border-b-primary outline-none pl-8 pb-1 placeholder:font-light cursor-pointer"
                   required
                   onClick={() => setCountryToggle(!countryToggle)}
-                  defaultValue={selectCounty}
+                  defaultValue={country}
+                  readOnly
                 />
                 <span className="absolute right-0">
                   <MdKeyboardArrowDown />
@@ -272,8 +324,8 @@ const SignupForm = () => {
               </div>
               <div
                 className={`${
-                  countryToggle && "countryDropdownShow"
-                } w-full bg-base-100 shadow-lg rounded-md absolute top-full countryDropdown`}
+                  countryToggle && "selectDropdownShow"
+                } w-full bg-base-100 shadow-lg rounded-md absolute top-full selectDropdown`}
               >
                 <div className="p-4 pb-0">
                   <input
@@ -284,13 +336,13 @@ const SignupForm = () => {
                   />
                 </div>
                 <ul className="p-4 pt-2 h-52 overflow-y-scroll">
-                  {countries.map((county, i) => (
+                  {countries.map((country, i) => (
                     <li
                       key={i}
                       onClick={(e) => handelOutputCountry(e)}
                       className="py-1 hover:bg-gray-100 duration-200 cursor-pointer px-2 rounded"
                     >
-                      {county}
+                      {country}
                     </li>
                   ))}
                 </ul>
@@ -300,26 +352,25 @@ const SignupForm = () => {
 
           {/* Privacy Policy */}
           <div className="mt-4 mb-6">
-            <div className="flex gap-2 justify-start items-center cursor-pointer">
-              <input id="one" type="checkbox" />
+            <div className="flex gap-2 justify-start items-start cursor-pointer">
+              <input
+                id="privacy"
+                type="checkbox"
+                className="mt-1"
+                checked={privacyToggle && "checked"}
+                onChange={() => setPrivacyToggle(!privacyToggle)}
+              />
               <label
-                htmlFor="one"
+                htmlFor="privacy"
                 className="text-sm text-neutral-content font-normal cursor-pointer"
               >
-                Send me emails with tips on how to find talent that fits my
-                needs.
-              </label>
-            </div>
-
-            <div className="flex gap-2 justify-start items-center cursor-pointer">
-              <input id="two" type="checkbox" />
-              <label
-                htmlFor="two"
-                className="text-sm text-neutral-content font-normal cursor-pointer"
-              >
-                Yes, I understand and agree to the Upwork Terms of Service ,
-                including the User Agreement and
-                <Link href="" className="text-primary underline">
+                Yes, I understand and agree to the WorkStation Terms of Service
+                , including the User Agreement and
+                <Link
+                  to="/privacy-policy"
+                  target="_blank"
+                  className="text-primary underline"
+                >
                   {" "}
                   Privacy Policy{" "}
                 </Link>
@@ -333,16 +384,16 @@ const SignupForm = () => {
             <div className="flex flex-col w-full border-opacity-50">
               <button
                 type="submit"
-                className="w-full py-2 font-semibold text-base-100 bg-primary rounded hover:bg-opacity-90 duration-300 "
+                onClick={handelCreateAccount}
+                disabled={!privacyToggle && "disabled"}
+                className="w-full py-2 font-semibold primary_bg_gradient"
               >
                 Create my account
               </button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
-};
-
-export default SignupForm;
+}

@@ -6,7 +6,6 @@ import { FcGoogle } from "react-icons/fc";
 import { MdEmail } from "react-icons/md";
 
 export default function LoginForm() {
-  const [shouldRemember, setShouldRemember] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -21,7 +20,7 @@ export default function LoginForm() {
 
   return (
     <div>
-      <img src="/images/logo.png" alt="" className="w-48 mx-auto" />
+      <img src="/images/logo/logo.png" alt="" className="w-14 mx-auto" />
       <h6 className="text-xl font-medium mt-2 text-center">Welcome Back</h6>
 
       <form onSubmit={submitForm}>
@@ -69,30 +68,19 @@ export default function LoginForm() {
             </div>
           </div>
 
-          <div className="mb-5 flex justify-between items-center">
-            <label className="flex gap-1.5 justify-start items-center cursor-pointer">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-xs"
-                onChange={(event) => setShouldRemember(event.target.checked)}
-              />
-              <span className="font-normal text-sm">Remember me</span>
-            </label>
-
-            <div>
-              <Link
-                href="/forgot-password"
-                className="text-[13px] text-neutral/70 underline hover:text-primary duration-300"
-              >
-                Forgot Password?
-              </Link>
-            </div>
+          <div className="mb-5 flex justify-end">
+            <Link
+              href="/forgot-password"
+              className="text-[13px] text-neutral/70 underline hover:text-primary duration-300"
+            >
+              Forgot Password?
+            </Link>
           </div>
 
           <div>
             <button
               type="submit"
-              className="w-full py-2 font-semibold text-base-100 bg-primary rounded hover:bg-opacity-90 duration-300"
+              className="w-full py-2 font-semibold primary_bg_gradient"
               disabled={loading && true}
             >
               {loading ? "Loading..." : "Log In"}

@@ -213,3 +213,13 @@ h2 {
 .modal .close_btn:hover {
   background: #f1f1f1;
 }
+
+/* -----------------selectDropdown------------- */
+.selectDropdown {
+  max-height: 0px;
+  overflow: hidden;
+}
+
+.selectDropdownShow {
+  max-height: 200px;
+}
