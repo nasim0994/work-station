@@ -11,19 +11,17 @@ export default function FreelancerList() {
           <div className="flex gap-4">
             {/* img */}
             <div>
-              <Link to="">
+              <Link to="/freelancers/1">
                 <img
                   src=""
                   alt=""
                   className="w-24 h-[95px] rounded hover:shadow-lg"
-                  width="100"
-                  height="100"
                 />
               </Link>
             </div>
 
             <div>
-              <Link to="">
+              <Link to="/freelancers/1">
                 <h6 className="font-semibold hover:text-primary duration-300">
                   Nasim
                 </h6>

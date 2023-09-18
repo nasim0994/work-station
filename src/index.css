@@ -178,3 +178,38 @@ h2 {
 .jodit-status-bar {
   display: none !important;
 }
+
+/* -------------------------------Modal------------------------- */
+.modal_overlay {
+  position: fixed;
+  background: #00000095;
+  z-index: 9999;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  background: #fff;
+  z-index: 9999;
+
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 5px;
+}
+
+.modal .close_btn {
+  padding: 8px;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.modal .close_btn:hover {
+  background: #f1f1f1;
+}

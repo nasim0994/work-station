@@ -1,5 +1,5 @@
-import JobsFilter from "../../components/JobsComponents/JobsFilter";
-import JobsList from "../../components/JobsComponents/JobsList";
+import JobsFilter from "../../../components/JobsComponents/JobsFilter";
+import JobsList from "../../../components/JobsComponents/JobsList";
 
 export default function Jobs() {
   window.scroll(0, 0);

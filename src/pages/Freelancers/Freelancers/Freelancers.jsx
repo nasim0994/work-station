@@ -1,5 +1,5 @@
-import FreelancerFilter from "../../components/FreelancersComponents/FreelancerFilter";
-import FreelancerList from "../../components/FreelancersComponents/FreelancerList";
+import FreelancerFilter from "../../../components/FreelancersComponents/FreelancerFilter";
+import FreelancerList from "../../../components/FreelancersComponents/FreelancerList";
 
 export default function Freelancers() {
   window.scroll(0, 0);

@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home";
-import Freelancers from "../pages/Freelancers/Freelancers";
-import Jobs from "../pages/Jobs/Jobs";
+import Freelancers from "../pages/Freelancers/Freelancers/Freelancers";
+import FreelancerDetails from "../pages/Freelancers/FreelancerDetails/FreelancerDetails";
+import Jobs from "../pages/Jobs/Jobs/Jobs";
+import JobDetails from "../pages/Jobs/JobDetails/JobDetails";
+import SubmitProposal from "../pages/Jobs/SubmitProposal/SubmitProposal";
 import Blogs from "../pages/Blogs/Blogs";
 import Dashboard from "../pages/dashboard/Dashboard/Dashboard";
 import MainLayout from "../Layout/MainLayout/MainLayout";
@@ -48,8 +51,20 @@ export const routes = createBrowserRouter([
         element: <Freelancers />,
       },
       {
+        path: "/freelancers/:id",
+        element: <FreelancerDetails />,
+      },
+      {
         path: "/jobs",
         element: <Jobs />,
+      },
+      {
+        path: "/jobs/:id",
+        element: <JobDetails />,
+      },
+      {
+        path: "/jobs/:id/submit-proposal",
+        element: <SubmitProposal />,
       },
       {
         path: "/blogs",

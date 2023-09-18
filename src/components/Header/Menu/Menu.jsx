@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { HiOutlineMail } from "react-icons/hi";
 import AccountDropdown from "./MenuDropdown/AccountDropdown";
+import SignUpInModal from "../../SignUpInModal/SignUpInModal";
 
 const Menu = () => {
   const [accountDropdown, setAccountDropdown] = useState(false);
-  const user = true;
+  const [formToggle, setFormToggle] = useState("");
+  const user = false;
 
   return (
     <nav className="text-neutral flex gap-6 items-center">
@@ -36,7 +38,7 @@ const Menu = () => {
             {/* Message */}
             <li>
               <Link
-                to=""
+                to="/dashboard/message"
                 className="text-neutral/80 hover:text-primary duration-300"
               >
                 <HiOutlineMail className="text-[25px]" />
@@ -64,22 +66,29 @@ const Menu = () => {
           </>
         ) : (
           <>
-            <li className="">
-              <label
-                htmlFor="signUpIn"
-                className="hidden sm:block hover:text-primary duration-300 cursor-pointer"
+            <li>
+              <button
+                onClick={() => setFormToggle("signup")}
+                className="signupBtn hidden sm:block hover:text-primary duration-300 cursor-pointer"
               >
                 Signup
-              </label>
+              </button>
             </li>
             <li>
-              <label
-                htmlFor="signUpIn"
-                className="border border-neutral px-6 py-1.5 rounded-md hover:border-primary hover:text-base-100 hover:bg-primary duration-500 cursor-pointer"
+              <button
+                onClick={() => setFormToggle("login")}
+                className="loginBtn border border-neutral px-6 py-1.5 rounded-md hover:border-primary hover:text-base-100 hover:bg-primary duration-500 cursor-pointer"
               >
                 Join
-              </label>
+              </button>
             </li>
+
+            {(formToggle === "login" || formToggle === "signup") && (
+              <SignUpInModal
+                formToggle={formToggle}
+                setFormToggle={setFormToggle}
+              />
+            )}
           </>
         )}
       </ul>
