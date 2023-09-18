@@ -4,17 +4,25 @@ import { AiFillUnlock, AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { MdEmail } from "react-icons/md";
+import { UseContext } from "../../ContextAPI/ContextAPI";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const { login, loginError, loading } = UseContext();
 
   const submitForm = async (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const loginInfo = {
+      email,
+      password,
+    };
 
+    login(loginInfo);
+
+    e.target.reset();
     setShowPassword(false);
   };
 
@@ -67,6 +75,8 @@ export default function LoginForm() {
               </div>
             </div>
           </div>
+
+          {loginError && <p className="text-sm text-red-500">{loginError}</p>}
 
           <div className="mb-5 flex justify-end">
             <Link

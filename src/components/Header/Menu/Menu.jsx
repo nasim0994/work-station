@@ -3,11 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import { HiOutlineMail } from "react-icons/hi";
 import AccountDropdown from "./MenuDropdown/AccountDropdown";
 import SignUpInModal from "../../SignUpInModal/SignUpInModal";
+import { UseContext } from "../../../ContextAPI/ContextAPI";
 
 const Menu = () => {
   const [accountDropdown, setAccountDropdown] = useState(false);
   const [formToggle, setFormToggle] = useState("");
-  const user = false;
+  const { loggedUser } = UseContext();
 
   return (
     <nav className="text-neutral flex gap-6 items-center">
@@ -33,7 +34,7 @@ const Menu = () => {
       </ul>
 
       <ul className="flex gap-6 items-center font-medium ">
-        {user ? (
+        {loggedUser?.status === "success" ? (
           <>
             {/* Message */}
             <li>

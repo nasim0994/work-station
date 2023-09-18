@@ -6,8 +6,11 @@ import { FiSettings } from "react-icons/fi";
 import { TbFileInvoice } from "react-icons/tb";
 import { RxDashboard } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import { UseContext } from "../../../../ContextAPI/ContextAPI";
 
 const AccountDropdown = ({ setAccountDropdown }) => {
+  const { setLoggedUser } = UseContext();
+
   useEffect(() => {
     document.addEventListener("click", (e) => {
       if (
@@ -18,6 +21,11 @@ const AccountDropdown = ({ setAccountDropdown }) => {
       }
     });
   }, [setAccountDropdown]);
+
+  const handelLogout = () => {
+    localStorage.removeItem("WorkStation_jwt");
+    setLoggedUser(null);
+  };
 
   return (
     <div className="accountDropdown z-50 bg-base-100 shadow-lg p-4 absolute w-72 rounded-md right-0">
@@ -88,7 +96,7 @@ const AccountDropdown = ({ setAccountDropdown }) => {
           onClick={() => setAccountDropdown(false)}
           className="pt-1.5 hover:text-primary duration-300"
         >
-          <Link to="/dashboard/profile" className="flex items-center gap-2">
+          <Link onClick={handelLogout} className="flex items-center gap-2">
             <CgLogOut className="text-lg" />
             <h6>Logout</h6>
           </Link>
