@@ -19,7 +19,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 border-b py-2 z-50 bg-[#ffffffe4] backdrop-blur-[50px]">
+    <header className="sticky top-0 border-b py-3 z-50 bg-[#ffffffe4] backdrop-blur-[50px]">
       <div className="container">
         <div className="flex justify-between items-center">
           <div className="flex gap-2 items-center">

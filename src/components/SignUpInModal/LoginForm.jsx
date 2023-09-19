@@ -22,8 +22,8 @@ export default function LoginForm() {
 
     login(loginInfo);
 
-    e.target.reset();
     setShowPassword(false);
+    e.target.reset();
   };
 
   return (

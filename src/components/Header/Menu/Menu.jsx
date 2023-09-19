@@ -53,9 +53,9 @@ const Menu = () => {
                 onClick={() => setAccountDropdown(!accountDropdown)}
               >
                 <img
-                  src="https://cdn3.f-cdn.com/ppic/213571528/logo/40081811/jdnht/CROPPED_profile_logo_QRRJV_11b07c74774dd59bfb02a3815ff6204e.png?image-optimizer=force&format=webply&width=336"
+                  src={loggedUser?.data?.photoUrl}
                   alt=""
-                  className="w-9 h-9 rounded-full"
+                  className="w-10 h-10 rounded-full"
                 />
               </button>
 

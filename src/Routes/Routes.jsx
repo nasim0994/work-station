@@ -36,6 +36,7 @@ import AboutUs from "./../pages/AboutUs/AboutUs";
 import Career from "../pages/Career/Career";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import TermsConditions from "../pages/TermsConditions/TermsConditions";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -90,7 +91,11 @@ export const routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "/dashboard",

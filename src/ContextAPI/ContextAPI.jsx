@@ -6,7 +6,9 @@ const ContextProvider = ({ children }) => {
   const [loggedUser, setLoggedUser] = useState(null);
   const [loginError, setLoginError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [userLoading, setUserLoading] = useState(true);
 
+  // Handel Login
   const login = (loginInfo) => {
     setLoading(true);
 
@@ -60,6 +62,9 @@ const ContextProvider = ({ children }) => {
         if (data.status === "success") {
           setLoggedUser(data);
         }
+      })
+      .finally(() => {
+        setUserLoading(false);
       });
   }, []);
 
@@ -69,6 +74,7 @@ const ContextProvider = ({ children }) => {
     login,
     loginError,
     loading,
+    userLoading,
   };
   return <Context.Provider value={contextInfo}>{children}</Context.Provider>;
 };

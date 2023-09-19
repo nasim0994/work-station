@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { UseContext } from "../../../../ContextAPI/ContextAPI";
 
 const AccountDropdown = ({ setAccountDropdown }) => {
-  const { setLoggedUser } = UseContext();
+  const { loggedUser, setLoggedUser } = UseContext();
 
   useEffect(() => {
     document.addEventListener("click", (e) => {
@@ -31,14 +31,14 @@ const AccountDropdown = ({ setAccountDropdown }) => {
     <div className="accountDropdown z-50 bg-base-100 shadow-lg p-4 absolute w-72 rounded-md right-0">
       <div className="flex items-center gap-2 border-b pb-2">
         <img
-          src="https://cdn3.f-cdn.com/ppic/213571528/logo/40081811/jdnht/CROPPED_profile_logo_QRRJV_11b07c74774dd59bfb02a3815ff6204e.png?image-optimizer=force&format=webply&width=336"
+          src={loggedUser?.data?.photoUrl}
           alt=""
           className="w-10 h-10 rounded-full"
         />
 
         <div>
-          <h6>Md Nasim Uddin</h6>
-          <p className="font-normal text-sm">nasimuddin@gmail.com</p>
+          <h6>{loggedUser?.data?.name}</h6>
+          <p className="font-normal text-sm">{loggedUser?.data?.email}</p>
         </div>
       </div>
 
