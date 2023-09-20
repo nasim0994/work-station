@@ -11,6 +11,7 @@ export default function Profile() {
   const { freelancer } = UseContext();
   const {
     bannerUrl,
+    photoUrl,
     name,
     location,
     rating,
@@ -36,7 +37,7 @@ export default function Profile() {
             <div className="-mt-16">
               <div className="relative">
                 <img
-                  src="https://cdn3.f-cdn.com/ppic/213571528/logo/40081811/jdnht/CROPPED_profile_logo_QRRJV_11b07c74774dd59bfb02a3815ff6204e.png?image-optimizer=force&format=webply&width=336"
+                  src={photoUrl}
                   alt=""
                   className="w-36 rounded-full mx-auto border-4 shadow-lg border-gray-100"
                 />
