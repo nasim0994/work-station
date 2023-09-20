@@ -4,12 +4,7 @@ import ImageUploading from "react-images-uploading";
 import JoditEditor from "jodit-react";
 
 import { AiFillDelete } from "react-icons/ai";
-
-const gender = [
-  { id: 1, name: "MR" },
-  { id: 2, name: "MISS" },
-  { id: 3, name: "MRS" },
-];
+import { UseContext } from "../../../ContextAPI/ContextAPI";
 
 const englishLabels = [
   { id: 1, name: "Conversational" },
@@ -40,9 +35,10 @@ const skills = [
 ];
 
 export default function EditProfile() {
+  const { loggedFreelancer, loggedUser } = UseContext();
+
   const editor = useRef(null);
   const [details, setDetails] = useState("");
-  const [selectedGander, setSelectedGander] = useState([]);
   const [selectedEnglishLabels, setSelectedEnglishLabels] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState([]);
@@ -61,34 +57,19 @@ export default function EditProfile() {
 
         <div className="p-4">
           <div className="grid grid-cols-2 gap-4 mb-4">
-            <Select
-              options={gender}
-              onChange={(e) => setSelectedGander(e)}
-              values={selectedGander}
-              labelField="name"
-              valueField="id"
-              searchBy="name"
-              closeOnSelect={true}
-            />
-
             <input
               type="text"
               className="border rounded px-3 py-2 outline-none focus:border-primary"
-              placeholder="First Name"
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <input
-              type="text"
-              className="border rounded px-3 py-2 outline-none focus:border-primary"
-              placeholder="Last Name"
+              placeholder="Full Name"
+              defaultValue={loggedFreelancer?.name}
             />
 
             <input
               type="text"
               className="border rounded px-3 py-2 outline-none focus:border-primary"
               placeholder="User Name"
+              defaultValue={loggedFreelancer?.userName}
+              disabled
             />
           </div>
 
@@ -105,6 +86,7 @@ export default function EditProfile() {
               type="text"
               className="w-full border rounded px-3 py-2 outline-none focus:border-primary"
               placeholder="Title/Tagline"
+              defaultValue={loggedFreelancer?.tagline}
             />
           </div>
         </div>
@@ -118,7 +100,7 @@ export default function EditProfile() {
         <div className="p-4">
           <JoditEditor
             ref={editor}
-            value={details}
+            value={loggedFreelancer?.description || details}
             tabIndex={1}
             onBlur={(newContent) => setDetails(newContent)}
           />

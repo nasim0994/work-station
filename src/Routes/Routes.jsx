@@ -52,7 +52,7 @@ export const routes = createBrowserRouter([
         element: <Freelancers />,
       },
       {
-        path: "/freelancers/:id",
+        path: "/freelancers/:userName",
         element: <FreelancerDetails />,
       },
       {

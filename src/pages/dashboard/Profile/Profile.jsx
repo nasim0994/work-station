@@ -8,7 +8,7 @@ import { UseContext } from "../../../ContextAPI/ContextAPI";
 
 export default function Profile() {
   window.scroll(0, 0);
-  const { freelancer } = UseContext();
+  const { loggedFreelancer, loggedUser } = UseContext();
   const {
     bannerUrl,
     photoUrl,
@@ -22,7 +22,7 @@ export default function Profile() {
     portfolio,
     projects,
     clientFeedback,
-  } = freelancer;
+  } = loggedFreelancer;
 
   return (
     <div className="pb-10">
@@ -89,7 +89,7 @@ export default function Profile() {
             </div>
 
             {/* Skill */}
-            {freelancer?.role === "freelancer" && (
+            {loggedUser?.role === "freelancer" && (
               <div className="mt-4">
                 <h6 className="text-lg font-medium">Skill</h6>
 
@@ -146,7 +146,7 @@ export default function Profile() {
             </div>
 
             {/* Portfolio */}
-            {freelancer?.role === "freelancer" && (
+            {loggedUser?.role === "freelancer" && (
               <div className="shadow-lg rounded-md p-4 bg-base-100 mt-5">
                 <div className="flex justify-between items-center border-b">
                   <h6 className="text-xl font-medium ">Portfolio Items</h6>
@@ -179,7 +179,7 @@ export default function Profile() {
               </div>
             )}
 
-            {freelancer?.role !== "freelancer" && (
+            {loggedUser?.role === "client" && (
               <div className="shadow-lg rounded-md p-4 bg-base-100 mt-5">
                 <div className="flex justify-between items-center border-b">
                   <h6 className="text-xl font-medium">Posted Jobs</h6>

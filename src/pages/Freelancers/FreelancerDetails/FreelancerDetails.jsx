@@ -6,18 +6,20 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 export default function FreelancerDetails() {
-  const { id } = useParams();
+  const { userName } = useParams();
   const [freelancer, setFreelancer] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/freelancer/${id}`)
+    fetch(
+      `https://work-station-server.vercel.app/api/v1/freelancer/${userName}`
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
           setFreelancer(data?.data);
         }
       });
-  }, [id]);
+  }, [userName]);
 
   const {
     bannerUrl,

@@ -10,7 +10,7 @@ export default function FreelancerCard({ freelancer }) {
         <div className="flex gap-4">
           {/* img */}
           <div>
-            <Link to={`/freelancers/${freelancer?._id}`}>
+            <Link to={`/freelancers/${freelancer?.userName}`}>
               <img
                 src=""
                 alt=""
@@ -20,7 +20,7 @@ export default function FreelancerCard({ freelancer }) {
           </div>
 
           <div>
-            <Link to={`/freelancers/${freelancer?._id}`}>
+            <Link to={`/freelancers/${freelancer?.userName}`}>
               <h6 className="font-semibold hover:text-primary duration-300">
                 {freelancer?.name}
               </h6>
