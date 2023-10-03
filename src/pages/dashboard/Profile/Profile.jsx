@@ -8,28 +8,50 @@ import { UseContext } from "../../../ContextAPI/ContextAPI";
 
 export default function Profile() {
   window.scroll(0, 0);
-  const { loggedFreelancer, loggedUser } = UseContext();
-  const {
-    bannerUrl,
-    photoUrl,
-    name,
-    location,
-    rating,
-    hourlyRate,
-    skills,
-    tagline,
-    description,
-    portfolio,
-    projects,
-    clientFeedback,
-  } = loggedFreelancer;
+  const { loggedFreelancer, loggedClient, loggedUser } = UseContext();
+
+  const bannerUrl =
+    loggedUser?.data?.role === "freelancer"
+      ? loggedFreelancer?.bannerUrl
+      : loggedClient?.bannerUrl;
+
+  const photoUrl =
+    loggedUser?.data?.role === "freelancer"
+      ? loggedFreelancer?.photoUrl
+      : loggedClient?.photoUrl;
+
+  const name =
+    loggedUser?.data?.role === "freelancer"
+      ? loggedFreelancer?.name
+      : loggedClient?.name;
+
+  const location =
+    loggedUser?.data?.role === "freelancer"
+      ? loggedFreelancer?.location
+      : loggedClient?.location;
+
+  const rating =
+    loggedUser?.data?.role === "freelancer"
+      ? loggedFreelancer?.rating
+      : loggedClient?.rating;
+
+  const feedbacks =
+    loggedUser?.data?.role === "freelancer"
+      ? loggedFreelancer?.clientFeedback
+      : loggedClient?.freelancerFeedback;
+
+  const { hourlyRate, skills, tagline, description, portfolio, projects } =
+    loggedUser?.data?.role === "freelancer" && loggedFreelancer;
+
+  const { jobs } = loggedUser?.data?.role === "client" && loggedClient;
+
+  console.log(hourlyRate);
 
   return (
     <div className="pb-10">
-      {/* Banner */}
-      <div
-        className={`h-60 bg-[url(${bannerUrl})] bg-no-repeat bg-center bg-cover`}
-      ></div>
+      <div>
+        <img src={bannerUrl} alt="" className="h-60 w-full" />
+      </div>
 
       <div className="mx-10">
         <div className="lg:flex items-start gap-8 text-neutral">
@@ -39,7 +61,7 @@ export default function Profile() {
                 <img
                   src={photoUrl}
                   alt=""
-                  className="w-36 rounded-full mx-auto border-4 shadow-lg border-gray-100"
+                  className="w-36 h-36 rounded-full mx-auto border-4 shadow-lg border-gray-100"
                 />
               </div>
             </div>
@@ -75,6 +97,7 @@ export default function Profile() {
                     <AiFillStar />
                     <AiFillStar />
                   </div>
+
                   <p className="text-sm sm:text-center py-1">
                     <span>{rating?.average}</span>
                     <span className="text-neutral/70">/5 </span>
@@ -82,14 +105,14 @@ export default function Profile() {
                   </p>
                 </div>
 
-                <div>
+                {loggedUser?.data?.role === "freelancer" && (
                   <p>${hourlyRate}/hr</p>
-                </div>
+                )}
               </div>
             </div>
 
             {/* Skill */}
-            {loggedUser?.role === "freelancer" && (
+            {loggedUser?.data?.role === "freelancer" && (
               <div className="mt-4">
                 <h6 className="text-lg font-medium">Skill</h6>
 
@@ -106,80 +129,114 @@ export default function Profile() {
               </div>
             )}
 
-            {/* Projects */}
-            <div className="mt-6">
-              <h6 className="text-lg font-medium">Projects</h6>
+            {/* Total Projects */}
+            {loggedUser?.data?.role === "freelancer" && (
+              <div className="mt-6">
+                <h6 className="text-lg font-medium">Projects</h6>
 
-              <div className="text-[15px] grid grid-cols-2 gap-3 mt-2">
-                <div className="bg-green-50 text-center p-4 rounded">
-                  <p className="text-lg font-medium">
-                    {projects?.ongoingProject?.length}
-                  </p>
-                  <p>Ongoing projects</p>
-                </div>
+                <div className="text-[15px] grid grid-cols-2 gap-3 mt-2">
+                  <div className="bg-green-50 text-center p-4 rounded">
+                    <p className="text-lg font-medium">
+                      {projects?.ongoingProject?.length}
+                    </p>
+                    <p>Ongoing projects</p>
+                  </div>
 
-                <div className="bg-primary/10 text-center p-4 rounded">
-                  <p className="text-lg font-medium">
-                    {projects?.completedProject?.length}
-                  </p>
-                  <p>Completed projects</p>
-                </div>
+                  <div className="bg-primary/10 text-center p-4 rounded">
+                    <p className="text-lg font-medium">
+                      {projects?.completedProject?.length}
+                    </p>
+                    <p>Completed projects</p>
+                  </div>
 
-                <div className="bg-red-50 text-center p-4 rounded">
-                  <p className="text-lg font-medium">
-                    {projects?.cancelledProject?.length}
-                  </p>
-                  <p>Cancelled projects</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="w-full">
-            {/* Description */}
-            <div className="shadow-lg rounded-md p-4 bg-base-100 mt-5">
-              <h6 className="text-2xl font-medium">{tagline}</h6>
-
-              <div className="mt-2">
-                <h6>{description}</h6>
-              </div>
-            </div>
-
-            {/* Portfolio */}
-            {loggedUser?.role === "freelancer" && (
-              <div className="shadow-lg rounded-md p-4 bg-base-100 mt-5">
-                <div className="flex justify-between items-center border-b">
-                  <h6 className="text-xl font-medium ">Portfolio Items</h6>
-                  <Link
-                    to="/dashboard/addPortfolio"
-                    className="flex items-center gap-1 hover:text-primary duration-300"
-                  >
-                    <AiOutlinePlus />
-                    <p className="text-sm">Add Portfolio</p>
-                  </Link>
-                </div>
-
-                <div className="mt-4 grid md:grid-cols-3 gap-6">
-                  {portfolio?.map((p) => (
-                    <div key={p._id}>
-                      <Link
-                        to={`/dashboard/portfolio`}
-                        className="portfolioItem"
-                      >
-                        <img
-                          src="https://visme.co/blog/wp-content/uploads/2022/03/How-to-Make-a-Portfolio-Online-The-Ultimate-Guide-Thumbnail.jpg"
-                          alt=""
-                          className="w-full h-40 border rounded"
-                        />
-                        <h6 className="font-medium">{p.title}</h6>
-                      </Link>
-                    </div>
-                  ))}
+                  <div className="bg-red-50 text-center p-4 rounded">
+                    <p className="text-lg font-medium">
+                      {projects?.cancelledProject?.length}
+                    </p>
+                    <p>Cancelled projects</p>
+                  </div>
                 </div>
               </div>
             )}
 
-            {loggedUser?.role === "client" && (
+            {/* Total Jobs */}
+            {loggedUser?.data?.role === "client" && (
+              <div className="mt-6">
+                <h6 className="text-lg font-medium">Jobs</h6>
+
+                <div className="text-[15px] grid grid-cols-2 gap-3 mt-2">
+                  <div className="bg-green-50 text-center p-4 rounded">
+                    <p className="text-lg font-medium">
+                      {jobs?.ongoingJobs?.length}
+                    </p>
+                    <p>Ongoing Jobs</p>
+                  </div>
+
+                  <div className="bg-primary/10 text-center p-4 rounded">
+                    <p className="text-lg font-medium">
+                      {jobs?.completedJobs?.length}
+                    </p>
+                    <p>Completed Jobs</p>
+                  </div>
+
+                  <div className="bg-red-50 text-center p-4 rounded">
+                    <p className="text-lg font-medium">
+                      {jobs?.cancelledJobs?.length}
+                    </p>
+                    <p>Cancelled Jobs</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="w-full">
+            {loggedUser?.data?.role === "freelancer" && (
+              <>
+                {/* Description */}
+                <div className="shadow-lg rounded-md p-4 bg-base-100 mt-5">
+                  <h6 className="text-2xl font-medium">{tagline}</h6>
+
+                  <div className="mt-2">
+                    <h6>{description}</h6>
+                  </div>
+                </div>
+
+                {/* Portfolio */}
+                <div className="shadow-lg rounded-md p-4 bg-base-100 mt-5">
+                  <div className="flex justify-between items-center border-b">
+                    <h6 className="text-xl font-medium ">Portfolio Items</h6>
+                    <Link
+                      to="/dashboard/addPortfolio"
+                      className="flex items-center gap-1 hover:text-primary duration-300"
+                    >
+                      <AiOutlinePlus />
+                      <p className="text-sm">Add Portfolio</p>
+                    </Link>
+                  </div>
+
+                  <div className="mt-4 grid md:grid-cols-3 gap-6">
+                    {portfolio?.map((p) => (
+                      <div key={p._id}>
+                        <Link
+                          to={`/dashboard/portfolio`}
+                          className="portfolioItem"
+                        >
+                          <img
+                            src="https://visme.co/blog/wp-content/uploads/2022/03/How-to-Make-a-Portfolio-Online-The-Ultimate-Guide-Thumbnail.jpg"
+                            alt=""
+                            className="w-full h-40 border rounded"
+                          />
+                          <h6 className="font-medium">{p.title}</h6>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
+
+            {loggedUser?.data?.role === "client" && (
               <div className="shadow-lg rounded-md p-4 bg-base-100 mt-5">
                 <div className="flex justify-between items-center border-b">
                   <h6 className="text-xl font-medium">Posted Jobs</h6>
@@ -296,12 +353,17 @@ export default function Profile() {
               </div>
             )}
 
-            {/* Client Feedback */}
+            {/* Feedback */}
             <div className="shadow-lg rounded-md p-4 bg-base-100 mt-5">
-              <h6 className="text-xl font-medium border-b">Client Feedback</h6>
+              <h6 className="text-xl font-medium border-b">
+                {loggedUser?.data?.role === "freelancer"
+                  ? "Client"
+                  : "Freelancer"}{" "}
+                Feedback
+              </h6>
 
               <div className="mt-2">
-                {clientFeedback?.map((feedback, i) => (
+                {feedbacks?.map((feedback, i) => (
                   <div key={i} className="flex gap-4 border-b py-4">
                     <img
                       src="https://WorkStation.com/wp-content/uploads/2021/02/Raiyan-100x100.jpeg"

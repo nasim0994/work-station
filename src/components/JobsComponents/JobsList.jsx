@@ -3,7 +3,6 @@ import JobCard from "./JobCard";
 
 export default function JobsList() {
   const { jobs } = UseContext();
-  console.log(jobs);
 
   return (
     <div className="lists">

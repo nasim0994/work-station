@@ -11,6 +11,7 @@ const ContextProvider = ({ children }) => {
   const [jobs, setJobs] = useState([]);
   const [freelancers, setFreelancers] = useState({});
   const [loggedFreelancer, setLoggedFreelancer] = useState({});
+  const [loggedClient, setLoggedClient] = useState({});
 
   // Handel Login
   const login = (loginInfo) => {
@@ -115,6 +116,25 @@ const ContextProvider = ({ children }) => {
       });
   }, []);
 
+  // get Logged client
+  useEffect(() => {
+    setLoading(true);
+    fetch("https://work-station-server.vercel.app/api/v1/client/me", {
+      headers: {
+        authorization: `bearer ${localStorage.getItem("WorkStation_jwt")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          setLoggedClient(data?.data);
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   const contextInfo = {
     loggedUser,
     setLoggedUser,
@@ -125,6 +145,7 @@ const ContextProvider = ({ children }) => {
     jobs,
     freelancers,
     loggedFreelancer,
+    loggedClient,
   };
   return <Context.Provider value={contextInfo}>{children}</Context.Provider>;
 };
