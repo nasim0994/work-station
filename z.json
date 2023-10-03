@@ -27,6 +27,11 @@
       "completedJobs": [],
       "cancelledJobs": []
     },
+    "postedJobs": [
+      {
+        "jobId": "6509b8e7f473226a369d8bf9"
+      }
+    ],
     "freelancerFeedback": [
       {
         "name": "Nasim Uddin",

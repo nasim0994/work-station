@@ -43,9 +43,8 @@ export default function Profile() {
   const { hourlyRate, skills, tagline, description, portfolio, projects } =
     loggedUser?.data?.role === "freelancer" && loggedFreelancer;
 
-  const { jobs } = loggedUser?.data?.role === "client" && loggedClient;
-
-  console.log(hourlyRate);
+  const { jobs, postedJobs } =
+    loggedUser?.data?.role === "client" && loggedClient;
 
   return (
     <div className="pb-10">
@@ -216,10 +215,11 @@ export default function Profile() {
                   </div>
 
                   <div className="mt-4 grid md:grid-cols-3 gap-6">
-                    {portfolio?.map((p) => (
-                      <div key={p._id}>
+                    {portfolio?.map((p, i) => (
+                      <div key={i}>
                         <Link
-                          to={`/dashboard/portfolio`}
+                          to={p?.url}
+                          target="_blank"
                           className="portfolioItem"
                         >
                           <img
@@ -227,7 +227,7 @@ export default function Profile() {
                             alt=""
                             className="w-full h-40 border rounded"
                           />
-                          <h6 className="font-medium">{p.title}</h6>
+                          <h6 className="font-medium">{p?.title}</h6>
                         </Link>
                       </div>
                     ))}
