@@ -1,0 +1,48 @@
+[
+  {
+    "postedBy": "65082c8af473226a36866b1a",
+    "title": "Back-End Developer",
+    "companyName": "Pidex Limited",
+    "companyLogo": "https://pidex.biz/front-end/landing/assets/img/logo/logo-web.png",
+    "jobType": "Fixed",
+    "minimumPrice": 10,
+    "maximumPrice": 90,
+    "duration": "more then a 6 months",
+    "experienceLevel": "Expert",
+    "details": "And he added in a soothing tone: 'don't be angry about it. And yet I wish I hadn't to bring tears into her eyes--and still as she could not help bursting out laughing: and when she had finished, her.",
+    "skills": ["PHP", "Laravel"],
+    "country": "Bangladesh",
+    "city": "Dhaka"
+  },
+  {
+    "postedBy": "65082c8af473226a36866b1a",
+    "title": "Front-End Developer",
+    "companyName": "Pidex Limited",
+    "companyLogo": "https://pidex.biz/front-end/landing/assets/img/logo/logo-web.png",
+    "jobType": "Hourly Based",
+    "minimumPrice": 10,
+    "maximumPrice": 90,
+    "duration": "1 to 3 months",
+    "experienceLevel": "Basic Level",
+    "details": "And he added in a soothing tone: 'don't be angry about it. And yet I wish I hadn't to bring tears into her eyes--and still as she could not help bursting out laughing: and when she had finished, her.",
+    "skills": ["HTML", "CSS"],
+    "country": "Bangladesh",
+    "city": "Dhaka"
+  },
+  {
+    "postedBy": "65082c8af473226a36866b1a",
+    "title": "MERN Stack Developer",
+    "slug": "MERN-Stack-Developer",
+    "companyName": "3rt",
+    "companyLogo": "https://3rtbd.com/storage/asset/images/logo/3rt-log-invert.png",
+    "jobType": "Fixed",
+    "minimumPrice": 50,
+    "maximumPrice": 100,
+    "duration": "more then a 6 months",
+    "experienceLevel": "Expert",
+    "details": "And he added in a soothing tone: 'don't be angry about it. And yet I wish I hadn't to bring tears into her eyes--and still as she could not help bursting out laughing: and when she had finished, her.",
+    "skills": ["HTML", "CSS", "React", "Node JS"],
+    "country": "Bangladesh",
+    "city": "Dhaka"
+  }
+]

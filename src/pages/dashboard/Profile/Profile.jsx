@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { GoLocation } from "react-icons/go";
 import { AiFillStar, AiOutlinePlus } from "react-icons/ai";
-import { MdMarkEmailRead } from "react-icons/md";
 import { FaBusinessTime } from "react-icons/fa";
 import { MdOutlinePersonSearch } from "react-icons/md";
 import { UseContext } from "../../../ContextAPI/ContextAPI";
+import { useEffect, useState } from "react";
 
 export default function Profile() {
   window.scroll(0, 0);
@@ -43,8 +43,23 @@ export default function Profile() {
   const { hourlyRate, skills, tagline, description, portfolio, projects } =
     loggedUser?.data?.role === "freelancer" && loggedFreelancer;
 
-  const { jobs, postedJobs } =
-    loggedUser?.data?.role === "client" && loggedClient;
+  const { jobs } = loggedUser?.data?.role === "client" && loggedClient;
+
+  const [postedJob, setPostedJobs] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://work-station-server.vercel.app/api/v1/job/my-jobs`, {
+      headers: {
+        authorization: `bearer ${localStorage.getItem("WorkStation_jwt")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          setPostedJobs(data?.data);
+        }
+      });
+  }, []);
 
   return (
     <div className="pb-10">
@@ -238,7 +253,7 @@ export default function Profile() {
 
             {loggedUser?.data?.role === "client" && (
               <div className="shadow-lg rounded-md p-4 bg-base-100 mt-5">
-                <div className="flex justify-between items-center border-b">
+                <div className="flex justify-between items-center border-b pb-2">
                   <h6 className="text-xl font-medium">Posted Jobs</h6>
                   <Link
                     to="/dashboard/postJob"
@@ -250,105 +265,51 @@ export default function Profile() {
                 </div>
 
                 <div className="mt-4">
-                  <div className="bg-gray-100 rounded border mb-5">
-                    <div className="p-6">
-                      <div className="mb-4">
-                        <div className="flex items-center gap-1">
-                          <MdMarkEmailRead className="text-primary" />
-                          <Link
-                            to=""
-                            className="hover:text-primary duration-300 mt-1"
-                          >
-                            Jamiul Bari
+                  {postedJob?.map((job) => (
+                    <div
+                      key={job?._id}
+                      className="bg-gray-100 rounded border mb-2"
+                    >
+                      <div className="p-6">
+                        <div className="mb-4">
+                          <p className="text-xl font-semibold">{job?.title}</p>
+                        </div>
+                        <div className="md:flex gap-4 items-center text-sm text-neutral/80">
+                          <div className="flex items-center gap-1 md:border-r border-neutral/30 pr-3 ">
+                            <GoLocation />
+                            <h6>
+                              {job?.city}, {job?.country}
+                            </h6>
+                          </div>
+
+                          <div className="flex items-center gap-1 md:border-r border-neutral/30 pr-3">
+                            <FaBusinessTime />
+                            <h6>{job?.duration}</h6>
+                          </div>
+
+                          <div className="flex items-center gap-1">
+                            <MdOutlinePersonSearch className="text-lg" />
+                            <h6>{job?.experienceLevel}</h6>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="sm:flex justify-between items-center gap-4 p-4 pt-0 ">
+                        <div className="flex justify-center gap-4 items-center">
+                          <Link to="" className="primary-btn">
+                            View proposals
+                          </Link>
+                          <Link to="" className="primary-btn">
+                            Edit job
                           </Link>
                         </div>
-                        <p className="text-xl font-semibold">
-                          Javascript Instructor
-                        </p>
-                      </div>
-                      <div className="md:flex gap-4 items-center text-sm text-neutral/80">
-                        <div className="flex items-center gap-1 md:border-r border-neutral/30 pr-3 ">
-                          <GoLocation />
-                          <h6>Dhaka</h6>
-                        </div>
-
-                        <div className="flex items-center gap-1 md:border-r border-neutral/30 pr-3">
-                          <FaBusinessTime />
-                          <h6>01 to 03 months</h6>
-                        </div>
-
-                        <div className="flex items-center gap-1">
-                          <MdOutlinePersonSearch className="text-lg" />
-                          <h6>Medium Level</h6>
+                        <div className="text-center px-10 mt-4 sm:mt-0">
+                          <p>0</p>
+                          <p>Proposals</p>
                         </div>
                       </div>
                     </div>
-
-                    <div className="sm:flex justify-between items-center gap-4 p-4 pt-0 ">
-                      <div className="flex justify-center gap-4 items-center">
-                        <Link to="" className="primary-btn">
-                          View proposals
-                        </Link>
-                        <Link to="" className="primary-btn">
-                          Edit job
-                        </Link>
-                      </div>
-                      <div className="text-center px-10 mt-4 sm:mt-0">
-                        <p>0</p>
-                        <p>Proposals</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-gray-100 rounded border mb-5">
-                    <div className="p-6">
-                      <div className="mb-4">
-                        <div className="flex items-center gap-1">
-                          <MdMarkEmailRead className="text-primary" />
-                          <Link
-                            to=""
-                            className="hover:text-primary duration-300 mt-1"
-                          >
-                            Jamiul Bari
-                          </Link>
-                        </div>
-                        <p className="text-xl font-semibold">
-                          Javascript Instructor
-                        </p>
-                      </div>
-                      <div className="md:flex gap-4 items-center text-sm text-neutral/80">
-                        <div className="flex items-center gap-1 md:border-r border-neutral/30 pr-3 ">
-                          <GoLocation />
-                          <h6>Dhaka</h6>
-                        </div>
-
-                        <div className="flex items-center gap-1 md:border-r border-neutral/30 pr-3">
-                          <FaBusinessTime />
-                          <h6>01 to 03 months</h6>
-                        </div>
-
-                        <div className="flex items-center gap-1">
-                          <MdOutlinePersonSearch className="text-lg" />
-                          <h6>Medium Level</h6>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="sm:flex justify-between items-center gap-4 p-4 pt-0 ">
-                      <div className="flex justify-center gap-4 items-center">
-                        <Link to="" className="primary-btn">
-                          View proposals
-                        </Link>
-                        <Link to="" className="primary-btn">
-                          Edit job
-                        </Link>
-                      </div>
-                      <div className="text-center px-10 mt-4 sm:mt-0">
-                        <p>0</p>
-                        <p>Proposals</p>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             )}

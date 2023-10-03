@@ -12,6 +12,20 @@ export default function SaveItems() {
   window.scroll(0, 0);
   const { freelancer, loggedUser } = UseContext();
 
+  // useEffect(() => {
+  //   let ids = [];
+
+  //   postedJobs.filter((job) => ids.push(job.jobId));
+
+  //   fetch(
+  //     `https://work-station-server.vercel.app/api/v1/job/bulk-jobs?ids=${JSON.stringify(
+  //       ids
+  //     )}`
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data?.data));
+  // }, [postedJobs]);
+
   return (
     <div className="py-2">
       <div className="md:flex gap-10 min-h-[80vh]">
