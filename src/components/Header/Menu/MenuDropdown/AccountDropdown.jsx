@@ -6,10 +6,12 @@ import { FiSettings } from "react-icons/fi";
 import { TbFileInvoice } from "react-icons/tb";
 import { RxDashboard } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import { UseContext } from "../../../../ContextAPI/ContextAPI";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogout } from "../../../../Redux/auth/authSlice";
 
 const AccountDropdown = ({ setAccountDropdown }) => {
-  const { loggedUser, setLoggedUser } = UseContext();
+  const dispatch = useDispatch();
+  const { loggedUser } = useSelector((state) => state.auth);
 
   useEffect(() => {
     document.addEventListener("click", (e) => {
@@ -23,8 +25,8 @@ const AccountDropdown = ({ setAccountDropdown }) => {
   }, [setAccountDropdown]);
 
   const handelLogout = () => {
+    dispatch(userLogout());
     localStorage.removeItem("WorkStation_jwt");
-    setLoggedUser(null);
   };
 
   return (

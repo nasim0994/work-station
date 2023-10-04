@@ -4,11 +4,14 @@ import { AiFillUnlock, AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { MdEmail } from "react-icons/md";
-import { UseContext } from "../../ContextAPI/ContextAPI";
+import { useSelector } from "react-redux";
+import { useLoginMutation } from "../../Redux/auth/authApi";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const { login, loginError, loading } = UseContext();
+
+  const { loggedUser } = useSelector((state) => state.auth);
+  const [login, { isLoading, isSuccess, isError, error }] = useLoginMutation();
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -22,8 +25,10 @@ export default function LoginForm() {
 
     login(loginInfo);
 
-    setShowPassword(false);
-    e.target.reset();
+    if (isSuccess || loggedUser.status) {
+      e.target.reset();
+      setShowPassword(false);
+    }
   };
 
   return (
@@ -76,7 +81,9 @@ export default function LoginForm() {
             </div>
           </div>
 
-          {loginError && <p className="text-sm text-red-500">{loginError}</p>}
+          {isError && (
+            <p className="text-sm text-red-500">{error?.data?.message}</p>
+          )}
 
           <div className="mb-5 flex justify-end">
             <Link
@@ -91,9 +98,9 @@ export default function LoginForm() {
             <button
               type="submit"
               className="w-full py-2 font-semibold primary_bg_gradient"
-              disabled={loading && true}
+              disabled={isLoading && true}
             >
-              {loading ? "Loading..." : "Log In"}
+              {isLoading ? "Loading..." : "Log In"}
             </button>
           </div>
         </div>
