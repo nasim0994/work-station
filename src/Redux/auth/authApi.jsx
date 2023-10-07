@@ -19,6 +19,7 @@ export const authApi = apiSlice.injectEndpoints({
           dispatch(
             userLoggedIn({
               token: result?.data?.data?.token,
+              loading: false,
               status: true,
               data: result?.data?.data?.user,
             })

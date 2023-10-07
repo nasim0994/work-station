@@ -4,7 +4,9 @@ import ImageUploading from "react-images-uploading";
 import JoditEditor from "jodit-react";
 
 import { AiFillDelete } from "react-icons/ai";
-import { UseContext } from "../../../ContextAPI/ContextAPI";
+import { useSelector } from "react-redux";
+import { useGetLoggedFreelancersQuery } from "../../../Redux/freelancer/freelancerApi";
+// import { useGetLoggedClientsQuery } from "../../../Redux/client/clientApi";
 
 const englishLabels = [
   { id: 1, name: "Conversational" },
@@ -35,7 +37,9 @@ const skills = [
 ];
 
 export default function EditProfile() {
-  const { loggedFreelancer, loggedUser } = UseContext();
+  const { loggedUser, loading } = useSelector((state) => state.auth);
+  const { data: loggedFreelancer } = useGetLoggedFreelancersQuery();
+  // const { data: loggedClient } = useGetLoggedClientsQuery();
 
   const editor = useRef(null);
   const [details, setDetails] = useState("");

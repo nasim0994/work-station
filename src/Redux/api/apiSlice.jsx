@@ -4,6 +4,14 @@ export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://work-station-server.vercel.app/api/v1",
+    prepareHeaders: async (headers) => {
+      const token = localStorage.getItem("WorkStation_jwt");
+      if (token) {
+        headers.set("Authorization", `bearer ${token}`);
+      }
+
+      return headers;
+    },
   }),
   endpoints: () => ({}),
 });

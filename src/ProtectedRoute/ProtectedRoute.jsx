@@ -1,19 +1,21 @@
-import { UseContext } from "../ContextAPI/ContextAPI";
+import { useSelector } from "react-redux";
 import Loading from "../components/Loading/Loading";
 import Join from "../pages/Join/Join";
 
 const ProtectedRoute = ({ children }) => {
-  const { loggedUser, userLoading } = UseContext();
+  const { loggedUser, loading } = useSelector((state) => state.auth);
 
-  if (userLoading) {
+  if (loading && !loggedUser?.status) {
     return <Loading />;
   }
 
-  if (loggedUser?.status !== "success") {
-    return <Join />;
+  if (!loggedUser?.status && !loading) {
+    <Join />;
   }
 
-  return children;
+  if (loggedUser?.status) {
+    return children;
+  }
 };
 
 export default ProtectedRoute;

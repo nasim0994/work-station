@@ -7,7 +7,13 @@ export const freelancerApi = apiSlice.injectEndpoints({
         url: "/freelancer/all-freelancers",
       }),
     }),
+    getLoggedFreelancers: builder.query({
+      query: () => ({
+        url: "/freelancer/me",
+      }),
+    }),
   }),
 });
 
-export const { useGetFreelancersQuery } = freelancerApi;
+export const { useGetFreelancersQuery, useGetLoggedFreelancersQuery } =
+  freelancerApi;

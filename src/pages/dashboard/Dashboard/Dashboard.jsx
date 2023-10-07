@@ -9,10 +9,16 @@ import {
 import { GiReceiveMoney, GiTakeMyMoney } from "react-icons/gi";
 import { MdOutlineRunningWithErrors } from "react-icons/md";
 import { TfiBag } from "react-icons/tfi";
+import { useSelector } from "react-redux";
+import Loading from "../../../components/Loading/Loading";
 
 export default function Dashboard() {
   window.scroll(0, 0);
-  const user = "freelancer";
+  const { loggedUser, loading } = useSelector((state) => state.auth);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="py-5">
@@ -47,7 +53,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {user === "freelancer" && (
+        {loggedUser?.data?.role === "freelancer" && (
           <>
             <div className="bg-base-100 shadow-lg py-5 rounded-md">
               <div className="text-center">
@@ -96,7 +102,7 @@ export default function Dashboard() {
           </>
         )}
 
-        {user === "client" && (
+        {loggedUser?.data?.role === "client" && (
           <>
             <div className="bg-base-100 shadow-lg py-5 rounded-md">
               <div className="text-center">
@@ -141,7 +147,7 @@ export default function Dashboard() {
         )}
       </div>
 
-      {user === "freelancer" && (
+      {loggedUser?.data?.role === "freelancer" && (
         <div className="grid md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6 mt-8">
           <div className="bg-base-100 shadow-lg rounded-md">
             <div className="border-b py-6">
@@ -179,7 +185,7 @@ export default function Dashboard() {
         </div>
       )}
 
-      {user === "client" && (
+      {loggedUser?.data?.role === "client" && (
         <>
           <div className="bg-base-100 shadow-lg rounded-md mt-6">
             <div className="border-b py-6">

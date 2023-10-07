@@ -4,6 +4,7 @@ const initialState = {
   token: "",
   loggedUser: {
     status: false,
+    loading: true,
     data: undefined,
   },
 };
@@ -15,6 +16,7 @@ const authSlice = createSlice({
     userLoggedIn: (state, action) => {
       state.token = action.payload.token;
       state.loggedUser.status = action.payload.status;
+      state.loggedUser.loading = action.payload.loading;
       state.loggedUser.data = action.payload.data;
     },
     userLogout: (state) => {

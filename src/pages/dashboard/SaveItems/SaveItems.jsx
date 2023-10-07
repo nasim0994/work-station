@@ -5,12 +5,21 @@ import { AiFillStar, AiOutlineClose } from "react-icons/ai";
 import Tabs, { Tab } from "react-best-tabs";
 import "react-best-tabs/dist/index.css";
 import { GoLocation } from "react-icons/go";
-import { UseContext } from "../../../ContextAPI/ContextAPI";
 import SaveJobs from "../../../components/DashboardComponents/JobComponents/SaveJobs/SaveJobs";
+import { useSelector } from "react-redux";
+import { useGetLoggedFreelancersQuery } from "../../../Redux/freelancer/freelancerApi";
+// import { useGetLoggedClientsQuery } from "../../../Redux/client/clientApi";
+import Loading from "../../../components/Loading/Loading";
 
 export default function SaveItems() {
   window.scroll(0, 0);
-  const { freelancer, loggedUser } = UseContext();
+  const { loggedUser, loading } = useSelector((state) => state.auth);
+  const { data: loggedFreelancer } = useGetLoggedFreelancersQuery();
+  // const { data: loggedClient } = useGetLoggedClientsQuery();
+
+  if (loading) {
+    return <Loading />;
+  }
 
   // useEffect(() => {
   //   let ids = [];
@@ -36,7 +45,9 @@ export default function SaveItems() {
               onClick={(event, tab) => console.log(event, tab)}
             >
               <Tab title="Saved jobs" className="mr-3">
-                <SaveJobs saveJobs={freelancer?.saveItems?.saveJobs} />
+                <SaveJobs
+                  saveJobs={loggedFreelancer?.data?.saveItems?.saveJobs}
+                />
               </Tab>
 
               <Tab title="Liked Freelancers" className="mr-3">
@@ -232,7 +243,7 @@ export default function SaveItems() {
             <div className="border-l pl-4">
               <p className="text-primary text-xl font-semibold">
                 {loggedUser?.data?.role === "freelancer"
-                  ? freelancer?.saveItems?.saveJobs?.length
+                  ? loggedFreelancer?.data?.saveItems?.saveJobs?.length
                   : 0}
               </p>
               <h6>Saved jobs</h6>
@@ -245,7 +256,7 @@ export default function SaveItems() {
             <div className="border-l pl-4">
               <p className="text-primary text-xl font-semibold">
                 {loggedUser?.data?.role === "freelancer"
-                  ? freelancer?.saveItems?.likeFreelancers?.length
+                  ? loggedFreelancer?.data?.saveItems?.likeFreelancers?.length
                   : 0}
               </p>
               <h6>Liked freelancers</h6>

@@ -17,10 +17,11 @@ export default async function useAuthCheck() {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data.status === "success") {
+          if (data?.status === "success") {
             dispatch(
               userLoggedIn({
                 token: localAuth,
+                loading: false,
                 status: true,
                 data: data?.data,
               })
