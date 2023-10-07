@@ -1,7 +1,54 @@
 import { Link } from "react-router-dom";
-import { AiFillStar } from "react-icons/ai";
+import { useGetCategoriesQuery } from "../../../Redux/category/categoryApi";
+import CategorySkeleton from "../../Skeleton/CategorySkeleton";
 
 export default function Categories() {
+  const {
+    data: categories,
+    isLoading,
+    isError,
+    isSuccess,
+    error,
+  } = useGetCategoriesQuery();
+
+  let content = null;
+
+  if (isLoading) {
+    content = (
+      <>
+        <CategorySkeleton />
+        <CategorySkeleton />
+        <CategorySkeleton />
+        <CategorySkeleton />
+      </>
+    );
+  }
+
+  if (!isLoading && isError) {
+    content = <p>{error}</p>;
+  }
+
+  if (isSuccess && !isError && !isLoading) {
+    content = categories?.data?.map((category) => (
+      <Link
+        key={category._id}
+        to={`jobs/${category.slug}`}
+        className="bg-gray-50 hover:bg-gray-100 duration-300 p-4 rounded-md"
+      >
+        <div className="flex items-center gap-1">
+          <div className="w-9">
+            <img src={category.icon} className="w-8" alt="" />
+          </div>
+          <h6 className="font-medium mt-[2px]">{category.name}</h6>
+        </div>
+
+        <div className="mt-4 flex justify-end text-neutral-content text-sm">
+          <h6>{category.totalJobs} Jobs</h6>
+        </div>
+      </Link>
+    ));
+  }
+
   return (
     <div className="py-10 text-neutral">
       <div className="container">
@@ -10,221 +57,7 @@ export default function Categories() {
         </h2>
 
         <div className="grid grid-cols-1 min-[460px]:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6 mt-6">
-          <Link
-            href=""
-            className="bg-gray-50 hover:bg-gray-100 duration-300 p-4 rounded-md"
-          >
-            <div className="flex items-center gap-1">
-              <div className="w-9">
-                <img
-                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/graphics-design.91dfe44.svg"
-                  className="w-8"
-                  alt=""
-                />
-              </div>
-              <h6 className="font-medium mt-[2px]">Category Name</h6>
-            </div>
-
-            <div className="mt-4 flex items-center justify-between text-neutral-content text-sm">
-              <div className="flex gap-1 items-center">
-                <AiFillStar className="text-primary -mt-[3px]" />
-                <h6>4.5/5</h6>
-              </div>
-
-              <div>
-                <h6>99 Jobs</h6>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href=""
-            className="bg-gray-50 hover:bg-gray-100 duration-300 p-4 rounded-md"
-          >
-            <div className="flex items-center gap-1">
-              <div className="w-9">
-                <img
-                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/graphics-design.91dfe44.svg"
-                  className="w-8"
-                  alt=""
-                />
-              </div>
-              <h6 className="font-medium mt-[2px]">Category Name</h6>
-            </div>
-
-            <div className="mt-4 flex items-center justify-between text-neutral-content text-sm">
-              <div className="flex gap-1 items-center">
-                <AiFillStar className="text-primary -mt-[3px]" />
-                <h6>4.5/5</h6>
-              </div>
-
-              <div>
-                <h6>99 Jobs</h6>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href=""
-            className="bg-gray-50 hover:bg-gray-100 duration-300 p-4 rounded-md"
-          >
-            <div className="flex items-center gap-1">
-              <div className="w-9">
-                <img
-                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/graphics-design.91dfe44.svg"
-                  className="w-8"
-                  alt=""
-                />
-              </div>
-              <h6 className="font-medium mt-[2px]">Category Name</h6>
-            </div>
-
-            <div className="mt-4 flex items-center justify-between text-neutral-content text-sm">
-              <div className="flex gap-1 items-center">
-                <AiFillStar className="text-primary -mt-[3px]" />
-                <h6>4.5/5</h6>
-              </div>
-
-              <div>
-                <h6>99 Jobs</h6>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href=""
-            className="bg-gray-50 hover:bg-gray-100 duration-300 p-4 rounded-md"
-          >
-            <div className="flex items-center gap-1">
-              <div className="w-9">
-                <img
-                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/graphics-design.91dfe44.svg"
-                  className="w-8"
-                  alt=""
-                />
-              </div>
-              <h6 className="font-medium mt-[2px]">Category Name</h6>
-            </div>
-
-            <div className="mt-4 flex items-center justify-between text-neutral-content text-sm">
-              <div className="flex gap-1 items-center">
-                <AiFillStar className="text-primary -mt-[3px]" />
-                <h6>4.5/5</h6>
-              </div>
-
-              <div>
-                <h6>99 Jobs</h6>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href=""
-            className="bg-gray-50 hover:bg-gray-100 duration-300 p-4 rounded-md"
-          >
-            <div className="flex items-center gap-1">
-              <div className="w-9">
-                <img
-                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/graphics-design.91dfe44.svg"
-                  className="w-8"
-                  alt=""
-                />
-              </div>
-              <h6 className="font-medium mt-[2px]">Category Name</h6>
-            </div>
-
-            <div className="mt-4 flex items-center justify-between text-neutral-content text-sm">
-              <div className="flex gap-1 items-center">
-                <AiFillStar className="text-primary -mt-[3px]" />
-                <h6>4.5/5</h6>
-              </div>
-
-              <div>
-                <h6>99 Jobs</h6>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href=""
-            className="bg-gray-50 hover:bg-gray-100 duration-300 p-4 rounded-md"
-          >
-            <div className="flex items-center gap-1">
-              <div className="w-9">
-                <img
-                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/graphics-design.91dfe44.svg"
-                  className="w-8"
-                  alt=""
-                />
-              </div>
-              <h6 className="font-medium mt-[2px]">Category Name</h6>
-            </div>
-
-            <div className="mt-4 flex items-center justify-between text-neutral-content text-sm">
-              <div className="flex gap-1 items-center">
-                <AiFillStar className="text-primary -mt-[3px]" />
-                <h6>4.5/5</h6>
-              </div>
-
-              <div>
-                <h6>99 Jobs</h6>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href=""
-            className="bg-gray-50 hover:bg-gray-100 duration-300 p-4 rounded-md"
-          >
-            <div className="flex items-center gap-1">
-              <div className="w-9">
-                <img
-                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/graphics-design.91dfe44.svg"
-                  className="w-8"
-                  alt=""
-                />
-              </div>
-              <h6 className="font-medium mt-[2px]">Category Name</h6>
-            </div>
-
-            <div className="mt-4 flex items-center justify-between text-neutral-content text-sm">
-              <div className="flex gap-1 items-center">
-                <AiFillStar className="text-primary -mt-[3px]" />
-                <h6>4.5/5</h6>
-              </div>
-
-              <div>
-                <h6>99 Jobs</h6>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href=""
-            className="bg-gray-50 hover:bg-gray-100 duration-300 p-4 rounded-md"
-          >
-            <div className="flex items-center gap-1">
-              <div className="w-9">
-                <img
-                  src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/graphics-design.91dfe44.svg"
-                  className="w-8"
-                  alt=""
-                />
-              </div>
-              <h6 className="font-medium mt-[2px]">Category Name</h6>
-            </div>
-
-            <div className="mt-4 flex items-center justify-between text-neutral-content text-sm">
-              <div className="flex gap-1 items-center">
-                <AiFillStar className="text-primary -mt-[3px]" />
-                <h6>4.5/5</h6>
-              </div>
-
-              <div>
-                <h6>99 Jobs</h6>
-              </div>
-            </div>
-          </Link>
+          {content}
         </div>
       </div>
     </div>

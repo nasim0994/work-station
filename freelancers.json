@@ -1,0 +1,163 @@
+[
+  {
+    "name": "Nasim Uddin",
+    "email": "nasim@gmail.com",
+    "userName": "nasim",
+    "tagline": "Front-End Developer",
+    "role": "freelancer",
+    "number": "01700000000",
+    "photoUrl": "https://i.ibb.co/znwrX5c/na.jpg",
+    "bannerUrl": "https://i.ibb.co/zm8b32f/1674592601608.png",
+    "location": {
+      "country": "Bangladesh",
+      "city": "Dhaka"
+    },
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "rating": {
+      "average": "4.5",
+      "total": "8"
+    },
+    "hourlyRate": "10",
+    "englishLevel": "Basic",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "ReactJs",
+      "NextJs",
+      "Tailwind CSS"
+    ],
+    "projects": {
+      "ongoingProject": [
+        {
+          "projectId": "6509b8e7f473226a369d8bf9"
+        },
+        {
+          "projectId": "6509b8e7f473226a369d8bf7"
+        }
+      ],
+      "completedProject": [],
+      "cancelledProject": []
+    },
+    "portfolio": [
+      {
+        "title": "MaxUI",
+        "url": "https://maxuipro.vercel.app/",
+        "image": "https://via.placeholder.com/640x480.png/004400?text=rem"
+      }
+    ],
+    "clientFeedback": [
+      {
+        "name": "Mr. Joan Lowe I",
+        "photoUrl": "",
+        "rating": "5.00",
+        "jobFrom": "Jun 26, 2023",
+        "jobTo": "Sep 26, 2023",
+        "jobType": "Hourly Based Project",
+        "price": "3519.41",
+        "message": "Oh, as to prevent its."
+      }
+    ],
+    "saveItems": {
+      "saveJobs": [
+        {
+          "jobId": "6509b8e7f473226a369d8bf7"
+        }
+      ],
+      "likeFreelancers": []
+    }
+  },
+  {
+    "name": "Nuaim Hasan",
+    "email": "nuaim@gmail.com",
+    "userName": "nuaim",
+    "tagline": "MERN Stack Developer",
+    "role": "freelancer",
+    "number": "01700000000",
+    "photoUrl": "https://i.ibb.co/znwrX5c/na.jpg",
+    "bannerUrl": "https://i.ibb.co/zm8b32f/1674592601608.png",
+    "location": {
+      "country": "Bangladesh",
+      "city": "Dhaka"
+    },
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "rating": {
+      "average": "5",
+      "total": "10"
+    },
+    "hourlyRate": "20",
+    "englishLevel": "Basic",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "ReactJs",
+      "NextJs",
+      "Redux",
+      "Tailwind CSS",
+      "Bootstrap",
+      "ExpressJs",
+      "MongoDB"
+    ],
+    "projects": {
+      "ongoingProject": [],
+      "completedProject": [],
+      "cancelledProject": []
+    },
+    "portfolio": [
+      {
+        "title": "MaxUI",
+        "url": "https://maxuipro.vercel.app/",
+        "image": "https://via.placeholder.com/640x480.png/004400?text=rem"
+      }
+    ],
+    "clientFeedback": []
+  },
+  {
+    "name": "Nuaim Hasan Nasim",
+    "email": "nuaimnasim@gmail.com",
+    "userName": "nuaim-nasim",
+    "tagline": "Full Stack Developer",
+    "role": "freelancer",
+    "number": "01700000000",
+    "photoUrl": "https://i.ibb.co/znwrX5c/na.jpg",
+    "bannerUrl": "https://i.ibb.co/zm8b32f/1674592601608.png",
+    "location": {
+      "country": "Bangladesh",
+      "city": "Dhaka"
+    },
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "rating": {
+      "average": "3.5",
+      "total": "30"
+    },
+    "hourlyRate": "50",
+    "englishLevel": "Basic",
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "ReactJs",
+      "Redux",
+      "NextJs",
+      "Redux",
+      "Tailwind CSS",
+      "Bootstrap",
+      "ExpressJs",
+      "MongoDB"
+    ],
+    "projects": {
+      "ongoingProject": [],
+      "completedProject": [],
+      "cancelledProject": []
+    },
+    "portfolio": [
+      {
+        "title": "MaxUI",
+        "url": "https://maxuipro.vercel.app/",
+        "image": "https://via.placeholder.com/640x480.png/004400?text=rem"
+      }
+    ],
+    "clientFeedback": []
+  }
+]

@@ -1,13 +1,10 @@
-import { UseContext } from "../../ContextAPI/ContextAPI";
 import JobCard from "./JobCard";
 
-export default function JobsList() {
-  const { jobs } = UseContext();
-
+export default function JobsList({ jobs }) {
   return (
     <div className="lists">
-      {jobs?.length > 0 &&
-        jobs?.map((job) => <JobCard key={job._id} job={job} />)}
+      {jobs?.data?.length > 0 &&
+        jobs?.data?.map((job) => <JobCard key={job._id} job={job} />)}
     </div>
   );
 }
