@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CiFilter } from "react-icons/ci";
 import Select from "react-dropdown-select";
 import { useGetCategoriesQuery } from "../../Redux/category/categoryApi";
-import { useLazyGetJobsByFilterQuery } from "../../Redux/jobs/jobApi";
+import { useLazyGetFilterJobsQuery } from "../../Redux/jobs/jobApi";
 
 const locations = [
   { name: "Dhaka", id: 1 },
@@ -20,12 +20,10 @@ export default function JobsFilter() {
   const { data: categories } = useGetCategoriesQuery();
 
   const [selectedCategory, setSelectedCategory] = useState([]);
-  // const [selectedSkill, setSelectedSkill] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState([]);
 
-  let url = ``;
-  const [getJobsByFilter, result] = useLazyGetJobsByFilterQuery(url);
-  console.log(result);
+  let url = `job/all-jobs`;
+  const [getFilterJobs] = useLazyGetFilterJobsQuery();
 
   const handleApplyFilter = () => {
     let categories = [];
@@ -33,11 +31,20 @@ export default function JobsFilter() {
     selectedCategory?.filter((category) => categories.push(category.slug));
     selectedLocation?.filter((location) => locations.push(location.name));
 
-    url = `/job/all-jobs?categories=${JSON.stringify(
+    url = `job/all-jobs?categories=${JSON.stringify(
       categories
     )}&locations=${JSON.stringify(locations)}`;
 
-    getJobsByFilter(url);
+    getFilterJobs(url);
+    setFilterToggle(false);
+  };
+
+  const handleClearFilter = () => {
+    setSelectedCategory([]);
+    setSelectedLocation([]);
+
+    getFilterJobs(url);
+    setFilterToggle(false);
   };
 
   return (
@@ -107,7 +114,10 @@ export default function JobsFilter() {
             >
               Apply Filter
             </button>
-            <button className="bg-gray-700 hover:bg-opacity-90 duration-200 text-sm font-medium text-base-100 px-6 py-2 rounded">
+            <button
+              onClick={handleClearFilter}
+              className="bg-gray-700 hover:bg-opacity-90 duration-200 text-sm font-medium text-base-100 px-6 py-2 rounded"
+            >
               Clear Filter
             </button>
           </div>

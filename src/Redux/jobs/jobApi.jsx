@@ -1,9 +1,9 @@
 import { apiSlice } from "../api/apiSlice";
-import { getFilterJobs } from "./jobSlice";
+import { fetchJobs } from "./jobSlice";
 
 export const jobApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getJobs: builder.query({
+    getAllJobs: builder.query({
       query: () => ({
         url: "/job/all-jobs",
       }),
@@ -11,22 +11,20 @@ export const jobApi = apiSlice.injectEndpoints({
         try {
           const result = await queryFulfilled;
 
-          dispatch(getFilterJobs(result?.data));
+          dispatch(fetchJobs(result?.data));
         } catch (error) {
           // Do not any thing , handel error from ui
         }
       },
     }),
 
-    getJobsByFilter: builder.query({
-      query: (url) => ({
-        url: url,
-      }),
+    getFilterJobs: builder.query({
+      query: (url) => url,
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
 
-          dispatch(getFilterJobs(result?.data));
+          dispatch(fetchJobs(result?.data));
         } catch (error) {
           // Do not any thing , handel error from ui
         }
@@ -35,4 +33,4 @@ export const jobApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetJobsQuery, useLazyGetJobsByFilterQuery } = jobApi;
+export const { useGetAllJobsQuery, useLazyGetFilterJobsQuery } = jobApi;

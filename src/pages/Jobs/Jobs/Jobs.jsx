@@ -1,4 +1,5 @@
-import { useGetJobsQuery } from "../../../Redux/jobs/jobApi";
+import { useSelector } from "react-redux";
+import { useGetAllJobsQuery } from "../../../Redux/jobs/jobApi";
 import JobsFilter from "../../../components/JobsComponents/JobsFilter";
 import JobsList from "../../../components/JobsComponents/JobsList";
 import JobCardSkeleton from "../../../components/Skeleton/JobCardSkeleton";
@@ -6,13 +7,8 @@ import JobCardSkeleton from "../../../components/Skeleton/JobCardSkeleton";
 export default function Jobs() {
   window.scroll(0, 0);
 
-  const {
-    data: jobs,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-  } = useGetJobsQuery();
+  const { isLoading, isSuccess, isError, error } = useGetAllJobsQuery();
+  const { jobs } = useSelector((state) => state.jobs);
 
   let content = null;
 
