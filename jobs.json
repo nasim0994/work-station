@@ -1,6 +1,6 @@
 [
   {
-    "postedBy": "65082c8af473226a36866b1a",
+    "postedBy": "client@gmail.com",
     "title": "Back-End Developer",
     "companyName": "Pidex Limited",
     "companyLogo": "https://pidex.biz/front-end/landing/assets/img/logo/logo-web.png",
@@ -12,10 +12,11 @@
     "details": "And he added in a soothing tone: 'don't be angry about it. And yet I wish I hadn't to bring tears into her eyes--and still as she could not help bursting out laughing: and when she had finished, her.",
     "skills": ["PHP", "Laravel"],
     "country": "Bangladesh",
-    "city": "Dhaka"
+    "city": "Dhaka",
+    "category": "Programming & Tech"
   },
   {
-    "postedBy": "65082c8af473226a36866b1a",
+    "postedBy": "client@gmail.com",
     "title": "Front-End Developer",
     "companyName": "Pidex Limited",
     "companyLogo": "https://pidex.biz/front-end/landing/assets/img/logo/logo-web.png",
@@ -27,10 +28,11 @@
     "details": "And he added in a soothing tone: 'don't be angry about it. And yet I wish I hadn't to bring tears into her eyes--and still as she could not help bursting out laughing: and when she had finished, her.",
     "skills": ["HTML", "CSS"],
     "country": "Bangladesh",
-    "city": "Dhaka"
+    "city": "Dhaka",
+    "category": "Ethical Hacking"
   },
   {
-    "postedBy": "65082c8af473226a36866b1a",
+    "postedBy": "client@gmail.com",
     "title": "MERN Stack Developer",
     "slug": "MERN-Stack-Developer",
     "companyName": "3rt",
@@ -43,6 +45,7 @@
     "details": "And he added in a soothing tone: 'don't be angry about it. And yet I wish I hadn't to bring tears into her eyes--and still as she could not help bursting out laughing: and when she had finished, her.",
     "skills": ["HTML", "CSS", "React", "Node JS"],
     "country": "Bangladesh",
-    "city": "Dhaka"
+    "city": "Rajshahi",
+    "category": "Programming & Tech"
   }
 ]
