@@ -5,14 +5,30 @@ import { useGetCategoriesQuery } from "../../Redux/category/categoryApi";
 import { useLazyGetFilterJobsQuery } from "../../Redux/jobs/jobApi";
 
 const locations = [
-  { name: "Dhaka", id: 1 },
-  { name: "Rajshahi", id: 2 },
-  { name: "Sylhet", id: 3 },
-  { name: "Chattogram", id: 4 },
-  { name: "Rangpur", id: 5 },
-  { name: "Barishal", id: 6 },
-  { name: "Khulna", id: 7 },
-  { name: "Mymensingh ", id: 8 },
+  { id: 1, name: "Dhaka" },
+  { id: 2, name: "Rajshahi" },
+  { id: 3, name: "Sylhet" },
+  { id: 4, name: "Chattogram" },
+  { id: 5, name: "Rangpur" },
+  { id: 6, name: "Barishal" },
+  { id: 7, name: "Khulna" },
+  { id: 8, name: "Mymensingh " },
+];
+
+const skills = [
+  { id: 1, name: "HTML" },
+  { id: 2, name: "CSS" },
+  { id: 3, name: "Javascript" },
+  { id: 4, name: "React Js" },
+  { id: 5, name: "Node Js" },
+  { id: 6, name: "Express Js" },
+  { id: 7, name: "PHP" },
+  { id: 8, name: "Laravel" },
+];
+
+const jobTypes = [
+  { id: 1, name: "Fixed" },
+  { id: 2, name: "Hourly Based" },
 ];
 
 export default function JobsFilter() {
@@ -20,6 +36,8 @@ export default function JobsFilter() {
   const { data: categories } = useGetCategoriesQuery();
 
   const [selectedCategory, setSelectedCategory] = useState([]);
+  const [selectedJobTypes, setSelectedJobTypes] = useState([]);
+  const [selectedSkills, setSelectedSkills] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState([]);
 
   let url = `job/all-jobs`;
@@ -27,12 +45,18 @@ export default function JobsFilter() {
 
   const handleApplyFilter = () => {
     let categories = [];
+    let skills = [];
+    let jobTypes = [];
     let locations = [];
     selectedCategory?.filter((category) => categories.push(category.slug));
+    selectedSkills?.filter((skill) => skills.push(skill.name));
+    selectedJobTypes?.filter((jobType) => jobTypes.push(jobType.name));
     selectedLocation?.filter((location) => locations.push(location.name));
 
     url = `job/all-jobs?categories=${JSON.stringify(
       categories
+    )}&skills=${JSON.stringify(skills)}&jobType=${JSON.stringify(
+      jobTypes
     )}&locations=${JSON.stringify(locations)}`;
 
     getFilterJobs(url);
@@ -42,6 +66,7 @@ export default function JobsFilter() {
   const handleClearFilter = () => {
     setSelectedCategory([]);
     setSelectedLocation([]);
+    setSelectedSkills([]);
 
     getFilterJobs(url);
     setFilterToggle(false);
@@ -65,7 +90,7 @@ export default function JobsFilter() {
           <h6 className="font-medium">Filters</h6>
         </div>
 
-        <div>
+        <div className="flex flex-col gap-3">
           {/* category */}
           <div>
             <label htmlFor="category">
@@ -83,8 +108,41 @@ export default function JobsFilter() {
             />
           </div>
 
+          {/* Skills */}
+          <div>
+            <label htmlFor="category">
+              <h6 className="pl-1 pb-1 text-sm font-medium">Skills</h6>
+            </label>
+            <Select
+              options={skills}
+              onChange={(e) => setSelectedSkills(e)}
+              values={selectedSkills}
+              labelField="name"
+              valueField="id"
+              multi={true}
+              searchBy="name"
+              closeOnSelect={true}
+            />
+          </div>
+
+          {/* Job Type */}
+          <div>
+            <label htmlFor="category">
+              <h6 className="pl-1 pb-1 text-sm font-medium">Job Type</h6>
+            </label>
+            <Select
+              options={jobTypes}
+              onChange={(e) => setSelectedJobTypes(e)}
+              values={selectedJobTypes}
+              labelField="name"
+              valueField="id"
+              searchBy="name"
+              closeOnSelect={true}
+            />
+          </div>
+
           {/* Location */}
-          <div className="mt-4">
+          <div>
             <label htmlFor="location">
               <h6 className="pl-1 pb-1 text-sm font-medium">Location</h6>
             </label>
@@ -100,14 +158,7 @@ export default function JobsFilter() {
             />
           </div>
 
-          {/* Specialization */}
-          <div className="mt-4">
-            <label htmlFor="specialization">
-              <h6 className="pl-1 pb-1 text-sm font-medium">Specialization</h6>
-            </label>
-          </div>
-
-          <div className="mt-4 grid grid-cols-2 gap-2">
+          <div className="mt-2 grid grid-cols-2 gap-2">
             <button
               onClick={handleApplyFilter}
               className="bg-primary hover:bg-opacity-90 duration-200 text-sm font-medium text-base-100 px-6 py-2 rounded"
