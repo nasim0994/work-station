@@ -5,7 +5,7 @@ export const jobApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllJobs: builder.query({
       query: () => ({
-        url: `/job/all-jobs?pageNumber=1`,
+        url: `/job/all-jobs`,
       }),
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
@@ -33,4 +33,8 @@ export const jobApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetAllJobsQuery, useLazyGetFilterJobsQuery } = jobApi;
+export const {
+  useGetAllJobsQuery,
+  useLazyGetAllJobsQuery,
+  useLazyGetFilterJobsQuery,
+} = jobApi;

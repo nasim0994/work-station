@@ -1,14 +1,14 @@
 import ReactPaginate from "react-paginate";
 
-export default function JobPagination({ handleApplyFilter, totalPages }) {
+export default function JobPagination({ handlePageClick, pageCount }) {
   return (
     <div className="mt-10">
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
-        onPageChange={handleApplyFilter}
-        pageRangeDisplayed={2}
-        pageCount={totalPages}
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
         previousLabel="< previous"
         containerClassName={"flex gap-2 justify-center"}
         pageLinkClassName={

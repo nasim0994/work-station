@@ -2,7 +2,10 @@ import { useState } from "react";
 import { CiFilter } from "react-icons/ci";
 import Select from "react-dropdown-select";
 import { useGetCategoriesQuery } from "../../Redux/category/categoryApi";
-import { useLazyGetFilterJobsQuery } from "../../Redux/jobs/jobApi";
+import {
+  useLazyGetAllJobsQuery,
+  useLazyGetFilterJobsQuery,
+} from "../../Redux/jobs/jobApi";
 
 const locations = [
   { id: 1, name: "Dhaka" },
@@ -22,7 +25,7 @@ const jobTypes = [
   { id: 3, name: "Internship" },
 ];
 
-export default function JobsFilter() {
+export default function JobsFilter({ setItemOffset }) {
   const [filterToggle, setFilterToggle] = useState(false);
   const { data: categories } = useGetCategoriesQuery();
 
@@ -30,10 +33,12 @@ export default function JobsFilter() {
   const [selectedJobTypes, setSelectedJobTypes] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState([]);
 
-  let url = `job/all-jobs`;
   const [getFilterJobs] = useLazyGetFilterJobsQuery();
+  const [getAllJobs] = useLazyGetAllJobsQuery();
 
   const handleApplyFilter = () => {
+    setItemOffset(0);
+
     let categories = [];
     let jobTypes = [];
     let locations = [];
@@ -41,7 +46,7 @@ export default function JobsFilter() {
     selectedJobTypes?.filter((jobType) => jobTypes.push(jobType.name));
     selectedLocation?.filter((location) => locations.push(location.name));
 
-    url = `job/all-jobs?categories=${JSON.stringify(
+    let url = `job/all-jobs?categories=${JSON.stringify(
       categories
     )}&jobType=${JSON.stringify(jobTypes)}&locations=${JSON.stringify(
       locations
@@ -52,10 +57,13 @@ export default function JobsFilter() {
   };
 
   const handleClearFilter = () => {
+    setItemOffset(0);
+
     setSelectedCategory([]);
     setSelectedLocation([]);
+    setSelectedJobTypes([]);
 
-    getFilterJobs(url);
+    getAllJobs();
     setFilterToggle(false);
   };
 
