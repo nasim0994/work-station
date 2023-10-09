@@ -12,23 +12,14 @@ const locations = [
   { id: 5, name: "Rangpur" },
   { id: 6, name: "Barishal" },
   { id: 7, name: "Khulna" },
-  { id: 8, name: "Mymensingh " },
-];
-
-const skills = [
-  { id: 1, name: "HTML" },
-  { id: 2, name: "CSS" },
-  { id: 3, name: "Javascript" },
-  { id: 4, name: "React Js" },
-  { id: 5, name: "Node Js" },
-  { id: 6, name: "Express Js" },
-  { id: 7, name: "PHP" },
-  { id: 8, name: "Laravel" },
+  { id: 8, name: "Natore" },
+  { id: 9, name: "Bogura" },
 ];
 
 const jobTypes = [
   { id: 1, name: "Fixed" },
   { id: 2, name: "Hourly Based" },
+  { id: 3, name: "Internship" },
 ];
 
 export default function JobsFilter() {
@@ -37,7 +28,6 @@ export default function JobsFilter() {
 
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedJobTypes, setSelectedJobTypes] = useState([]);
-  const [selectedSkills, setSelectedSkills] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState([]);
 
   let url = `job/all-jobs`;
@@ -45,19 +35,17 @@ export default function JobsFilter() {
 
   const handleApplyFilter = () => {
     let categories = [];
-    let skills = [];
     let jobTypes = [];
     let locations = [];
     selectedCategory?.filter((category) => categories.push(category.slug));
-    selectedSkills?.filter((skill) => skills.push(skill.name));
     selectedJobTypes?.filter((jobType) => jobTypes.push(jobType.name));
     selectedLocation?.filter((location) => locations.push(location.name));
 
     url = `job/all-jobs?categories=${JSON.stringify(
       categories
-    )}&skills=${JSON.stringify(skills)}&jobType=${JSON.stringify(
-      jobTypes
-    )}&locations=${JSON.stringify(locations)}`;
+    )}&jobType=${JSON.stringify(jobTypes)}&locations=${JSON.stringify(
+      locations
+    )}`;
 
     getFilterJobs(url);
     setFilterToggle(false);
@@ -66,7 +54,6 @@ export default function JobsFilter() {
   const handleClearFilter = () => {
     setSelectedCategory([]);
     setSelectedLocation([]);
-    setSelectedSkills([]);
 
     getFilterJobs(url);
     setFilterToggle(false);
@@ -102,23 +89,6 @@ export default function JobsFilter() {
               values={selectedCategory}
               labelField="name"
               valueField="_id"
-              multi={true}
-              searchBy="name"
-              closeOnSelect={true}
-            />
-          </div>
-
-          {/* Skills */}
-          <div>
-            <label htmlFor="category">
-              <h6 className="pl-1 pb-1 text-sm font-medium">Skills</h6>
-            </label>
-            <Select
-              options={skills}
-              onChange={(e) => setSelectedSkills(e)}
-              values={selectedSkills}
-              labelField="name"
-              valueField="id"
               multi={true}
               searchBy="name"
               closeOnSelect={true}

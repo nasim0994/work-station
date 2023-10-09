@@ -4,8 +4,8 @@ import { fetchJobs } from "./jobSlice";
 export const jobApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllJobs: builder.query({
-      query: (pageNumber) => ({
-        url: `/job/all-jobs?pageNumber=${pageNumber}&limit=2`,
+      query: () => ({
+        url: `/job/all-jobs?pageNumber=1`,
       }),
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {

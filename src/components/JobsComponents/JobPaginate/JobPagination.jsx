@@ -1,17 +1,13 @@
 import ReactPaginate from "react-paginate";
 
-export default function Pagination({
-  handlePagination,
-  totalPages,
-  perPageItems,
-}) {
+export default function JobPagination({ handleApplyFilter, totalPages }) {
   return (
-    <>
+    <div className="mt-10">
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
-        onPageChange={handlePagination}
-        pageRangeDisplayed={perPageItems}
+        onPageChange={handleApplyFilter}
+        pageRangeDisplayed={2}
         pageCount={totalPages}
         previousLabel="< previous"
         containerClassName={"flex gap-2 justify-center"}
@@ -27,6 +23,6 @@ export default function Pagination({
         }
         breakLinkClassName={"px-1 py-1 hover:text-primary duration-200"}
       />
-    </>
+    </div>
   );
 }
