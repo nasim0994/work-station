@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  loading: true,
   freelancers: {},
+  filters: {
+    categories: [],
+    skills: [],
+  },
 };
 
 const freelancerSlice = createSlice({
@@ -10,11 +13,13 @@ const freelancerSlice = createSlice({
   initialState,
   reducers: {
     fetchFreelancers: (state, action) => {
-      state.loading = false;
       state.freelancers = action.payload.freelancers;
+    },
+    setFilters: (state, action) => {
+      state.filters = action.payload;
     },
   },
 });
 
-export const { fetchFreelancers } = freelancerSlice.actions;
+export const { fetchFreelancers, setFilters } = freelancerSlice.actions;
 export default freelancerSlice.reducer;

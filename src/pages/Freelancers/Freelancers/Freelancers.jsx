@@ -8,19 +8,21 @@ import { useState } from "react";
 
 export default function Freelancers() {
   window.scroll(0, 0);
-  const { freelancers, loading } = useSelector((state) => state.freelancers);
+  const { freelancers, filters } = useSelector((state) => state.freelancers);
+  const { categories, skills } = filters;
 
   const [currentPage, setCurrentPage] = useState(1);
-  let total = freelancers?.total;
-  const pages = Math.ceil(parseInt(total) / 2);
 
-  const { isSuccess, isError, error } = useGetFreelancersQuery(currentPage, {
-    refetchOnMountOrArgChange: true,
-  });
+  const { isLoading, isSuccess, isError, error } = useGetFreelancersQuery(
+    { currentPage, categories, skills },
+    {
+      refetchOnMountOrArgChange: true,
+    }
+  );
 
   let content = null;
 
-  if (loading) {
+  if (isLoading) {
     content = (
       <>
         <FreelancerCardSkeleton />
@@ -28,11 +30,11 @@ export default function Freelancers() {
     );
   }
 
-  if (!loading && isError) {
+  if (!isLoading && isError) {
     content = <p>{error}</p>;
   }
 
-  if (isSuccess && !isError && !loading) {
+  if (isSuccess && !isError && !isLoading) {
     content = <FreelancerList freelancers={freelancers} />;
   }
 
@@ -40,13 +42,17 @@ export default function Freelancers() {
     <div className="py-5 min-h-[85vh] bg-gray-50/50">
       <div className="container">
         <div className="md:mx-16 lg:flex items-start gap-6 text-neutral">
-          <FreelancerFilter />
+          <FreelancerFilter setCurrentPage={setCurrentPage} />
 
           {content}
         </div>
 
-        {!loading && freelancers?.data?.length > 0 && (
-          <Pagination setCurrentPage={setCurrentPage} pages={pages} />
+        {!isLoading && freelancers?.data?.length > 0 && (
+          <Pagination
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+            pages={freelancers?.pages}
+          />
         )}
       </div>
     </div>

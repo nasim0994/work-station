@@ -2,22 +2,24 @@ import { CiFilter } from "react-icons/ci";
 import Select from "react-dropdown-select";
 import { useEffect, useState } from "react";
 import { useGetCategoriesQuery } from "../../Redux/category/categoryApi";
+import { useDispatch } from "react-redux";
+import { setFilters } from "../../Redux/freelancer/freelancerSlice";
 
-const locations = [
-  { name: "Dhaka", id: 1 },
-  { name: "Rajshahi", id: 2 },
-  { name: "Sylhet", id: 3 },
-  { name: "Chattogram", id: 4 },
-  { name: "Rangpur", id: 5 },
-  { name: "Barishal", id: 6 },
-  { name: "Khulna", id: 7 },
-  { name: "Mymensingh ", id: 8 },
+const skills = [
+  { id: 1, name: "HTML" },
+  { id: 2, name: "CSS" },
+  { id: 3, name: "React" },
+  { id: 4, name: "NextJs" },
+  { id: 5, name: "PHP" },
+  { id: 6, name: "SEO" },
+  { id: 7, name: "Adobe Photoshop" },
+  { id: 8, name: "SEO " },
 ];
 
-export default function FreelancerFilter() {
-  const [selectedCategory, setSelectedCategory] = useState([]);
-  const [selectedLocation, setSelectedLocation] = useState([]);
+export default function FreelancerFilter({ setCurrentPage }) {
   const [filterToggle, setFilterToggle] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [selectedSkill, setSelectedSkill] = useState([]);
   useEffect(() => {
     window.addEventListener("click", (e) => {
       if (!e.target.closest("#filter_wrap")) {
@@ -27,6 +29,38 @@ export default function FreelancerFilter() {
   }, []);
 
   const { data: categories } = useGetCategoriesQuery();
+
+  const dispatch = useDispatch();
+
+  const handleApplyFilter = () => {
+    setCurrentPage(1);
+    let categories = [];
+    let skills = [];
+    selectedCategory?.filter((category) => categories.push(category.slug));
+    selectedSkill?.filter((skill) => skills.push(skill.name));
+
+    let filters = {
+      categories,
+      skills,
+    };
+    dispatch(setFilters(filters));
+  };
+
+  const handleClearFilter = () => {
+    setCurrentPage(1);
+
+    setSelectedCategory([]);
+    setSelectedSkill([]);
+
+    let categories = [];
+    let skills = [];
+
+    let filters = {
+      categories,
+      skills,
+    };
+    dispatch(setFilters(filters));
+  };
 
   return (
     <div id="filter_wrap">
@@ -64,15 +98,15 @@ export default function FreelancerFilter() {
             />
           </div>
 
-          {/* Location */}
+          {/* Skill */}
           <div className="mt-4">
-            <label htmlFor="location">
-              <h6 className="pl-1 pb-1 text-sm font-medium">Location</h6>
+            <label htmlFor="Skill">
+              <h6 className="pl-1 pb-1 text-sm font-medium">Skills</h6>
             </label>
             <Select
-              options={locations}
-              onChange={(e) => setSelectedLocation(e)}
-              values={selectedLocation}
+              options={skills}
+              onChange={(e) => setSelectedSkill(e)}
+              values={selectedSkill}
               labelField="name"
               valueField="id"
               multi={true}
@@ -81,18 +115,17 @@ export default function FreelancerFilter() {
             />
           </div>
 
-          {/* Specialization */}
-          <div className="mt-4">
-            <label htmlFor="specialization">
-              <h6 className="pl-1 pb-1 text-sm font-medium">Specialization</h6>
-            </label>
-          </div>
-
           <div className="mt-4 grid grid-cols-2 gap-2">
-            <button className="bg-primary hover:bg-opacity-90 duration-200 text-sm font-medium text-base-100 px-6 py-2 rounded">
+            <button
+              onClick={handleApplyFilter}
+              className="bg-primary hover:bg-opacity-90 duration-200 text-sm font-medium text-base-100 px-6 py-2 rounded"
+            >
               Apply Filter
             </button>
-            <button className="bg-gray-700 hover:bg-opacity-90 duration-200 text-sm font-medium text-base-100 px-6 py-2 rounded">
+            <button
+              onClick={handleClearFilter}
+              className="bg-gray-700 hover:bg-opacity-90 duration-200 text-sm font-medium text-base-100 px-6 py-2 rounded"
+            >
               Clear Filter
             </button>
           </div>

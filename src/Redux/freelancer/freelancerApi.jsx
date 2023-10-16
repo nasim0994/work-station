@@ -4,8 +4,10 @@ import { fetchFreelancers } from "./freelancerSlice";
 export const freelancerApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getFreelancers: builder.query({
-      query: (currentPage) => ({
-        url: `/freelancer/all-freelancers?limit=2&page=${currentPage}`,
+      query: ({ currentPage, categories, skills }) => ({
+        url: `/freelancer/all-freelancers?limit=2&page=${currentPage}&categories=${categories}&skills=${JSON.stringify(
+          skills
+        )}`,
       }),
 
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
