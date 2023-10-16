@@ -5,6 +5,7 @@ import { useGetJobsQuery } from "../../../Redux/jobs/jobApi";
 import JobsList from "../../../components/JobsComponents/JobsList";
 import JobsFilter from "../../../components/JobsComponents/JobsFilter";
 import Pagination from "../../../components/Pagination/Pagination";
+import JobCardSkeleton from "../../../components/Skeleton/JobCardSkeleton";
 
 export default function Jobs() {
   window.scroll(0, 0);
@@ -23,7 +24,7 @@ export default function Jobs() {
   let content = null;
 
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <JobCardSkeleton />;
   }
 
   if (!isLoading || isError) {
