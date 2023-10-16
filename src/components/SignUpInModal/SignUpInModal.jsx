@@ -1,4 +1,4 @@
-import CreateAccount from "../CreateAccount/CreateAccount";
+import CreateAccount from "./CreateAccount";
 import LoginForm from "./LoginForm";
 
 export default function SignUpInModal({ formToggle, setFormToggle }) {
