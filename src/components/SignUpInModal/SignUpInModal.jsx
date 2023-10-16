@@ -8,6 +8,7 @@ const SignUpInModal = ({ formToggle, setFormToggle }) => {
       <div className="modal w-[450px] h-auto">
         <div className="px-6 py-5">
           {formToggle === "login" && <LoginForm />}
+
           {formToggle === "signup" && <SignUpForm />}
 
           <div className="border-t border-neutral/20 mt-6 pt-4 text-center">
