@@ -1,10 +1,9 @@
 [
   {
     "name": "Mask",
-    "email": "client@gmail.com",
-    "userName": "client1",
-    "role": "client",
-    "number": "01700000000",
+    "email": "mask@gmail.com",
+    "userName": "mask",
+    "number": "",
     "photoUrl": "https://i.ibb.co/ZWpcs7P/Elon-Musk-cropped.jpg",
     "bannerUrl": "https://i.ibb.co/zm8b32f/1674592601608.png",
     "location": {
@@ -27,11 +26,6 @@
       "completedJobs": [],
       "cancelledJobs": []
     },
-    "postedJobs": [
-      {
-        "jobId": "6509b8e7f473226a369d8bf9"
-      }
-    ],
     "freelancerFeedback": [
       {
         "name": "Nasim Uddin",
@@ -51,6 +45,43 @@
           "jobId": "650afe205d3288bac6da637c"
         }
       ]
+    }
+  },
+  {
+    "name": "Mohammad",
+    "email": "mohammad@gmail.com",
+    "userName": "mohammad",
+    "number": "",
+    "photoUrl": "https://i.ibb.co/ZWpcs7P/Elon-Musk-cropped.jpg",
+    "bannerUrl": "https://i.ibb.co/zm8b32f/1674592601608.png",
+    "location": {
+      "country": "USA",
+      "city": "New York"
+    },
+    "rating": {
+      "average": "2",
+      "total": "20"
+    },
+    "jobs": {
+      "ongoingJobs": [],
+      "completedJobs": [],
+      "cancelledJobs": []
+    },
+    "freelancerFeedback": [
+      {
+        "name": "Nasim Uddin",
+        "photoUrl": "",
+        "rating": "5.00",
+        "jobFrom": "Jun 26, 2023",
+        "jobTo": "Sep 26, 2023",
+        "jobType": "Hourly Based Project",
+        "price": "3519.41",
+        "message": "Oh, as to prevent its."
+      }
+    ],
+    "saveItems": {
+      "saveJobs": [],
+      "likeFreelancers": []
     }
   }
 ]

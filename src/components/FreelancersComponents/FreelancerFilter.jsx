@@ -1,15 +1,8 @@
 import { CiFilter } from "react-icons/ci";
 import Select from "react-dropdown-select";
 import { useEffect, useState } from "react";
+import { useGetCategoriesQuery } from "../../Redux/category/categoryApi";
 
-const categories = [
-  { name: "Web Design", id: 1 },
-  { name: "Front End Development", id: 2 },
-  { name: "Web Development", id: 3 },
-  { name: "MERN Stack Development", id: 4 },
-  { name: "Data Entry", id: 5 },
-  { name: "Logo Design", id: 6 },
-];
 const locations = [
   { name: "Dhaka", id: 1 },
   { name: "Rajshahi", id: 2 },
@@ -32,6 +25,8 @@ export default function FreelancerFilter() {
       }
     });
   }, []);
+
+  const { data: categories } = useGetCategoriesQuery();
 
   return (
     <div id="filter_wrap">
@@ -58,11 +53,11 @@ export default function FreelancerFilter() {
               <h6 className="pl-1 pb-1 text-sm font-medium">Category</h6>
             </label>
             <Select
-              options={categories}
+              options={categories?.data}
               onChange={(e) => setSelectedCategory(e)}
               values={selectedCategory}
               labelField="name"
-              valueField="id"
+              valueField="_id"
               multi={true}
               searchBy="name"
               closeOnSelect={true}

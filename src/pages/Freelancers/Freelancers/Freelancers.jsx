@@ -1,22 +1,26 @@
+import { useSelector } from "react-redux";
 import { useGetFreelancersQuery } from "../../../Redux/freelancer/freelancerApi";
 import FreelancerFilter from "../../../components/FreelancersComponents/FreelancerFilter";
 import FreelancerList from "../../../components/FreelancersComponents/FreelancerList";
 import FreelancerCardSkeleton from "../../../components/Skeleton/FreelancerCardSkeleton";
+import Pagination from "../../../components/Pagination/Pagination";
+import { useState } from "react";
 
 export default function Freelancers() {
   window.scroll(0, 0);
+  const { freelancers, loading } = useSelector((state) => state.freelancers);
 
-  const {
-    data: freelancers,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-  } = useGetFreelancersQuery();
+  const [currentPage, setCurrentPage] = useState(1);
+  let total = freelancers?.total;
+  const pages = Math.ceil(parseInt(total) / 2);
+
+  const { isSuccess, isError, error } = useGetFreelancersQuery(currentPage, {
+    refetchOnMountOrArgChange: true,
+  });
 
   let content = null;
 
-  if (isLoading) {
+  if (loading) {
     content = (
       <>
         <FreelancerCardSkeleton />
@@ -24,11 +28,11 @@ export default function Freelancers() {
     );
   }
 
-  if (!isLoading && isError) {
+  if (!loading && isError) {
     content = <p>{error}</p>;
   }
 
-  if (isSuccess && !isError && !isLoading) {
+  if (isSuccess && !isError && !loading) {
     content = <FreelancerList freelancers={freelancers} />;
   }
 
@@ -40,6 +44,10 @@ export default function Freelancers() {
 
           {content}
         </div>
+
+        {!loading && freelancers?.data?.length > 0 && (
+          <Pagination setCurrentPage={setCurrentPage} pages={pages} />
+        )}
       </div>
     </div>
   );

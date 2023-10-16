@@ -32,7 +32,7 @@ export default function FreelancerCard({ freelancer }) {
             <div className="flex gap-4 items-center text-neutral/80 mt-2">
               <div className="flex items-center gap-1 border-r pr-4">
                 <GoLocation />
-                <p>{freelancer?.location?.country}</p>
+                <p>{freelancer?.location?.city},{freelancer?.location?.country}</p>
               </div>
 
               <button className="flex items-center gap-1 hover:text-primary">
