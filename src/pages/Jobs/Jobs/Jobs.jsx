@@ -1,30 +1,26 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useGetAllJobsQuery } from "../../../Redux/jobs/jobApi";
+import { useGetJobsQuery } from "../../../Redux/jobs/jobApi";
 import JobCardSkeleton from "../../../components/Skeleton/JobCardSkeleton";
 
 import JobsList from "../../../components/JobsComponents/JobsList";
 import JobsFilter from "../../../components/JobsComponents/JobsFilter";
 
-import JobPagination from "../../../components/JobsComponents/JobPaginate/JobPagination";
+import Pagination from "../../../components/Pagination/Pagination";
 
 export default function Jobs() {
   window.scroll(0, 0);
 
-  const { isLoading, isSuccess, isError, error } = useGetAllJobsQuery();
-  const { jobs } = useSelector((state) => state.jobs);
+  const { jobs, filters } = useSelector((state) => state.jobs);
+  const { categories, locations, jobTypes } = filters;
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const itemsPerPage = 3;
-  const [itemOffset, setItemOffset] = useState(0);
-  const endOffset = itemOffset + itemsPerPage;
-  const pageCount = Math.ceil(jobs?.jobs?.length / itemsPerPage);
-
-  const currentJobs = jobs?.jobs?.slice(itemOffset, endOffset);
-
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % jobs?.jobs?.length;
-    setItemOffset(newOffset);
-  };
+  const { isLoading, isSuccess, isError, error } = useGetJobsQuery(
+    { currentPage, categories, locations, jobTypes },
+    {
+      refetchOnMountOrArgChange: true,
+    }
+  );
 
   let content = null;
 
@@ -41,22 +37,23 @@ export default function Jobs() {
   }
 
   if (isSuccess && !isError && !isLoading) {
-    content = <JobsList jobs={currentJobs} />;
+    content = <JobsList jobs={jobs} />;
   }
 
   return (
     <div className="py-5 min-h-[85vh] bg-gray-50/50">
       <div className="container">
         <div className="md:mx-16 lg:flex items-start gap-6 text-neutral">
-          <JobsFilter setItemOffset={setItemOffset} />
+          <JobsFilter setCurrentPage={setCurrentPage} />
 
           {content}
         </div>
 
-        {isSuccess && (
-          <JobPagination
-            handlePageClick={handlePageClick}
-            pageCount={pageCount}
+        {!isLoading && jobs?.jobs?.length > 0 && (
+          <Pagination
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+            pages={jobs?.pages}
           />
         )}
       </div>

@@ -2,10 +2,8 @@ import { useState } from "react";
 import { CiFilter } from "react-icons/ci";
 import Select from "react-dropdown-select";
 import { useGetCategoriesQuery } from "../../Redux/category/categoryApi";
-import {
-  useLazyGetAllJobsQuery,
-  useLazyGetFilterJobsQuery,
-} from "../../Redux/jobs/jobApi";
+import { useDispatch } from "react-redux";
+import { setClearFilters, setJobFilters } from "../../Redux/jobs/jobSlice";
 
 const locations = [
   { id: 1, name: "Dhaka" },
@@ -25,7 +23,7 @@ const jobTypes = [
   { id: 3, name: "Internship" },
 ];
 
-export default function JobsFilter({ setItemOffset }) {
+export default function JobsFilter({ setCurrentPage }) {
   const [filterToggle, setFilterToggle] = useState(false);
   const { data: categories } = useGetCategoriesQuery();
 
@@ -33,11 +31,10 @@ export default function JobsFilter({ setItemOffset }) {
   const [selectedJobTypes, setSelectedJobTypes] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState([]);
 
-  const [getFilterJobs] = useLazyGetFilterJobsQuery();
-  const [getAllJobs] = useLazyGetAllJobsQuery();
+  const dispatch = useDispatch();
 
   const handleApplyFilter = () => {
-    setItemOffset(0);
+    setCurrentPage(1);
 
     let categories = [];
     let jobTypes = [];
@@ -46,25 +43,23 @@ export default function JobsFilter({ setItemOffset }) {
     selectedJobTypes?.filter((jobType) => jobTypes.push(jobType.name));
     selectedLocation?.filter((location) => locations.push(location.name));
 
-    let url = `job/all-jobs?categories=${JSON.stringify(
-      categories
-    )}&jobType=${JSON.stringify(jobTypes)}&locations=${JSON.stringify(
-      locations
-    )}`;
-
-    getFilterJobs(url);
-    setFilterToggle(false);
+    dispatch(
+      setJobFilters({
+        categories,
+        jobTypes,
+        locations,
+      })
+    );
   };
 
   const handleClearFilter = () => {
-    setItemOffset(0);
+    setCurrentPage(1);
 
     setSelectedCategory([]);
     setSelectedLocation([]);
     setSelectedJobTypes([]);
 
-    getAllJobs();
-    setFilterToggle(false);
+    dispatch(setClearFilters());
   };
 
   return (
