@@ -10,8 +10,8 @@ import { AiFillStar } from "react-icons/ai";
 import SearchBox from "./../SearchBox/SearchBox";
 
 export default function Hero() {
-  const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef(null);
 
   const updateIndex = useCallback(
     () => setActiveIndex(swiperRef.current.swiper.realIndex),
