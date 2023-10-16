@@ -1,5 +1,5 @@
 import LoginForm from "./LoginForm";
-// import SignUpForm from "./SignUpForm";
+import SignUpForm from "./SignUpForm";
 
 export default function SignUpInModal({ formToggle, setFormToggle }) {
   return (
@@ -9,7 +9,7 @@ export default function SignUpInModal({ formToggle, setFormToggle }) {
         <div className="px-6 py-5">
           {formToggle === "login" && <LoginForm />}
 
-          {/* {formToggle === "signup" && <SignUpForm />} */}
+          {formToggle === "signup" && <SignUpForm />}
 
           <div className="border-t border-neutral/20 mt-6 pt-4 text-center">
             <p className={`${formToggle === "signup" && "hidden"} text-sm`}>
