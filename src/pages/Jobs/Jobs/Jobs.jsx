@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetJobsQuery } from "../../../Redux/jobs/jobApi";
-import JobCardSkeleton from "../../../components/Skeleton/JobCardSkeleton";
 
+import JobCardSkeleton from "../../../components/Skeleton/JobCardSkeleton";
 import JobsList from "../../../components/JobsComponents/JobsList";
 import JobsFilter from "../../../components/JobsComponents/JobsFilter";
-
 import Pagination from "../../../components/Pagination/Pagination";
 
 export default function Jobs() {
@@ -25,11 +24,7 @@ export default function Jobs() {
   let content = null;
 
   if (isLoading) {
-    content = (
-      <>
-        <JobCardSkeleton />
-      </>
-    );
+    content = <JobCardSkeleton />;
   }
 
   if (!isLoading || isError) {
