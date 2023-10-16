@@ -32,7 +32,7 @@ export default function Categories() {
     content = categories?.data?.map((category) => (
       <Link
         key={category._id}
-        to={`jobs/${category.slug}`}
+        to={`jobs?category=${category.slug}`}
         className="bg-gray-50 hover:bg-gray-100 duration-300 p-4 rounded-md"
       >
         <div className="flex items-center gap-1">

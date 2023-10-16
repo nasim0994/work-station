@@ -4,6 +4,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import AccountDropdown from "./MenuDropdown/AccountDropdown";
 import SignUpInModal from "../../SignUpInModal/SignUpInModal";
 import { useSelector } from "react-redux";
+import { BiSun } from "react-icons/bi";
 
 const Menu = () => {
   const [accountDropdown, setAccountDropdown] = useState(false);
@@ -11,7 +12,7 @@ const Menu = () => {
   const { loggedUser } = useSelector((state) => state.auth);
 
   return (
-    <nav className="text-neutral flex gap-6 items-center">
+    <nav className="text-neutral flex gap-3 sm:gap-6 items-center">
       <ul className="hidden md:flex gap-6 items-center font-medium ">
         <li>
           <NavLink
@@ -26,23 +27,24 @@ const Menu = () => {
             Find Work
           </NavLink>
         </li>
+
         <li>
-          <NavLink to="/blogs" className="hover:text-primary duration-300">
-            Blog
-          </NavLink>
+          <button className="text-xl hover:text-primary duration-300">
+            <BiSun />
+          </button>
         </li>
       </ul>
 
-      <ul className="flex gap-6 items-center font-medium ">
+      <ul className="flex gap-3 sm:gap-5 items-center font-medium ">
         {loggedUser?.status ? (
           <>
             {/* Message */}
-            <li>
+            <li className="hidden sm:block">
               <Link
                 to="/dashboard/message"
-                className="text-neutral/80 hover:text-primary duration-300"
+                className="text-neutral/80 hover:text-primary duration-300 "
               >
-                <HiOutlineMail className="text-[25px]" />
+                <HiOutlineMail className="text-[25px] mt-[2px]" />
               </Link>
             </li>
 
@@ -55,7 +57,7 @@ const Menu = () => {
                 <img
                   src={loggedUser?.data?.photoUrl}
                   alt=""
-                  className="w-10 h-10 rounded-full"
+                  className="w-9 h-9 rounded-full"
                 />
               </button>
 
@@ -70,7 +72,7 @@ const Menu = () => {
             <li>
               <button
                 onClick={() => setFormToggle("signup")}
-                className="signupBtn hidden sm:block hover:text-primary duration-300 cursor-pointer"
+                className="signupBtn hidden sm:block hover:text-primary duration-300"
               >
                 Signup
               </button>
@@ -78,7 +80,7 @@ const Menu = () => {
             <li>
               <button
                 onClick={() => setFormToggle("login")}
-                className="loginBtn border border-neutral px-6 py-1.5 rounded-md hover:border-primary hover:text-base-100 hover:bg-primary duration-500 cursor-pointer"
+                className="loginBtn border border-neutral px-6 py-1.5 rounded-md hover:border-primary hover:text-base-100 hover:bg-primary duration-500"
               >
                 Join
               </button>
