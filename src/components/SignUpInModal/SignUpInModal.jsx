@@ -1,7 +1,7 @@
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 
-const SignUpInModal = ({ formToggle, setFormToggle }) => {
+export default function SignUpInModal({ formToggle, setFormToggle }) {
   return (
     <>
       <div onClick={() => setFormToggle("")} className="modal_overlay"></div>
@@ -36,6 +36,4 @@ const SignUpInModal = ({ formToggle, setFormToggle }) => {
       </div>
     </>
   );
-};
-
-export default SignUpInModal;
+}
