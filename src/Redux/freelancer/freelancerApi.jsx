@@ -24,11 +24,13 @@ export const freelancerApi = apiSlice.injectEndpoints({
         }
       },
     }),
+
     getLoggedFreelancers: builder.query({
       query: () => ({
         url: "/freelancer/me",
       }),
     }),
+
     getExpertFreelancers: builder.query({
       query: () => ({
         url: "/freelancer/expert",
