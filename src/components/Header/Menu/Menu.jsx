@@ -29,7 +29,7 @@ const Menu = () => {
         </li>
 
         <li>
-          <button className="text-xl hover:text-primary duration-300">
+          <button className="text-xl hover:text-primary duration-300 mt-1.5">
             <BiSun />
           </button>
         </li>
