@@ -12,7 +12,7 @@ const freelancerSlice = createSlice({
   name: "freelancers",
   initialState,
   reducers: {
-    fetchFreelancers: (state, action) => {
+    setFreelancers: (state, action) => {
       state.freelancers = action.payload.freelancers;
     },
     setFilters: (state, action) => {
@@ -21,5 +21,5 @@ const freelancerSlice = createSlice({
   },
 });
 
-export const { fetchFreelancers, setFilters } = freelancerSlice.actions;
+export const { setFreelancers, setFilters } = freelancerSlice.actions;
 export default freelancerSlice.reducer;

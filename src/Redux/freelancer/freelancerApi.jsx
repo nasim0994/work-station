@@ -1,5 +1,5 @@
 import { apiSlice } from "../api/apiSlice";
-import { fetchFreelancers } from "./freelancerSlice";
+import { setFreelancers } from "./freelancerSlice";
 
 export const freelancerApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -15,7 +15,7 @@ export const freelancerApi = apiSlice.injectEndpoints({
           const result = await queryFulfilled;
 
           dispatch(
-            fetchFreelancers({
+            setFreelancers({
               freelancers: result?.data,
             })
           );
@@ -29,8 +29,16 @@ export const freelancerApi = apiSlice.injectEndpoints({
         url: "/freelancer/me",
       }),
     }),
+    getExpertFreelancers: builder.query({
+      query: () => ({
+        url: "/freelancer/expert",
+      }),
+    }),
   }),
 });
 
-export const { useGetFreelancersQuery, useGetLoggedFreelancersQuery } =
-  freelancerApi;
+export const {
+  useGetFreelancersQuery,
+  useGetLoggedFreelancersQuery,
+  useGetExpertFreelancersQuery,
+} = freelancerApi;
