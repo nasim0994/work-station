@@ -24,7 +24,7 @@ const countriesData = [
   "Brazil",
 ];
 
-export default function SignUpForm() {
+export default function CreateAccount() {
   const [signUpPage, setSignUpPage] = useState(1);
   const [accountType, setAccountType] = useState(null);
   const [showPassword, setShowPassword] = useState(false);

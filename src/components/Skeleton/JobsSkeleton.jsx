@@ -1,4 +1,4 @@
-export default function JobCardSkeleton() {
+export default function JobsSkeleton() {
   return (
     <div className="w-full">
       <div className="border rounded-md p-6 w-full bg-base-100">

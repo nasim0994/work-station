@@ -5,7 +5,6 @@ import FreelancerDetails from "../pages/Freelancers/FreelancerDetails/Freelancer
 import Jobs from "../pages/Jobs/Jobs/Jobs";
 import JobDetails from "../pages/Jobs/JobDetails/JobDetails";
 import SubmitProposal from "../pages/Jobs/SubmitProposal/SubmitProposal";
-import Blogs from "../pages/Blogs/Blogs";
 import Dashboard from "../pages/dashboard/Dashboard/Dashboard";
 import MainLayout from "../Layout/MainLayout/MainLayout";
 import DashboardLayout from "../Layout/DashboardLayout/DashboardLayout";
@@ -67,10 +66,7 @@ export const routes = createBrowserRouter([
         path: "/jobs/:id/submit-proposal",
         element: <SubmitProposal />,
       },
-      {
-        path: "/blogs",
-        element: <Blogs />,
-      },
+
       {
         path: "/about",
         element: <AboutUs />,
