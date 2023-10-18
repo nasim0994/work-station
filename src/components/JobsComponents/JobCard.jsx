@@ -39,7 +39,7 @@ export default function JobCard({ job }) {
       </div>
 
       {/*  */}
-      <div className="my-4 flex justify-between items-center text-[15px]">
+      <div className="my-4 grid grid-cols-2 sm:grid-cols-3 gap-2 justify-between items-center text-[15px]">
         <div>
           <h6 className="font-medium">
             ${minimumPrice} - ${maximumPrice}
@@ -93,13 +93,13 @@ export default function JobCard({ job }) {
 
         <div className="flex justify-end items-center gap-4 mt-4 sm:mt-0">
           <Link
-            to={`/jobs/${_id}`}
+            to={`/jobs/${slug}?_id=${_id}`}
             className="font-medium text-primary hover:text-primary/80 duration-200"
           >
             View Details
           </Link>
           <Link
-            to=""
+            to={`/jobs/${_id}/submit-proposal`}
             className="bg-primary text-base-100 font-medium px-6 py-2 rounded hover:bg-opacity-80 duration-200"
           >
             Apply Now

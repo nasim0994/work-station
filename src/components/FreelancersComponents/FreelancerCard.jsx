@@ -29,15 +29,17 @@ export default function FreelancerCard({ freelancer }) {
               {freelancer?.tagline}
             </p>
 
-            <div className="flex gap-4 items-center text-neutral/80 mt-2">
+            <div className="sm:flex gap-4 items-center text-neutral/80 mt-2 text-[15px] italic">
               <div className="flex items-center gap-1 border-r pr-4">
                 <GoLocation />
-                <p>{freelancer?.location?.city},{freelancer?.location?.country}</p>
+                <p>
+                  {freelancer?.location?.city},{freelancer?.location?.country}
+                </p>
               </div>
 
               <button className="flex items-center gap-1 hover:text-primary">
                 <AiOutlineHeart className="text-lg" />
-                <p>Save</p>
+                <p className="italic">Save</p>
               </button>
             </div>
           </div>
