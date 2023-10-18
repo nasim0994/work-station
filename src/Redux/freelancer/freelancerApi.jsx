@@ -31,6 +31,12 @@ export const freelancerApi = apiSlice.injectEndpoints({
       }),
     }),
 
+    getFreelancerByUsername: builder.query({
+      query: (username) => ({
+        url: `/freelancer/${username}`,
+      }),
+    }),
+
     getExpertFreelancers: builder.query({
       query: () => ({
         url: "/freelancer/expert",
@@ -42,5 +48,6 @@ export const freelancerApi = apiSlice.injectEndpoints({
 export const {
   useGetFreelancersQuery,
   useGetLoggedFreelancersQuery,
+  useGetFreelancerByUsernameQuery,
   useGetExpertFreelancersQuery,
 } = freelancerApi;

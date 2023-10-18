@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const MobileMenu = ({ mobileMenu, setMobileMenu }) => {
   const { loggedUser } = useSelector((state) => state.auth);
-  console.log(loggedUser);
+
   return (
     <div
       id="mobileMenu"

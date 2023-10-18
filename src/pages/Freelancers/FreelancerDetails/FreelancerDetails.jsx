@@ -1,25 +1,25 @@
 import { GoLocation } from "react-icons/go";
 import { AiFillStar } from "react-icons/ai";
 import SendOffer from "../../../components/FreelancersComponents/SendOffer";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useGetFreelancerByUsernameQuery } from "../../../Redux/freelancer/freelancerApi";
+import Loading from "../../../components/Loading/Loading";
 
 export default function FreelancerDetails() {
   const { userName } = useParams();
-  const [freelancer, setFreelancer] = useState([]);
 
-  useEffect(() => {
-    fetch(
-      `https://work-station-server.vercel.app/api/v1/freelancer/${userName}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          setFreelancer(data?.data);
-        }
-      });
-  }, [userName]);
+  const { data, isLoading, isError, error } =
+    useGetFreelancerByUsernameQuery(userName);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (!isLoading && isError) {
+    return <p>{error}</p>;
+  }
+
+  const freelancer = data?.status === "success" && data?.data;
 
   const {
     bannerUrl,
@@ -30,6 +30,7 @@ export default function FreelancerDetails() {
     rating,
     hourlyRate,
     description,
+    englishLevel,
     skills,
     projects,
     portfolio,
@@ -39,9 +40,9 @@ export default function FreelancerDetails() {
   return (
     <div className="pb-10 bg-accent">
       {/* Banner */}
-      <div
-        className={`h-60 bg-[url(${bannerUrl})] bg-no-repeat bg-center bg-cover`}
-      ></div>
+      <div>
+        <img src={bannerUrl} alt="" className="h-60 w-full" />
+      </div>
 
       <div className="container">
         <div className="lg:flex items-start gap-8 text-neutral">
@@ -77,14 +78,8 @@ export default function FreelancerDetails() {
               </div>
 
               <div className="flex justify-between items-center mt-2">
-                <div className="flex gap-2">
-                  <div className="flex gap-px items-center text-secondary">
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                  </div>
+                <div className="flex items-center gap-2">
+                  <AiFillStar className="text-secondary" />
                   <p className="text-sm sm:text-center py-1">
                     <span>{rating?.average}</span>
                     <span className="text-neutral/70">/5 </span>
@@ -97,16 +92,20 @@ export default function FreelancerDetails() {
                 </div>
               </div>
 
+              <h6 className="text-sm">
+                English Level - <span>{englishLevel}</span>
+              </h6>
+
               <div className="mt-4">
                 <SendOffer />
               </div>
             </div>
 
             {/* Skill */}
-            <div className="mt-6">
+            <div className="mt-5">
               <h6 className="text-lg font-medium">Skill</h6>
 
-              <div className="mt-4 text-sm font-medium text-neutral/80">
+              <div className="mt-2 text-sm font-medium text-neutral/80">
                 {skills?.map((skill, i) => (
                   <button
                     key={i}
@@ -163,10 +162,10 @@ export default function FreelancerDetails() {
 
               <div className="mt-4 grid md:grid-cols-3 gap-6">
                 {portfolio?.map((p, i) => (
-                  <div key={i}>
+                  <Link to={`${p.url}`} target="_blank" key={i}>
                     <img src={p?.image} alt="" className="w-full" />
                     <h2>{p?.title}</h2>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -179,7 +178,7 @@ export default function FreelancerDetails() {
                 {clientFeedback?.map((feedback, i) => (
                   <div key={i} className="flex gap-4 border-b py-4">
                     <img
-                      src="https://WorkStation.com/wp-content/uploads/2021/02/Raiyan-100x100.jpeg"
+                      src={`${feedback.photoUrl}`}
                       alt=""
                       className="w-12 h-12 rounded-full"
                     />
