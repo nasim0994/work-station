@@ -59,7 +59,7 @@ export const routes = createBrowserRouter([
         element: <Jobs />,
       },
       {
-        path: "/jobs/:id",
+        path: "/jobs/:slug",
         element: <JobDetails />,
       },
       {

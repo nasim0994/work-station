@@ -6,6 +6,7 @@ export default function JobCard({ job }) {
   const {
     _id,
     title,
+    slug,
     companyName,
     companyLogo,
     minimumPrice,
@@ -18,12 +19,16 @@ export default function JobCard({ job }) {
     city,
     skills,
   } = job;
+
   return (
     <div className="border rounded-md py-4 px-6 mb-6 bg-base-100">
       {/* Title */}
       <div className="flex justify-between ">
         <div>
-          <Link to={`/jobs/${_id}`} className="hover:text-primary duration-300">
+          <Link
+            to={`/jobs/${slug}?_id=${_id}`}
+            className="hover:text-primary duration-300"
+          >
             <h6 className="font-semibold text-lg">{title}</h6>
           </Link>
           <p className="text-neutral/70 font-medium">{companyName}</p>
