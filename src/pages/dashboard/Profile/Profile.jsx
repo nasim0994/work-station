@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { GoLocation } from "react-icons/go";
 import { AiFillStar, AiOutlinePlus } from "react-icons/ai";
 import { FaBusinessTime } from "react-icons/fa";
@@ -8,65 +7,37 @@ import { useGetLoggedFreelancersQuery } from "../../../Redux/freelancer/freelanc
 import { useSelector } from "react-redux";
 import Loading from "../../../components/Loading/Loading";
 import { useGetLoggedClientsQuery } from "../../../Redux/client/clientApi";
+import { useGetMyJobsQuery } from "../../../Redux/jobs/jobApi";
 
 export default function Profile() {
   window.scroll(0, 0);
   const { loggedUser, loading } = useSelector((state) => state.auth);
   const { data: loggedFreelancer, isLoading } = useGetLoggedFreelancersQuery();
-  const { data: loggedClient } = useGetLoggedClientsQuery();
+  const { data: loggedClient, isLoading: clientLoading } =
+    useGetLoggedClientsQuery();
 
-  const [postedJob, setPostedJobs] = useState([]);
-  useEffect(() => {
-    fetch(`https://work-station-server.vercel.app/api/v1/job/my-jobs`, {
-      headers: {
-        authorization: `bearer ${localStorage.getItem("WorkStation_jwt")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          setPostedJobs(data?.data);
-        }
-      });
-  }, []);
+  const { data: postedJobs, isLoading: postedLoading } = useGetMyJobsQuery();
 
-  if (loading || isLoading) {
+  if (loading || isLoading || clientLoading) {
     return <Loading />;
   }
 
-  const bannerUrl =
-    loggedUser?.data?.role === "freelancer"
-      ? loggedFreelancer?.data?.bannerUrl
-      : loggedClient?.data?.bannerUrl;
+  let user = {};
+  if (loggedUser?.status && loggedUser?.data?.role === "freelancer") {
+    user = loggedFreelancer?.data;
+  }
+  if (loggedUser?.status && loggedUser?.data?.role === "client") {
+    user = loggedClient?.data;
+  }
 
-  const photoUrl =
-    loggedUser?.data?.role === "freelancer"
-      ? loggedFreelancer?.data?.photoUrl
-      : loggedClient?.data?.photoUrl;
+  const { bannerUrl, photoUrl, name, location, rating, feedback } = user;
 
-  const name =
-    loggedUser?.data?.role === "freelancer"
-      ? loggedFreelancer?.data?.name
-      : loggedClient?.data?.name;
-
-  const location =
-    loggedUser?.data?.role === "freelancer"
-      ? loggedFreelancer?.data?.location
-      : loggedClient?.data?.location;
-
-  const rating =
-    loggedUser?.data?.role === "freelancer"
-      ? loggedFreelancer?.data?.rating
-      : loggedClient?.data?.rating;
-
-  const feedbacks =
-    loggedUser?.data?.role === "freelancer"
-      ? loggedFreelancer?.data?.clientFeedback
-      : loggedClient?.data?.freelancerFeedback;
-
-  const loggedFreelancers = loggedFreelancer?.data;
+  const freelancer =
+    loggedUser.status &&
+    loggedUser?.data?.role === "freelancer" &&
+    loggedFreelancer?.data;
   const { hourlyRate, skills, tagline, description, portfolio, projects } =
-    loggedFreelancers;
+    freelancer;
 
   if (!loading && !isLoading) {
     return (
@@ -273,53 +244,55 @@ export default function Profile() {
                   </div>
 
                   <div className="mt-4">
-                    {postedJob?.map((job) => (
-                      <div
-                        key={job?._id}
-                        className="bg-gray-100 rounded border mb-2"
-                      >
-                        <div className="p-6">
-                          <div className="mb-4">
-                            <p className="text-xl font-semibold">
-                              {job?.title}
-                            </p>
+                    {postedLoading && <p>Loading...</p>}
+                    {postedJobs?.data?.length > 0 &&
+                      postedJobs?.data?.map((job) => (
+                        <div
+                          key={job?._id}
+                          className="bg-gray-100 rounded border mb-2"
+                        >
+                          <div className="p-6">
+                            <div className="mb-4">
+                              <p className="text-xl font-semibold">
+                                {job?.title}
+                              </p>
+                            </div>
+                            <div className="md:flex gap-4 items-center text-sm text-neutral/80">
+                              <div className="flex items-center gap-1 md:border-r border-neutral/30 pr-3 ">
+                                <GoLocation />
+                                <h6>
+                                  {job?.city}, {job?.country}
+                                </h6>
+                              </div>
+
+                              <div className="flex items-center gap-1 md:border-r border-neutral/30 pr-3">
+                                <FaBusinessTime />
+                                <h6>{job?.duration}</h6>
+                              </div>
+
+                              <div className="flex items-center gap-1">
+                                <MdOutlinePersonSearch className="text-lg" />
+                                <h6>{job?.experienceLevel}</h6>
+                              </div>
+                            </div>
                           </div>
-                          <div className="md:flex gap-4 items-center text-sm text-neutral/80">
-                            <div className="flex items-center gap-1 md:border-r border-neutral/30 pr-3 ">
-                              <GoLocation />
-                              <h6>
-                                {job?.city}, {job?.country}
-                              </h6>
-                            </div>
 
-                            <div className="flex items-center gap-1 md:border-r border-neutral/30 pr-3">
-                              <FaBusinessTime />
-                              <h6>{job?.duration}</h6>
+                          <div className="sm:flex justify-between items-center gap-4 p-4 pt-0 ">
+                            <div className="flex justify-center gap-4 items-center">
+                              <Link to="" className="primary-btn">
+                                View proposals
+                              </Link>
+                              <Link to="" className="primary-btn">
+                                Edit job
+                              </Link>
                             </div>
-
-                            <div className="flex items-center gap-1">
-                              <MdOutlinePersonSearch className="text-lg" />
-                              <h6>{job?.experienceLevel}</h6>
+                            <div className="text-center px-10 mt-4 sm:mt-0">
+                              <p>0</p>
+                              <p>Proposals</p>
                             </div>
                           </div>
                         </div>
-
-                        <div className="sm:flex justify-between items-center gap-4 p-4 pt-0 ">
-                          <div className="flex justify-center gap-4 items-center">
-                            <Link to="" className="primary-btn">
-                              View proposals
-                            </Link>
-                            <Link to="" className="primary-btn">
-                              Edit job
-                            </Link>
-                          </div>
-                          <div className="text-center px-10 mt-4 sm:mt-0">
-                            <p>0</p>
-                            <p>Proposals</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
                   </div>
                 </div>
               )}
@@ -334,10 +307,10 @@ export default function Profile() {
                 </h6>
 
                 <div className="mt-2">
-                  {feedbacks?.map((feedback, i) => (
+                  {feedback?.map((f, i) => (
                     <div key={i} className="flex gap-4 border-b py-4">
                       <img
-                        src="https://WorkStation.com/wp-content/uploads/2021/02/Raiyan-100x100.jpeg"
+                        src={f.photoUrl}
                         alt=""
                         className="w-12 h-12 rounded-full"
                       />
@@ -345,7 +318,7 @@ export default function Profile() {
                         <div className="flex justify-between ">
                           <div>
                             <h6 className="text-[15px] font-medium">
-                              {feedback.name}
+                              {f.name}
                             </h6>
                             <div className="flex gap-px text-sm items-center text-yellow-500">
                               <AiFillStar />
@@ -358,15 +331,15 @@ export default function Profile() {
 
                           <div className="text-sm text-end">
                             <p>
-                              {feedback.jobFrom} - {feedback.jobTo}
+                              {f.jobFrom} - {f.jobTo}
                             </p>
                             <p>
-                              {feedback.jobType}: ${feedback.price}
+                              {f.jobType}: ${f.price}
                             </p>
                           </div>
                         </div>
 
-                        <p className="italic text-sm">{feedback.message}</p>
+                        <p className="italic text-sm">{f.message}</p>
                       </div>
                     </div>
                   ))}

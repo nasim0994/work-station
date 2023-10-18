@@ -15,6 +15,9 @@ import { GoCommentDiscussion } from "react-icons/go";
 import { RxDashboard } from "react-icons/rx";
 import { HiOutlineMail } from "react-icons/hi";
 import { SlArrowRight, SlArrowLeft } from "react-icons/sl";
+import { useSelector } from "react-redux";
+import { useGetLoggedFreelancersQuery } from "../../../Redux/freelancer/freelancerApi";
+import { useGetLoggedClientsQuery } from "../../../Redux/client/clientApi";
 
 export default function DashboardSidebar() {
   const location = useLocation();
@@ -23,7 +26,14 @@ export default function DashboardSidebar() {
   const [projectsToggle, setProjectsToggle] = useState(false);
   const [jobsToggle, setJobsToggle] = useState(false);
 
-  const user = "freelancer";
+  const { loggedUser } = useSelector((state) => state.auth);
+  const { data: loggedFreelancer } = useGetLoggedFreelancersQuery();
+  const { data: loggedClient } = useGetLoggedClientsQuery();
+
+  const user =
+    loggedUser?.data?.role === "freelancer"
+      ? loggedFreelancer?.data
+      : loggedClient?.data;
 
   useEffect(() => {
     if (
@@ -73,21 +83,17 @@ export default function DashboardSidebar() {
         <div className="relative">
           <div className="relative ">
             <div className="absolute bg-slate-500 w-full left-0 top-0 h-full bg-opacity-50"></div>
-            <img
-              src="https://image.shutterstock.com/image-photo/banner-coffee-laptop-office-supplies-260nw-1901776522.jpg"
-              alt=""
-              className="h-32 w-full"
-            />
+            <img src={user?.bannerUrl} alt="" className="h-32 w-full" />
 
             <div className="absolute top-1/2 left-20 z-50">
               <img
-                src="https://i.ibb.co/znwrX5c/na.jpg"
+                src={loggedUser?.data?.photoUrl}
                 alt=""
                 className="w-32 h-32 rounded-full mx-auto shadow-lg"
               />
 
               <h6 className="text-xl font-medium mt-2 text-neutral">
-                Md Nasim Uddin
+                {loggedUser?.data?.name}
               </h6>
               <h6>Front-End Developer</h6>
             </div>
@@ -118,7 +124,7 @@ export default function DashboardSidebar() {
             </li>
 
             {/* Freelancer Option */}
-            {user === "freelancer" && (
+            {loggedUser?.data?.role === "freelancer" && (
               <>
                 <li>
                   <div>
@@ -240,7 +246,7 @@ export default function DashboardSidebar() {
             )}
 
             {/* Client Option */}
-            {user === "client" && (
+            {loggedUser?.data?.role === "client" && (
               <li>
                 <div>
                   <button

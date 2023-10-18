@@ -8,36 +8,35 @@ import { GoLocation } from "react-icons/go";
 import SaveJobs from "../../../components/DashboardComponents/JobComponents/SaveJobs/SaveJobs";
 import { useSelector } from "react-redux";
 import { useGetLoggedFreelancersQuery } from "../../../Redux/freelancer/freelancerApi";
-// import { useGetLoggedClientsQuery } from "../../../Redux/client/clientApi";
+import { useGetLoggedClientsQuery } from "../../../Redux/client/clientApi";
 import Loading from "../../../components/Loading/Loading";
 
 export default function SaveItems() {
   window.scroll(0, 0);
   const { loggedUser, loading } = useSelector((state) => state.auth);
-  const { data: loggedFreelancer } = useGetLoggedFreelancersQuery();
-  // const { data: loggedClient } = useGetLoggedClientsQuery();
+  const { data: loggedFreelancer, isLoading } = useGetLoggedFreelancersQuery();
+  const { data: loggedClient, isLoading: clientLoading } =
+    useGetLoggedClientsQuery();
 
-  if (loading) {
+  if (loading || isLoading || clientLoading) {
     return <Loading />;
   }
 
-  // useEffect(() => {
-  //   let ids = [];
+  let user = {};
+  if (loggedUser?.status && loggedUser?.data?.role === "freelancer") {
+    user = loggedFreelancer?.data;
+  }
+  if (loggedUser?.status && loggedUser?.data?.role === "client") {
+    user = loggedClient?.data;
+  }
 
-  //   postedJobs.filter((job) => ids.push(job.jobId));
+  const { saveItems } = user;
 
-  //   fetch(
-  //     `https://work-station-server.vercel.app/api/v1/job/bulk-jobs?ids=${JSON.stringify(
-  //       ids
-  //     )}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data?.data));
-  // }, [postedJobs]);
+  console.log(saveItems?.saveJobs);
 
   return (
     <div className="py-2">
-      <div className="md:flex gap-10 min-h-[80vh]">
+      <div className="md:flex gap-10 min-h-[88vh]">
         <div className="md:w-3/4 ">
           <div className="bg-base-100 shadow-lg p-4 rounded-md h-full">
             <Tabs
@@ -45,9 +44,7 @@ export default function SaveItems() {
               onClick={(event, tab) => console.log(event, tab)}
             >
               <Tab title="Saved jobs" className="mr-3">
-                <SaveJobs
-                  saveJobs={loggedFreelancer?.data?.saveItems?.saveJobs}
-                />
+                <SaveJobs saveJobs={saveItems?.saveJobs} />
               </Tab>
 
               <Tab title="Liked Freelancers" className="mr-3">
@@ -59,120 +56,6 @@ export default function SaveItems() {
                   </div>
 
                   <div className="mt-6 md:px-5 grid 2xl:grid-cols-2 gap-4">
-                    <div className="border rounded-md py-4 px-2 sm:px-6 bg-base-100">
-                      {/* Personal Info */}
-                      <div className="sm:flex justify-between items-center">
-                        <div className="flex gap-4">
-                          {/* img */}
-                          <div className="w-20 sm:w-24">
-                            <Link to="freelancerDetails">
-                              <img
-                                src="https://WorkStation.com/wp-content/uploads/2021/06/bandarban-100x100.jpg"
-                                alt=""
-                                className="w-full rounded hover:shadow-lg"
-                              />
-                            </Link>
-                          </div>
-
-                          <div>
-                            <Link to="freelancerDetails">
-                              <h6 className="font-semibold sm:text-lg hover:text-primary duration-300">
-                                Mohammed Mikdad
-                              </h6>
-                            </Link>
-                            <p className="text-neutral/70 font-medium">
-                              MERN Stack Developer
-                            </p>
-
-                            <div className="flex gap-4 items-center text-neutral/80 mt-2 text-sm">
-                              <div className="flex items-center gap-1 border-r pr-4">
-                                <GoLocation />
-                                <p>Dhaka</p>
-                              </div>
-
-                              <button className="flex items-center gap-1 text-red-400">
-                                <AiOutlineClose />
-                                <p>Remove</p>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Review/star */}
-                        <div className="my-4 sm:mt-0">
-                          <div className="flex gap-px items-center text-yellow-500">
-                            <AiFillStar />
-                            <AiFillStar />
-                            <AiFillStar />
-                            <AiFillStar />
-                            <AiFillStar />
-                          </div>
-                          <p className="text-xl sm:text-center py-1">
-                            <span>5</span>
-                            <span className="text-sm text-neutral/70">/5</span>
-                          </p>
-                          <p className="text-sm text-primary">(15 feedback)</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="border rounded-md py-4 px-2 sm:px-6 bg-base-100">
-                      {/* Personal Info */}
-                      <div className="sm:flex justify-between items-center">
-                        <div className="flex gap-4">
-                          {/* img */}
-                          <div className="w-20 sm:w-24">
-                            <Link to="freelancerDetails">
-                              <img
-                                src="https://WorkStation.com/wp-content/uploads/2021/06/bandarban-100x100.jpg"
-                                alt=""
-                                className="w-full rounded hover:shadow-lg"
-                              />
-                            </Link>
-                          </div>
-
-                          <div>
-                            <Link to="freelancerDetails">
-                              <h6 className="font-semibold sm:text-lg hover:text-primary duration-300">
-                                Mohammed Mikdad
-                              </h6>
-                            </Link>
-                            <p className="text-neutral/70 font-medium">
-                              MERN Stack Developer
-                            </p>
-
-                            <div className="flex gap-4 items-center text-neutral/80 mt-2 text-sm">
-                              <div className="flex items-center gap-1 border-r pr-4">
-                                <GoLocation />
-                                <p>Dhaka</p>
-                              </div>
-
-                              <button className="flex items-center gap-1 text-red-400">
-                                <AiOutlineClose />
-                                <p>Remove</p>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Review/star */}
-                        <div className="my-4 sm:mt-0">
-                          <div className="flex gap-px items-center text-yellow-500">
-                            <AiFillStar />
-                            <AiFillStar />
-                            <AiFillStar />
-                            <AiFillStar />
-                            <AiFillStar />
-                          </div>
-                          <p className="text-xl sm:text-center py-1">
-                            <span>5</span>
-                            <span className="text-sm text-neutral/70">/5</span>
-                          </p>
-                          <p className="text-sm text-primary">(15 feedback)</p>
-                        </div>
-                      </div>
-                    </div>
-
                     <div className="border rounded-md py-4 px-2 sm:px-6 bg-base-100">
                       {/* Personal Info */}
                       <div className="sm:flex justify-between items-center">
@@ -242,9 +125,7 @@ export default function SaveItems() {
 
             <div className="border-l pl-4">
               <p className="text-primary text-xl font-semibold">
-                {loggedUser?.data?.role === "freelancer"
-                  ? loggedFreelancer?.data?.saveItems?.saveJobs?.length
-                  : 0}
+                {saveItems?.saveJobs?.length}
               </p>
               <h6>Saved jobs</h6>
             </div>
@@ -255,9 +136,7 @@ export default function SaveItems() {
 
             <div className="border-l pl-4">
               <p className="text-primary text-xl font-semibold">
-                {loggedUser?.data?.role === "freelancer"
-                  ? loggedFreelancer?.data?.saveItems?.likeFreelancers?.length
-                  : 0}
+                {saveItems?.likeFreelancers?.length}
               </p>
               <h6>Liked freelancers</h6>
             </div>

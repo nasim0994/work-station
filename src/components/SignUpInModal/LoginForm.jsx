@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiFillUnlock, AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { BsFacebook } from "react-icons/bs";
-import { FcGoogle } from "react-icons/fc";
 import { MdEmail } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useLoginMutation } from "../../Redux/auth/authApi";
@@ -106,16 +104,18 @@ export default function LoginForm() {
         </div>
       </form>
 
-      <div>
-        <div className="text-neutral/50 text-center my-3">OR</div>
-
-        <button className="w-full py-2 font-medium text-base-100 bg-blue-600 rounded hover:bg-opacity-90 duration-300 flex justify-center gap-4 items-center">
-          <BsFacebook className="text-xl" /> Continue with Facebook
-        </button>
-
-        <button className="mt-4 w-full py-2 font-medium text-neutral border border-neutral/50 rounded hover:bg-opacity-90 duration-300 flex gap-4 justify-center items-center">
-          <FcGoogle className="text-xl" /> Continue with Google
-        </button>
+      <div className="text-sm text-neutral-content mt-4">
+        <p>This is a demo website,</p>
+        <p>
+          so I am providing user email and password so that you can explore the
+          dashboard.
+        </p>
+        <p>
+          <strong>Freelancer:</strong> nasim1@gmail.com - 112233
+        </p>
+        <p>
+          <strong>Client:</strong> mark@gmail.com - 112233
+        </p>
       </div>
     </div>
   );
